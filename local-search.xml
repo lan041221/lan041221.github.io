@@ -4,11 +4,24 @@
   
   
   <entry>
-    <title>新Anaconda安装快捷方式</title>
-    <link href="/2024/08/07/%E6%96%B0Anaconda%E5%AE%89%E8%A3%85ub%E5%8F%8C%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/"/>
-    <url>/2024/08/07/%E6%96%B0Anaconda%E5%AE%89%E8%A3%85ub%E5%8F%8C%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/</url>
+    <title>保研之路</title>
+    <link href="/2024/08/07/%E4%BF%9D%E7%A0%94%E4%B9%8B%E8%B7%AF/"/>
+    <url>/2024/08/07/%E4%BF%9D%E7%A0%94%E4%B9%8B%E8%B7%AF/</url>
     
-    <content type="html"><![CDATA[<p>近期需要参加CISCN的作品赛国赛，台式放宿舍了，笔记本上重新配了一遍环境，Anaconda偷偷更新了，已经不能直观的下载：官网：Anaconda | The Operating System for AI</p>]]></content>
+    <content type="html"><![CDATA[]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>新Anaconda安装快捷方式</title>
+    <link href="/2024/08/07/%E6%96%B0Anaconda%E5%AE%89%E8%A3%85%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/"/>
+    <url>/2024/08/07/%E6%96%B0Anaconda%E5%AE%89%E8%A3%85%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/</url>
+    
+    <content type="html"><![CDATA[<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>Anaconda下载地址：<a href="https://www.anaconda.com/download/success">https://www.anaconda.com/download/success</a> </p><h1 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h1><p>近期需要参加CISCN的作品赛国赛，台式放宿舍了，笔记本上重新配了一遍环境，在我下载<a href="https://www.anaconda.com/">Anaconda</a>的时候发现他已经偷偷更新了，不能直接地进行下载，需要点来点去的 。<br><img src="/img/Anaconda1.png" alt="图片" title="点击Free Download"><br>在这里的话就需要填写个邮箱去获取Anaconda给你发的“相关资讯、产品、服务”，说白了就是官方需要你<strong>提供个邮箱接受垃圾邮件</strong>,非常恶心，只有点了下面的框中的同意才能给你下载地址。<br><img src="/img/Anaconda2.png" alt="图片" title="填写邮箱获取下载链接"><br>输入完成了之后就会进入到上面提到的下载地址中。<br><img src="/img/Anaconda3.png" alt="图片" title="毫无意义地跳转到下载"><br>下载之后在安装过程中需要特别注意勾选Install for <strong>Just Me</strong>,不能选ALL Users。选了ALL Users的话创建虚拟环境的时候不会在安装Anaconda的目录env文件下创建，而会在C盘中创建 <strong>.conda</strong>的文件然后在里面安装创建的虚拟环境。<br><img src="/img/Anaconda4.png" alt="图片" title="全点Next即可"><br>创建好虚拟环境后，使用 <code>conda env list</code> 查看环境。<br><img src="/img/Anaconda5.png" alt="图片" title="创建虚拟环境后正确的结果"></p>]]></content>
     
     
     
