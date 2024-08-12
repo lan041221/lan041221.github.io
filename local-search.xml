@@ -21,7 +21,7 @@
     <link href="/2024/08/07/%E6%96%B0Anaconda%E5%AE%89%E8%A3%85%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/"/>
     <url>/2024/08/07/%E6%96%B0Anaconda%E5%AE%89%E8%A3%85%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F/</url>
     
-    <content type="html"><![CDATA[<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>Anaconda下载地址：<a href="https://www.anaconda.com/download/success">https://www.anaconda.com/download/success</a> </p><h1 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h1><p>近期需要参加CISCN的作品赛国赛，台式放宿舍了，笔记本上重新配了一遍环境，在我下载<a href="https://www.anaconda.com/">Anaconda</a>的时候发现他已经偷偷更新了，不能直接地进行下载，需要点来点去的 。<br><img src="/img/Anaconda1.png" alt="图片" title="点击Free Download"><br>在这里的话就需要填写个邮箱去获取Anaconda给你发的“相关资讯、产品、服务”，说白了就是官方需要你<strong>提供个邮箱接受垃圾邮件</strong>,非常恶心，只有点了下面的框中的同意才能给你下载地址。<br><img src="/img/Anaconda2.png" alt="图片" title="填写邮箱获取下载链接"><br>输入完成了之后就会进入到上面提到的下载地址中。<br><img src="/img/Anaconda3.png" alt="图片" title="毫无意义地跳转到下载"><br>下载之后在安装过程中需要特别注意勾选Install for <strong>Just Me</strong>,不能选ALL Users。选了ALL Users的话创建虚拟环境的时候不会在安装Anaconda的目录env文件下创建，而会在C盘中创建 <strong>.conda</strong>的文件然后在里面安装创建的虚拟环境。<br><img src="/img/Anaconda4.png" alt="图片" title="全点Next即可"><br>创建好虚拟环境后，使用 <code>conda env list</code> 查看环境。<br><img src="/img/Anaconda5.png" alt="图片" title="创建虚拟环境后正确的结果"></p>]]></content>
+    <content type="html"><![CDATA[<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p><a href="https://www.anaconda.com/download/success">Anaconda下载地址</a> </p><h1 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h1><p>近期需要参加CISCN的作品赛国赛，台式放宿舍了，笔记本上重新配了一遍环境，在我下载<a href="https://www.anaconda.com/">Anaconda</a>的时候发现他已经偷偷更新了，不能直接地进行下载，需要点来点去的 。<br><img src="/img/Anaconda1.png" alt="图片" title="点击Free Download"><br>在这里的话就需要填写个邮箱去获取Anaconda给你发的“相关资讯、产品、服务”，说白了就是官方需要你<strong>提供个邮箱接受垃圾邮件</strong>,非常恶心，只有点了下面的框中的同意才能给你下载地址。<br><img src="/img/Anaconda2.png" alt="图片" title="填写邮箱获取下载链接"><br>输入完成了之后就会进入到上面提到的下载地址中。<br><img src="/img/Anaconda3.png" alt="图片" title="毫无意义地跳转到下载"><br>下载之后在安装过程中需要特别注意勾选Install for <strong>Just Me</strong>,不能选ALL Users。选了ALL Users的话创建虚拟环境的时候不会在安装Anaconda的目录env文件下创建，而会在C盘中创建 <strong>.conda</strong>的文件然后在里面安装创建的虚拟环境。<br><img src="/img/Anaconda4.png" alt="图片" title="全点Next即可"><br>创建好虚拟环境后，使用 <code>conda env list</code> 查看环境。<br><img src="/img/Anaconda5.png" alt="图片" title="创建虚拟环境后正确的结果"></p>]]></content>
     
     
     
@@ -47,34 +47,9 @@
     <link href="/2024/08/07/ISCC%E4%B8%80%E8%A1%80%E8%AE%B0%E5%BD%95/"/>
     <url>/2024/08/07/ISCC%E4%B8%80%E8%A1%80%E8%AE%B0%E5%BD%95/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>由于ISCC独有的<strong>传播范围广</strong>的特性，导致有很多题目突然间可能就有很多人顿悟从而导致ISCC被业内所诟病，这个比赛基本也很容易就能拿到国奖，其奖项的含金量也无从定义。但是拿一血的含金量是毋庸置疑的，毕竟是全国第一个做出来，这里记录一下拿一血的过程。</p><h3 id="题目：成语学习"><a href="#题目：成语学习" class="headerlink" title="题目：成语学习"></a>题目：成语学习</h3><p>根据流量分析压缩包得到密码为57pmYyWt，丢进虚拟机解，发现是个压缩包<br><img src="/img/ISCC%E4%B8%80%E8%A1%801.png" alt="图片" title="流量分析得到压缩包"></p><p>查看flag在哪，用下面的语句在当前目录及其子目录中搜索名为 flag.txt 的文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ find ./* -name flag.txt<br></code></pre></td></tr></table></figure><p><img src="/img/ISCC%E4%B8%80%E8%A1%802.png" alt="图片" title="找到flag.txt"><br>查看里面的内容，上面说不要用食物去加密，食物是英语，文档里面题目是《你信我啊》，这个题叫做《成语学习》。联想到<strong>加salt的哈希算法</strong>用食物（salt）去加密他给的成语<br><img src="/img/ISCC%E4%B8%80%E8%A1%803.png" alt="图片" title="找到flag.txt"><br>接下来在<a href="https://www.uutils.com/enc/hmac_sha.htm">加密解密网站</a>中一个一个的试带盐的加密，最终试到是HmacMD5加密算法<br>最终拿到flag:ISCC{86bd2a65ea0d68bf231dd5c0a9c5e8c1}<br><img src="/img/ISCC%E4%B8%80%E8%A1%804.png" alt="图片" title="成功获得该题flag"></p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>MISC方向的题目通常需要技术常识和工具使用外的<strong>一点灵性脑洞</strong>才能解出题目来。<br>成语学习这个题目也不例外。首先，需要会使用wireshark分析流量拿到密码，然后用命令查找到可能包含flag信息的文件，接着再利用密码基础联想到文本信息的隐藏意思想到其中可能会用到的算法。<br>这是我第一次拿一血，这种快乐是我之前从来没体会过的，有种世界上我最聪明的感觉。</p>]]></content>
     
     
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>奥运会~</title>
-    <link href="/2024/08/05/1/"/>
-    <url>/2024/08/05/1/</url>
-    
-    <content type="html"><![CDATA[<h1 id="乒乓球"><a href="#乒乓球" class="headerlink" title="乒乓球"></a>乒乓球</h1><p>王楚钦爆冷是没想到的<br>某些粉丝也是够逆天的<br>恭喜樊振东第三个获得超级全满贯（每次比赛的出汗量也太多了hh）</p><h1 id="游泳"><a href="#游泳" class="headerlink" title="游泳"></a>游泳</h1><p>恭喜获得男子4*100混合接力冠军 潘展乐好牛 接力最后一棒35.92 太夸张了吧<br>哈哈哈张雨霏的奖牌也太多了</p><h1 id="网球"><a href="#网球" class="headerlink" title="网球"></a>网球</h1><p>太牛了 恭喜获得女单金牌</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>嘻嘻</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>生活记录</tag>
-      
-    </tags>
     
   </entry>
   

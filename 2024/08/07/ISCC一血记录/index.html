@@ -19,15 +19,22 @@
   <meta name="author" content="l1nk">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="打ctf最大的成就就是拿一血，参加了这么多的比赛终于是实现了一次，记录ISCC第一个MISC方向ak（all kill）">
+<meta property="og:type" content="article">
 <meta property="og:title" content="ISCC一血记录">
 <meta property="og:url" content="https://lan041221.github.io/2024/08/07/ISCC%E4%B8%80%E8%A1%80%E8%AE%B0%E5%BD%95/index.html">
 <meta property="og:site_name" content="l1nk&#39;s blog">
+<meta property="og:description" content="打ctf最大的成就就是拿一血，参加了这么多的比赛终于是实现了一次，记录ISCC第一个MISC方向ak（all kill）">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lan041221.github.io/img/ISCC%E4%B8%80%E8%A1%801.png">
+<meta property="og:image" content="https://lan041221.github.io/img/ISCC%E4%B8%80%E8%A1%802.png">
+<meta property="og:image" content="https://lan041221.github.io/img/ISCC%E4%B8%80%E8%A1%803.png">
+<meta property="og:image" content="https://lan041221.github.io/img/ISCC%E4%B8%80%E8%A1%804.png">
 <meta property="article:published_time" content="2024-08-06T17:25:23.000Z">
-<meta property="article:modified_time" content="2024-08-06T17:25:24.008Z">
+<meta property="article:modified_time" content="2024-08-12T15:40:52.956Z">
 <meta property="article:author" content="l1nk">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lan041221.github.io/img/ISCC%E4%B8%80%E8%A1%801.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -222,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          434 字
         
       </span>
     
@@ -233,7 +240,7 @@
         
         
         
-          1 分钟
+          4 分钟
         
       </span>
     
@@ -275,7 +282,13 @@
             
               <div class="markdown-body">
                 
-                
+                <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>由于ISCC独有的<strong>传播范围广</strong>的特性，导致有很多题目突然间可能就有很多人顿悟从而导致ISCC被业内所诟病，这个比赛基本也很容易就能拿到国奖，其奖项的含金量也无从定义。但是拿一血的含金量是毋庸置疑的，毕竟是全国第一个做出来，这里记录一下拿一血的过程。</p>
+<h3 id="题目：成语学习"><a href="#题目：成语学习" class="headerlink" title="题目：成语学习"></a>题目：成语学习</h3><p>根据流量分析压缩包得到密码为57pmYyWt，丢进虚拟机解，发现是个压缩包<br><img src="/img/ISCC%E4%B8%80%E8%A1%801.png" srcset="/img/loading.gif" lazyload alt="图片" title="流量分析得到压缩包"></p>
+<p>查看flag在哪，用下面的语句在当前目录及其子目录中搜索名为 flag.txt 的文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ find ./* -name flag.txt<br></code></pre></td></tr></table></figure>
+<p><img src="/img/ISCC%E4%B8%80%E8%A1%802.png" srcset="/img/loading.gif" lazyload alt="图片" title="找到flag.txt"><br>查看里面的内容，上面说不要用食物去加密，食物是英语，文档里面题目是《你信我啊》，这个题叫做《成语学习》。联想到<strong>加salt的哈希算法</strong>用食物（salt）去加密他给的成语<br><img src="/img/ISCC%E4%B8%80%E8%A1%803.png" srcset="/img/loading.gif" lazyload alt="图片" title="找到flag.txt"><br>接下来在<a target="_blank" rel="noopener" href="https://www.uutils.com/enc/hmac_sha.htm">加密解密网站</a>中一个一个的试带盐的加密，最终试到是HmacMD5加密算法<br>最终拿到flag:ISCC{86bd2a65ea0d68bf231dd5c0a9c5e8c1}<br><img src="/img/ISCC%E4%B8%80%E8%A1%804.png" srcset="/img/loading.gif" lazyload alt="图片" title="成功获得该题flag"></p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>MISC方向的题目通常需要技术常识和工具使用外的<strong>一点灵性脑洞</strong>才能解出题目来。<br>成语学习这个题目也不例外。首先，需要会使用wireshark分析流量拿到密码，然后用命令查找到可能包含flag信息的文件，接着再利用密码基础联想到文本信息的隐藏意思想到其中可能会用到的算法。<br>这是我第一次拿一血，这种快乐是我之前从来没体会过的，有种世界上我最聪明的感觉。</p>
+
                 
               </div>
             
@@ -347,8 +360,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/08/05/1/" title="奥运会~">
-                        <span class="hidden-mobile">奥运会~</span>
+                      <a href="/2024/07/28/hello-world/" title="Hello World">
+                        <span class="hidden-mobile">Hello World</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
