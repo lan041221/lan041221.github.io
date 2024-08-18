@@ -27,7 +27,7 @@
 <meta property="og:description" content="记录一下之前在ctfshow学web的一些笔记">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-08-17T10:07:26.000Z">
-<meta property="article:modified_time" content="2024-08-18T10:29:25.798Z">
+<meta property="article:modified_time" content="2024-08-18T11:05:28.740Z">
 <meta property="article:author" content="l1nk">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -277,7 +277,7 @@
             
               <div class="markdown-body">
                 
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这是我在打ctf的时候在<a target="_blank" rel="noopener" href="https://ctf.show/challenges">ctfshow平台</a>学习web方向的记录，建议配合平台中的题目一起查看。</p>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这是我在打ctf的时候在<a target="_blank" rel="noopener" href="https://ctf.show/challenges">ctfshow平台</a>学习web方向的记录，建议配合平台中的题目一起查看。<br>依据本人的学习经验web方向需要依靠大量的知识积累，类似于文科的背诵</p>
 <h2 id="1-信息泄露"><a href="#1-信息泄露" class="headerlink" title="1.信息泄露"></a>1.信息泄露</h2><p>直接查看网页源码，flag可能再被注释掉的内容里面没有显示出来（强制查看：通过在url头部添加 view-source:）web1 web2<br>通过burpsuite抓包 flag在返回的响应数据包里面 web3<br>&#x2F;robots.txt web4<br>phps作为备份文件，泄露了源码（index.phps）web5<br>www源码泄露 web6<br>url&#x2F;.git web7<br>url&#x2F;.svn web8<br>vim缓存泄露，在使用vim进行编辑时，会产生缓存文件，如果意外退出，缓存文件保留下来，这时可以通过缓存文件来得到原文件，以index.php来说，第一次退出后，缓存文件名为 .index.php.swp，第二次退出后，缓存文件名为.index.php.swo，第三次退出后文件名为.index.php.swn web9<br>cookie中也会隐藏数据 web10<br> nslookup -qt&#x3D;txt flag.ctfshow.com 其中有： 非权威应答: flag.ctfshow.com text &#x3D;<br>    “flag{just_seesee}” web11<br>有时候网站上的公开信息，就是管理员常用密码 web12<br>找网站的document，操作指南 web13<br>&#x2F;editor，暴露作者页面直接在url后面添加&#x2F;editor 然后查看flag路径并且访问 web14<br>邮箱会泄露信息 web15<br>php探针url&#x2F;tz.php web16<br>备份的sql文件会泄露敏感信息url&#x2F;backup.sql web17</p>
 <p>—-2023.7.14.  22:25 l1nk</p>
 <h2 id="2-爆破"><a href="#2-爆破" class="headerlink" title="2.爆破"></a>2.爆破</h2><p>爆破的时候，信息可能藏在Authorization中 web21<br>子域名爆破 web22<br>MD5加密 substr()、intval() web23<br>伪随机数 mt_srand()、mt_rand() web24</p>
