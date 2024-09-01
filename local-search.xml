@@ -4,83 +4,31 @@
   
   
   <entry>
-    <title>竞赛--CTF类赛事</title>
-    <link href="/2024/08/21/%E7%AB%9E%E8%B5%9B-CTF%E7%B1%BB%E8%B5%9B%E4%BA%8B/"/>
-    <url>/2024/08/21/%E7%AB%9E%E8%B5%9B-CTF%E7%B1%BB%E8%B5%9B%E4%BA%8B/</url>
+    <title>竞赛记录汇总</title>
+    <link href="/2024/08/19/%E7%AB%9E%E8%B5%9B%E8%AE%B0%E5%BD%95%E6%B1%87%E6%80%BB/"/>
+    <url>/2024/08/19/%E7%AB%9E%E8%B5%9B%E8%AE%B0%E5%BD%95%E6%B1%87%E6%80%BB/</url>
     
-    <content type="html"><![CDATA[]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>竞赛--数学建模国二</title>
-    <link href="/2024/08/21/%E7%AB%9E%E8%B5%9B-%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9B%BD%E4%BA%8C/"/>
-    <url>/2024/08/21/%E7%AB%9E%E8%B5%9B-%E6%95%B0%E5%AD%A6%E5%BB%BA%E6%A8%A1%E5%9B%BD%E4%BA%8C/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>竞赛--CCF-CSP认证440分</title>
-    <link href="/2024/08/21/%E7%AB%9E%E8%B5%9B-CCF-CSP%E8%AE%A4%E8%AF%81440%E5%88%86/"/>
-    <url>/2024/08/21/%E7%AB%9E%E8%B5%9B-CCF-CSP%E8%AE%A4%E8%AF%81440%E5%88%86/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="/2024/08/21/hello-world/"/>
-    <url>/2024/08/21/hello-world/</url>
-    
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo new <span class="hljs-string">&quot;My New Post&quot;</span><br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo server<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo generate<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ hexo deploy<br></code></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="数学类"><a href="#数学类" class="headerlink" title="数学类"></a>数学类</h2><h3 id="数学竞赛"><a href="#数学竞赛" class="headerlink" title="数学竞赛"></a>数学竞赛</h3><p>我是参加了2021年的<strong>全国大学生数学竞赛</strong>，那时候刚入学两个月，高数没怎么学拿了个二等奖。</p><p>据拿国一朋友的经验，打这个就和高中的数学竞赛一样，需要<strong>多刷题</strong>，但是这个对于保研来说也只是证明你的数学能力不如和老师专业对口的项目，拿国奖需要付出的时间比较多，总体来说<strong>性价比不高</strong>。</p><h3 id="数学建模"><a href="#数学建模" class="headerlink" title="数学建模"></a>数学建模</h3><h4 id="经历"><a href="#经历" class="headerlink" title="经历"></a>经历</h4><p>我参加的是2023年的<strong>全国大学生数学建模竞赛</strong>，舍友叫我一起参加，最终拿了国家二等奖。<br>我是负责<strong>代码</strong>部分的工作，总体上来说这个比赛<strong>性价比较高</strong>，能体现自己的能力但是老师不会在面试的时候针对性地问，不需要和数学竞赛一样进行大量的积累。<br>第一次的数学建模比赛是之前MathorCup杯拿了个国三，然后第二次就参加数模国赛了，有一两次的经历就能很快上手，主要还是看个人能力，备战这个的意义不大，熟悉python和matlab就好。</p><p>关于数学建模最重要的还是<strong>选题</strong>，对于本科生来说要在ABC三个里面选一个题，当时我们是选的A题，因为队伍中有人物理比较强。物理强的同学负责受力分析、建模，把建模后需要运算实现的东西由我来用代码实现，再给写论文的同学进行编写。</p><p>选题的时候主要看队伍的配置和可以找到的<strong>参考论文</strong>，队伍配置不用多说，很多人直接就会把A题给跳了因为队伍里面都不会物理，可以找到的参考论文对整个竞赛的过程帮助极大。<br>最好是去web of science或者谷歌学术上看看有没有选题相关的问题，再不济就去知网。当时我们的题目是定日镜场的排布，看论文知道一种规划叫campo排布，看了之后感觉很合理就用代码实现了，效果挺好的。</p><p>数学建模的整个过程就很像一场<strong>小的科研过程</strong>，从选题到找文献到建模实现到编写论文，当时三天几乎就睡了不到十个小时，最后拿奖了也是收获感满满没有白费三天熬夜。<br>拿到了国奖是要答辩的，<strong>答辩不好就是省奖</strong>，当时身边有两个队伍含泪省奖了，当时出了个小插曲，比赛结束了之后我报复性地把matlab删了，因为看到这东西就头疼。答辩前一天又被迫下回来了。</p><p>对于数学建模国赛的话网络上会有很多的资料和辅助代码，如果是想拿国奖的话<strong>建议不要借鉴</strong>。当时就有身边的同学借鉴网络上的资料，在各种公众号、闲鱼和qq微信群里。这种东西全国各地的同学都能看到，如果都用这个的话肯定都是一样的分数，想要做得好还得是自己要有东西，熟悉了基本工具的使用之后就看自己对数学的理解程度了，包括数据的处理方式，怎么优化算法等等。</p><h4 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h4><p>数学建模先选好题，主要还是看<strong>队伍的配置</strong>量力而行，不要硬着头皮上：</p><p>A： 上限高下限低、容易拿大奖，但是<strong>难度大很容易做不完</strong>，做A的也是最少的<br>B： 介于AC之间<br>C： 很多新手第一次都选C，难度最低最多人做、<strong>最难拿大奖</strong>因为卷的人太多了</p><p>基本逻辑就是每个题目<strong>按照比例</strong>给奖，卷的人多就难拿，卷的人少就好拿。</p><p>接下来就看着每个小问一题一题地做，期间最好是能知道这个领域的sota进行一些借鉴，学习最开始的过程就是模仿。在写代码的时候注意<strong>不要硬编码</strong>当时本人水平有限全是硬编码导致队友很难上手我的代码。</p><p>到了最后两天的论文编写的时候都帮着点写论文的同学，现在<strong>AIGC</strong>很发达，可以多利用进行美化。</p><h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>队伍配置是最最最重要的，一定一定要<strong>找好队友</strong>，至少不要半路跑路。<br>要有个好的队长推进度，进行整个流程的<strong>各个步骤的时间管理</strong>，其次就是代码手要能实现建模的内容，由于AIGC现在特别强大，对于论文手的要求也变得更弱了。</p><h2 id="算法类"><a href="#算法类" class="headerlink" title="算法类"></a>算法类</h2><p><strong>语言一定选C++</strong><br><strong>语言一定选C++</strong><br><strong>语言一定选C++</strong></p><p>算法强是真的有用，我认识一个学长是金牌爷夏令营机试ak直接上岸上交学硕了</p><h3 id="CCF-CSP认证"><a href="#CCF-CSP认证" class="headerlink" title="CCF-CSP认证"></a>CCF-CSP认证</h3><p>这个比赛可以说是从大一打到大三，历经三年，最后是440分，终于是和CSP分手了：<br><img src="/img/csp1.png" alt="图片" title="三年来的CSP成绩记录"></p><h4 id="第一阶段（0-200）"><a href="#第一阶段（0-200）" class="headerlink" title="第一阶段（0-200）"></a>第一阶段（0-200）</h4><p>首先大一的时候参加这个比赛几乎就只能做第一题，第一次考的时候第一题费尽心思模拟完结果爆了个<strong>Runtime Error</strong>，印象特别深。当时用的是C，具体是什么问题没搞清楚，感觉自己模拟完了应该能过，结果没过，心态大崩。当时第一题做了一个多小时，还记得那个下午做的特别痛苦。<br>解决方法就是刷题，不用去看什么算法视频，直接<strong>把往年的前两题全都刷完</strong>就能提升，主要还是模拟能力太强了，如果一二题都刷完了的话能达到100+的水平，有时候可能第二题不能优化过。<br>当时的我就把题目都刷了一遍，基本能达到200分：<br><img src="/img/csp2.png" alt="图片" title="狠狠刷了波往年的前两题"></p><h4 id="第二阶段（200-）"><a href="#第二阶段（200-）" class="headerlink" title="第二阶段（200+）"></a>第二阶段（200+）</h4><p>这个阶段的话就需要知道一些具体的算法了，比如最经典的前缀和、树状数组、二分等等，建议<strong>去Acwing上看算法基础课</strong>，基本看完算法基础课就能稳定200+了，前两题能ac后面的45也能骗点分，由于本人偏好不做第三题大模拟一般一二速通之后就去后面两题骗分了，我也可以借我的Acwing账号，我之后估计也用不到了。<br><img src="/img/csp3.png" alt="图片" title="第二阶段的我"></p><h4 id="第三阶段（300-）"><a href="#第三阶段（300-）" class="headerlink" title="第三阶段（300+）"></a>第三阶段（300+）</h4><p>一般csp300分的话就是个分水岭了，达到300分一般分为两种：</p><p>A. 练第三题，123ac拿300分<br>B. 练动规贪心和图论等等优化，争取45多拿点，加上12题的200分</p><p>我是B路线，天生反感大模拟。这里的话建议把Acwing算法基础课的<strong>后两章</strong>都认真做一遍，掌握基础的知识点之后把之前的题目刷一刷，后两题大部分都是动态规划、贪心算法和图论。本来我的计划也是后两题拿个大部分的分凑够300去RUC或者北航抵掉机试的，结果意外后两题ac了，特别是最后一题的矩阵覆盖，感觉数据比较弱，熟练掌握二维前缀和以及线段覆盖应该就能做出来，十多行代码而已。<br><img src="/img/csp4.png" alt="图片" title="还是不会做第三题。。。"></p><h3 id="蓝桥杯"><a href="#蓝桥杯" class="headerlink" title="蓝桥杯"></a>蓝桥杯</h3><p>最大的感受就是去了就有省三。。。<br>有<strong>填空题、数学题、编程题</strong>，前面的填空题吃一点数学基础甚至有点像脑筋急转弯，后面就是正常的模拟和算法了。</p><h2 id="CTF类"><a href="#CTF类" class="headerlink" title="CTF类"></a>CTF类</h2><p>CTF比赛是<strong>性价比最低</strong>的，投入大量时间但是难以拿奖，甚至很多CTF师傅学了几年CTF到头来拿到最高的奖项是PYCC。但是CTF比较酷，能体验到什么是<strong>真正的黑客</strong>，这也是我分流时选网安的原因，更多的CTF师傅是一种热爱，真要说出路找工作远不如ACM和AI。</p><p>我的CTF之路是从B站刷到<strong>ctfshow</strong>的视频开始的，看了B站的视频觉得挺厉害的就买了大师傅h1xa的课，天呐他真的太强了，跟着学完了WEB感觉收获很大，由于自己脑洞比较大所以对MISC也挺感兴趣的，在打比赛的WEB做不出来的时候就去看看MISC，后来和学长做了代码混淆的项目，对二进制方向有些了解，后来朋友带着我入门了漏洞挖掘。</p><p>之前20年前网安很吃香懂个kali就能进大厂，现在已经过了风头随之而来带来的收益也在减少，去年的苕皮事件直接把hvv狠狠砍了一波，今年一天初级最高就500，去年都1500了。</p><p>对于CTF转科研的话主要是以下几个方向：</p><p>对于<strong>PWN</strong>和<strong>RE</strong>方向的师傅之后科研科研走移动安全的漏洞挖掘（fdu有做这个）、摘要生成、函数名恢复等工作（ustc有做这个），现在利用大模型辅助这方面的安全工作是科研的热点。<br>对于<strong>WEB</strong>方向的师傅可以走WEB端的漏洞挖掘，比如PHP中的漏洞链挖掘（zju有做这个），WEB端的挖掘可以衍生在很多的场景下，比如JS引擎（tju有做这个）、数据库漏洞的挖掘（thu有做这个）。<br>对于<strong>MISC</strong>方向的可以做图像相关的工作，这就涉及到CV做的人太多了，做<strong>密码</strong>的也可以对口地找到做密码的老师。<br>总的来说，CTF转科研是有很多路可以走的，本人就是前两年学比赛，后一年搞科研。</p><h2 id="项目类"><a href="#项目类" class="headerlink" title="项目类"></a>项目类</h2><p>项目类的比赛是<strong>最有用的</strong>，老师在面试的时候会着重问这方面的内容，如果做的项目有质量而且和老师方向匹配的话那么大概率能够被老师看上。</p><p>对于大多数的人来说能够参加的就是互联网+、大创等等项目类的比赛，这种一般都是远古祖传项目，从上面流下来每一届都负责改一改文案，实际的内容基本不怎么动。这种东西<strong>不是自己做的没什么用</strong>。</p><p>在大一的时候算综测我看好多人都有互联网+、大创什么的，当时觉得可牛逼了，后来才知道有多没用，那种拥有很多个项目的人基本都是社交好相互之间挂名，真论自己的东西实际上什么都没有，面试的时候也千万别拿着祖传项目往简历上写，一问代码你就老实了。</p><p>真正有用的是自己去做的项目从而参加各种作品赛比如有C4、CISCN等等</p><p>具体做项目的过程：</p><ol><li>没有基础的话先去顶会找别人的论文进行解读复现，随后自己进行改进包装。</li><li>有基础的就把自己的idea实现与领域的sota进行对比，有点类似发了篇中文论文。</li></ol><p>其中就涉及到数据集的收集对比、数据的处理、模型的改进、性能的对比等等环节这些就需要自己进行积累学习。</p><h3 id="CISCN作品赛"><a href="#CISCN作品赛" class="headerlink" title="CISCN作品赛"></a>CISCN作品赛</h3><p>水比赛不记录了之前一堆的互联网+和大创也就外行看着感觉厉害一点，记录一下今年刚拿的CISCN国奖，这个含金量应该是所有作品赛里面最高的了。</p><p>这是今年作品赛的时间安排:<br><img src="/img/ciscn1.png" alt="图片" title="时间安排"><br>6.5之前提交作品即可，静待一个月后会公布决赛名单，当时实践赛名单先出我以为是作品赛看到没进国赛直接把官方队长群退了，后来发现是看错了。</p><p>今年的是在西工大，本以为能去西安玩一趟，结果在太仓校区举办，顺道游了一圈苏州园林（看我pyq</p><p>做了个后门攻击的项目，由于比赛不接受攻击课题，强行包装成了后门的漏洞挖掘，也是挺牵强的，因为我们并没有提出防御的措施，仅仅对不同的恶意软件检测模型进行了攻击。</p><p>CISCN决赛的获奖率是100%，再不济都有个优胜奖（相当于没有），我们想的是冲冲国二，因为做的确实挺好的了，无论是演示视频还是文档的编写，我的队友都反复琢磨了几遍。</p><p>甚至最后决赛线下答辩的时候都和老师有说有笑的，老师还在结束的时候说挺好的，结果就给了个三等奖😵。这个比赛如果拿了国一国二是会在当天晚上收到官方的短信的，要求第二天早些到会场进行彩排，如果是三等和优胜奖的话就不会进行信息通知，当晚我们没收到通知特别慌，感觉要寄了，最后幸好是拿到了三等奖（不拿奖都不好意思报销</p><p>我感觉这个比赛虽然难度大含金量高但是还不够公开透明，应该把每个组的分数给公开，不然难免让人怀疑存在人情世故。</p><p>看到了有把github上的区块链项目直接搬来参加的甚至还进了决赛，正好我做过这个项目用fabric，他的前端甚至都和我一样🤣，另外有两个组的前端几乎相同只是换了个颜色，组委会还把两个组的海报放在一起，真的太好笑了。<br><img src="/img/ciscn2.jpg" alt="图片" title="近乎一样的前端，就地球换了个色🌏"></p>]]></content>
     
     
     <categories>
       
-      <category>blog</category>
+      <category>保研</category>
+      
+      <category>相关竞赛</category>
       
     </categories>
     
     
     <tags>
       
-      <tag>Hexo</tag>
+      <tag>CTF</tag>
       
-      <tag>Fluid</tag>
+      <tag>数学竞赛</tag>
       
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>竞赛记录汇总</title>
-    <link href="/2024/08/19/%E7%AB%9E%E8%B5%9B%E8%AE%B0%E5%BD%95%E6%B1%87%E6%80%BB/"/>
-    <url>/2024/08/19/%E7%AB%9E%E8%B5%9B%E8%AE%B0%E5%BD%95%E6%B1%87%E6%80%BB/</url>
-    
-    <content type="html"><![CDATA[<h2 id="数学类"><a href="#数学类" class="headerlink" title="数学类"></a>数学类</h2><h3 id="数学竞赛"><a href="#数学竞赛" class="headerlink" title="数学竞赛"></a>数学竞赛</h3><h3 id="数学建模"><a href="#数学建模" class="headerlink" title="数学建模"></a>数学建模</h3><h2 id="算法类"><a href="#算法类" class="headerlink" title="算法类"></a>算法类</h2><h3 id="CCF-CSP认证"><a href="#CCF-CSP认证" class="headerlink" title="CCF-CSP认证"></a>CCF-CSP认证</h3><h2 id="CTF类"><a href="#CTF类" class="headerlink" title="CTF类"></a>CTF类</h2>]]></content>
-    
-    
-    
-    <tags>
+      <tag>数学建模</tag>
       
-      <tag>竞赛</tag>
+      <tag>CCF-CSP</tag>
       
     </tags>
     
@@ -93,15 +41,17 @@
     <link href="/2024/08/07/%E4%BF%9D%E7%A0%94%E4%B9%8B%E8%B7%AF/"/>
     <url>/2024/08/07/%E4%BF%9D%E7%A0%94%E4%B9%8B%E8%B7%AF/</url>
     
-    <content type="html"><![CDATA[<p>1</p>]]></content>
+    <content type="html"><![CDATA[<h3 id="一、个人背景"><a href="#一、个人背景" class="headerlink" title="一、个人背景"></a>一、个人背景</h3><p>学校：终极末流211 ynu（个人感觉超级末</p><p>rank：综测（2&#x2F;100+） 绩点（3&#x2F;100+） 皆为前两年排名<br>因为本人夏令营上岸没有参加预推免，最后一年综测也没加活动分算是给后面同学一些出路了</p><p>英语：四级 474， 六级 439（8.23才出，夏令营没用到）<br>英语烂，被老师质问过，雅思氪金考了一波用来夏令营报名还是发挥了一定的作用</p><p>获奖：奖项较多，可以去看单独的帖子已经都汇总好了，数学&#x2F;算法&#x2F;CTF&#x2F;项目类都有</p><p>科研：和本校老师有三段科研经历，大部分联系的老师都对科研经历感兴趣<br>（特别感谢zyc老师以及wjt、laq在大三科研的时候帮了我特别多）</p><p>最终去向：USTC ynh&#x2F;zwm组</p><h3 id="二、保研意向"><a href="#二、保研意向" class="headerlink" title="二、保研意向"></a>二、保研意向</h3><p>报名类型：学硕（如果是thu的话那什么都可以，网安人的终极梦想网研院）</p><p>意向课题组：尽量选择大组、科研氛围浓厚、老师学术水平强、有大老板（希望有个大老板可以在之后无论就业还是教职上帮一把）</p><p>科研方向：一定要与安全相关，可以是AI安全或者传统安全，不太能接受纯别的方向 </p><p>重要程度：导师&gt;title&gt;地域。因为本科学校实行导师制，每个学生都有自己的导师，在这期间我很能感受到导师对于学生的重要性，地域因素基本不考虑，没有固定想要发展的城市之后也有出国的打算</p><p>总的来说保研的最终目的就是为了选择个去处能获得更多的资源，其中包括学校的title、组内的资源、老板的地位等等因素需要考虑。</p><h3 id="三、个人想法"><a href="#三、个人想法" class="headerlink" title="三、个人想法"></a>三、个人想法</h3><p>首先对自己要有个清晰了定位，我可以接受华五的强组or清北弱组（但不能坑）</p><p>初期的我是纯title战士，特别想去tpu，在看了tpu官网的<strong>所有</strong>的做计算机的老师之后，本人甚至去投了清深的xx组，现在看来特别荒唐，清北深做安全的都是神兽能救一个是一个。<br>到了后来有老师给我推荐学校对我帮助很大，在经历了艰难地选择offer之后最后选择了ustc的强组，如果想要了解清北华五的计算机可以问我基本每个学校的老师都套磁过。</p><p>本人五月份的时候首先选择了套个中九进行保底（HUST），我套的是梧桐雨信息安全研究小组，有对应的公众号感兴趣的同学可以进行查看，算是比较顺利，和博士生学长面试了甚至还让了另外的学长来帮我填报学校的夏令营，态度非常好。</p><p>在有了华科保底之后我就往上走了，开始套清北华五，大多数的老师都会选择漠视不过由于本人发的比较多几乎每个学校都有老师回了我，后来找老师推荐入营了加上和套磁的老师联系下来感觉老师人不错就选择了USTC。</p><h3 id="四、夏令营投递"><a href="#四、夏令营投递" class="headerlink" title="四、夏令营投递"></a>四、夏令营投递</h3><p>投了非常非常多，由于本人的眼高手低导致初期没有任何收获：<br><img src="/img/%E4%BF%9D%E7%A0%941.png" alt="图片" title="部分夏令营投递"><br>这破学校出身实在是太烂了，加上是rk2，几乎与顶尖的院系都无缘。</p><p>总的来说，本人是一个爱摸鱼，没技术，绩点低，爱吹牛的沽名钓誉者。保研做的就是疯狂包装自己，骗到导师收我。有华五强组offer后的我甚至还想着去thu网研院，这是真的太异想天开了。</p>]]></content>
     
     
-    
-    <tags>
+    <categories>
       
-      <tag>保研</tag>
+      <category>保研</category>
       
-    </tags>
+      <category>心路历程</category>
+      
+    </categories>
+    
     
   </entry>
   
@@ -115,10 +65,16 @@
     <content type="html"><![CDATA[<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p><a href="https://www.anaconda.com/download/success">Anaconda下载地址</a> </p><h1 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h1><p>近期需要参加CISCN的作品赛国赛，台式放宿舍了，笔记本上重新配了一遍环境，在我下载<a href="https://www.anaconda.com/">Anaconda</a>的时候发现他已经偷偷更新了，不能直接地进行下载，需要点来点去的 。<br><img src="/img/Anaconda1.png" alt="图片" title="点击Free Download"><br>在这里的话就需要填写个邮箱去获取Anaconda给你发的“相关资讯、产品、服务”，说白了就是官方需要你<strong>提供个邮箱接受垃圾邮件</strong>,非常恶心，只有点了下面的框中的同意才能给你下载地址。<br><img src="/img/Anaconda2.png" alt="图片" title="填写邮箱获取下载链接"><br>输入完成了之后就会进入到上面提到的下载地址中。<br><img src="/img/Anaconda3.png" alt="图片" title="毫无意义地跳转到下载"><br>下载之后在安装过程中需要特别注意勾选Install for <strong>Just Me</strong>,不能选ALL Users。选了ALL Users的话创建虚拟环境的时候不会在安装Anaconda的目录env文件下创建，而会在C盘中创建 <strong>.conda</strong>的文件然后在里面安装创建的虚拟环境。<br><img src="/img/Anaconda4.png" alt="图片" title="全点Next即可"><br>创建好虚拟环境后，使用 <code>conda env list</code> 查看环境。<br><img src="/img/Anaconda5.png" alt="图片" title="创建虚拟环境后正确的结果"></p>]]></content>
     
     
+    <categories>
+      
+      <category>环境配置</category>
+      
+    </categories>
+    
     
     <tags>
       
-      <tag>环境配置</tag>
+      <tag>Anaconda</tag>
       
     </tags>
     
@@ -131,13 +87,23 @@
     <link href="/2024/08/07/Coding-Github%E5%8F%8C%E7%BA%BF%E9%83%A8%E7%BD%B2Hexo/"/>
     <url>/2024/08/07/Coding-Github%E5%8F%8C%E7%BA%BF%E9%83%A8%E7%BD%B2Hexo/</url>
     
-    <content type="html"><![CDATA[<h2 id="Github部署博客"><a href="#Github部署博客" class="headerlink" title="Github部署博客"></a>Github部署博客</h2><p>用GitHub page可以<strong>免费</strong>静态部署博客，非常良心，不过想要流畅查看博客的话需要翻墙。<br>大致流程就是有安装好git，配好ssh的公钥和私钥，创建好仓库和分支，之后就可以hexo d上传本地的资料到博客上，B站上有手把手教学不会的可以去对照着看。<br>更多资料可以查看官方的文档: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a><br>首先下载git和node，之后用命令下载hexo：</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">npm install -g hexo-cli<br></code></pre></td></tr></table></figure><p>安装hexo，要等很久，换官方镜像后变得很快：</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cmd">npm config <span class="hljs-built_in">set</span> registry https://registry.npmmirror.com<br></code></pre></td></tr></table></figure><p><img src="/img/github1.png" alt="图片" title="换镜像后下载飞快，如果短时间内没下载完说明有问题"><br>用MD语法写完博客后常用的命令：</p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmd">#用来清除缓存<br>hexo cl<br></code></pre></td></tr></table></figure><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmd">#渲染生成新的文件<br>hexo g<br></code></pre></td></tr></table></figure><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs cmd">#上传到远程仓库<br>hexo d<br></code></pre></td></tr></table></figure><p>在上传到github的时候有时候会不成功，大部分时候都是因为网络的问题，可以修改网络的代理服务器并使用<strong>clash科学上网</strong>解决，clash默认的端口就是7890，修改网络代理服务器为7890：<br><img src="/img/github2.png" alt="图片" title="查看clash端口"><br><img src="/img/github3.png" alt="图片" title="修改代理服务器"><br><img src="/img/github4.png" alt="图片" title="成功上传远程仓库"></p><h2 id="Coding部署博客"><a href="#Coding部署博客" class="headerlink" title="Coding部署博客"></a>Coding部署博客</h2><p>Coding作为腾讯出品的低配GitHub在我印象中也具有静态部署的功能，所以就打算双线部署加快一下在国内的访问速度，现在的Coding需要<strong>付费</strong>部署。在我配置的时候发现Coding在两年前关闭了免费的静态部署，需要在腾讯云中开启对象存储，查阅之前的官方文档看到可以静态部署博客：<br><img src="/img/coding1.png" alt="图片" title="支持免费静态部署"><br>现在在coding上只有基于主机的持续部署<br><img src="/img/coding2.png" alt="图片" title="主机部署"><br>后来发现官方已经关闭了这个业务，腾讯云不想我们白嫖<br><img src="/img/coding3.png" alt="图片" title="关闭网站托管"><br>现在需要购买存储桶了，这样也会比服务器便宜很多：<br><a href="https://coding.net/help/docs/ci/practice/cloud-storage.html">官方文档</a></p><h2 id="全局config配置"><a href="#全局config配置" class="headerlink" title="全局config配置"></a>全局config配置</h2><p>在网络上查阅了各种资料发现都不能使用hexo d的时候同时成功更新两个仓库，所以就自己看官方文档尝试了一下这种写法，发现是正确的！<br>要注意的是分支，之前的Github部署博客网络上的教程和现版本不同，之前的默认分支名称是”master”,现在将其更改为”main”。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs config">deploy:<br>- type: git<br>  repo:<br>    github: https://github.com/lan041221/lan041221.github.io.git,main<br>    coding: git@e.coding.net:g-knec4969/l1nk/l1nk.git,master<br></code></pre></td></tr></table></figure>]]></content>
+    <content type="html"><![CDATA[<h2 id="Github部署博客"><a href="#Github部署博客" class="headerlink" title="Github部署博客"></a>Github部署博客</h2><p>用GitHub page可以<strong>免费</strong>静态部署博客，非常良心，不过想要流畅查看博客的话需要翻墙。<br>大致流程就是有安装好git，配好ssh的公钥和私钥，创建好仓库和分支，之后就可以hexo d上传本地的资料到博客上，B站上有手把手教学不会的可以去对照着看，这方面的教程网络上太多了不过多赘述。<br>更多资料可以查看官方的文档: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p><h2 id="Coding部署博客"><a href="#Coding部署博客" class="headerlink" title="Coding部署博客"></a>Coding部署博客</h2><p>Coding作为腾讯出品的低配GitHub在我印象中也具有静态部署的功能，所以就打算双线部署加快一下在国内的访问速度。<br>在我配置的时候发现Coding在两年前关闭了免费的静态部署，需要在腾讯云中开启对象存储，查阅之前的官方文档看到可以静态部署博客：<br><img src="/img/coding1.png" alt="图片" title="支持免费静态部署"><br>现在在coding上只有基于主机的持续部署<br><img src="/img/coding2.png" alt="图片" title="主机部署"><br>后来发现官方已经关闭了这个业务，腾讯云不想我们白嫖<br><img src="/img/coding3.png" alt="图片" title="关闭网站托管"><br>现在需要购买存储桶了，这样也会比服务器便宜很多：<br><a href="https://coding.net/help/docs/ci/practice/cloud-storage.html">官方文档</a></p><h2 id="全局config配置"><a href="#全局config配置" class="headerlink" title="全局config配置"></a>全局config配置</h2><p>在网络上查阅了各种资料发现都不能使用hexo d的时候同时成功更新两个仓库，所以就自己看官方文档尝试了一下这种写法，发现是正确的！<br>要注意的是分支，之前的Github部署博客网络上的教程和现版本不同，之前的默认分支名称是”master”,现在将其更改为”main”。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs config">deploy:<br>- type: git<br>  repo:<br>    github: https://github.com/lan041221/lan041221.github.io.git,main<br>    coding: git@e.coding.net:g-knec4969/l1nk/l1nk.git,master<br></code></pre></td></tr></table></figure>]]></content>
     
+    
+    <categories>
+      
+      <category>博客</category>
+      
+    </categories>
     
     
     <tags>
       
-      <tag>博客</tag>
+      <tag>Coding</tag>
+      
+      <tag>Github</tag>
+      
+      <tag>Hexo</tag>
       
     </tags>
     
@@ -147,12 +113,24 @@
   
   <entry>
     <title>ISCC一血记录</title>
-    <link href="/2024/05/08/ISCC%E4%B8%80%E8%A1%80%E8%AE%B0%E5%BD%95/"/>
-    <url>/2024/05/08/ISCC%E4%B8%80%E8%A1%80%E8%AE%B0%E5%BD%95/</url>
+    <link href="/2024/08/07/ISCC%E4%B8%80%E8%A1%80%E8%AE%B0%E5%BD%95/"/>
+    <url>/2024/08/07/ISCC%E4%B8%80%E8%A1%80%E8%AE%B0%E5%BD%95/</url>
     
     <content type="html"><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>由于ISCC独有的<strong>传播范围广</strong>的特性，导致有很多题目突然间可能就有很多人顿悟从而导致ISCC被业内所诟病，这个比赛基本也很容易就能拿到国奖，其奖项的含金量也无从定义。但是拿一血的含金量是毋庸置疑的，毕竟是全国第一个做出来，这里记录一下拿一血的过程。</p><h3 id="题目：成语学习"><a href="#题目：成语学习" class="headerlink" title="题目：成语学习"></a>题目：成语学习</h3><p>根据流量分析压缩包得到密码为57pmYyWt，丢进虚拟机解，发现是个压缩包<br><img src="/img/ISCC%E4%B8%80%E8%A1%801.png" alt="图片" title="流量分析得到压缩包"></p><p>查看flag在哪，用下面的语句在当前目录及其子目录中搜索名为 flag.txt 的文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ find ./* -name flag.txt<br></code></pre></td></tr></table></figure><p><img src="/img/ISCC%E4%B8%80%E8%A1%802.png" alt="图片" title="找到flag.txt"><br>查看里面的内容，上面说不要用食物去加密，食物是英语，文档里面题目是《你信我啊》，这个题叫做《成语学习》。联想到<strong>加salt的哈希算法</strong>用食物（salt）去加密他给的成语<br><img src="/img/ISCC%E4%B8%80%E8%A1%803.png" alt="图片" title="找到flag.txt"><br>接下来在<a href="https://www.uutils.com/enc/hmac_sha.htm">加密解密网站</a>中一个一个的试带盐的加密，最终试到是HmacMD5加密算法<br>最终拿到flag:ISCC{86bd2a65ea0d68bf231dd5c0a9c5e8c1}<br><img src="/img/ISCC%E4%B8%80%E8%A1%804.png" alt="图片" title="成功获得该题flag"></p><h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>MISC方向的题目通常需要技术常识和工具使用外的<strong>一点灵性脑洞</strong>才能解出题目来。<br>成语学习这个题目也不例外。首先，需要会使用wireshark分析流量拿到密码，然后用命令查找到可能包含flag信息的文件，接着再利用密码基础联想到文本信息的隐藏意思想到其中可能会用到的算法。<br>这是我第一次拿一血，这种快乐是我之前从来没体会过的，有种世界上我最聪明的感觉。</p>]]></content>
     
     
+    <categories>
+      
+      <category>竞赛</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
     
   </entry>
   
@@ -166,10 +144,20 @@
     <content type="html"><![CDATA[<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这是我在打ctf的时候在<a href="https://ctf.show/challenges">ctfshow平台</a>学习web方向的记录，建议配合平台中的题目一起查看。<br>依据本人的学习经验web方向需要依靠大量的知识积累，类似于文科的背诵，再加上对新披露的漏洞的知晓，大部分比赛都是直接拿最新CVE来出题。</p><h2 id="1-信息泄露"><a href="#1-信息泄露" class="headerlink" title="1.信息泄露"></a>1.信息泄露</h2><p>直接查看网页源码，flag可能再被注释掉的内容里面没有显示出来（强制查看：通过在url头部添加 view-source:）web1 web2<br>通过burpsuite抓包 flag在返回的响应数据包里面 web3<br>&#x2F;robots.txt web4<br>phps作为备份文件，泄露了源码（index.phps）web5<br>www源码泄露 web6<br>url&#x2F;.git web7<br>url&#x2F;.svn web8<br>vim缓存泄露，在使用vim进行编辑时，会产生缓存文件，如果意外退出，缓存文件保留下来，这时可以通过缓存文件来得到原文件，以index.php来说，第一次退出后，缓存文件名为 .index.php.swp，第二次退出后，缓存文件名为.index.php.swo，第三次退出后文件名为.index.php.swn web9<br>cookie中也会隐藏数据 web10<br> nslookup -qt&#x3D;txt flag.ctfshow.com 其中有： 非权威应答: flag.ctfshow.com text &#x3D;<br>    “flag{just_seesee}” web11<br>有时候网站上的公开信息，就是管理员常用密码 web12<br>找网站的document，操作指南 web13<br>&#x2F;editor，暴露作者页面直接在url后面添加&#x2F;editor 然后查看flag路径并且访问 web14<br>邮箱会泄露信息 web15<br>php探针url&#x2F;tz.php web16<br>备份的sql文件会泄露敏感信息url&#x2F;backup.sql web17</p><p>—-2023.7.14.  22:25 l1nk</p><h2 id="2-爆破"><a href="#2-爆破" class="headerlink" title="2.爆破"></a>2.爆破</h2><p>爆破的时候，信息可能藏在Authorization中 web21<br>子域名爆破 web22<br>MD5加密 substr()、intval() web23<br>伪随机数 mt_srand()、mt_rand() web24</p><h2 id="3-命令执行"><a href="#3-命令执行" class="headerlink" title="3.命令执行"></a>3.命令执行</h2><p>嵌套eval逃逸函数绕过过滤<br>url + ?c&#x3D;eval($_GET[1]);&amp;1&#x3D;system(‘tac flag.php’);<br>php的filter伪协议，读取文件内容并输出<br>data伪协议，后面直接加执行的代码<br>套娃函数?c&#x3D;eval(array_pop(next(get_defined_vars())));</p><p>—-2023.7.16  1:25 l1nk</p><p>没有学习，打永劫去了</p><p>—-2023.7.17  0:02 l1nk</p><p>ls，cat是系统命令，需要包含在system（“”）中进行执行</p><p>data伪协议<br>payload：<br>url+?c&#x3D;data:&#x2F;&#x2F;text&#x2F;plain,<?php system("cat fla*.php");?><br>可简写为：url+?c&#x3D;data:,<?php system("cat fla*.php");?></p><p>filter伪协议</p><p>system($c.” &gt;&#x2F;dev&#x2F;null 2&gt;&amp;1”);写入黑洞文件中，利用 命令一；ls来执行命令一<br>当$(())没有参数时。默认为0，0的取反为-1 web57</p><p>—-2023.7.18  2:23 l1nk</p><p>c&#x3D;$a&#x3D;opendir(“.&#x2F;“); while (($file &#x3D; readdir($a)) !&#x3D;&#x3D; false){echo $file . “”; };查看当前目录是否有东西<br>$s &#x3D; ob_get_contents();<br>这一句的作用是定义了一个s变量并把ob_get_contents()返回的输出缓冲区的内容赋值给了s<br>ob_end_clean();<br>这个函数的作用是以字符串格式返回当前输出缓冲区并关闭输出缓冲<br>echo preg_replace(“&#x2F;[0-9]|[a-z]&#x2F;i”,”?”,$s);<br>这一句话是把变量s，即缓冲区内容的所有的数字和字母替换成了为?<br>缓冲区的题目需要在正确命令后面执行exit（）；及时退出才能成功执行<br>PDO连数据库</p><p>—-2023.7.18 16:34 l1nk</p><p>字符拼接，学不了一点，先不学（web118-124）</p><p>—-2023.7.19 17:34 l1nk</p><h2 id="4-文件包含"><a href="#4-文件包含" class="headerlink" title="4.文件包含"></a>4.文件包含</h2><p>nginx原理和日志文件包含，在User-Agent里面写php代码，中间件php-fpm会解析，实现恶意代码。<br>默认路径url?file&#x3D;&#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log<br>过滤掉了.的话要用session执行（web82-86）</p><h2 id="5-php"><a href="#5-php" class="headerlink" title="5.php"></a>5.php</h2><p>只检测数字的时候可以用数组绕过（web89）<br>m代表多行匹配（web91）<br>$num&#x3D;4476只匹配num是不是4476，可以用其他任何值绕过，包括4476的十六进制和八进制<br>intval（$num，0）&#x3D;4476表示匹配num的十进制值是否为4476</p><p>干到web100了呜呜呜0.55了，做完几个条件竞争就去睡觉</p><p>当开启session时，服务器会在临时目录下创建session文件来保存会话信息，文件名格式为sess_PHPSESSID。<br>一般开发的web服务会使用多线程接收用户的请求，而线程同步机制确保两个及以上的并发进程或线程不同时执行某些特定的程序段，依靠临界区，session的临界区就是临时目录。<br>如果没有应用好同步技术则会产生“竞争条件”问题。意外生成攻击者想要生成的文件，这样攻击者可以在该文件还未被删除的时间段内进行非法操作。<br>PHP_SESSION_UPLOAD_PROGRESS用于设置&#x2F;tmp目录下生成的sess_PHPSESSID文件的内容<br>使用python脚本进行多线程请求，生成sess_PHPSESSID文件，实现rce<br>脚本链接：<a href="https://blog.csdn.net/weixin_46003360/article/details/119045296">https://blog.csdn.net/weixin_46003360/article/details/119045296</a>  （web82中）<br>—-2023.7.21 1:42 l1nk</p><p>临时文件目录：&#x2F;tmp&#x2F;php??????</p><h2 id="6-文件上传绕过"><a href="#6-文件上传绕过" class="headerlink" title="6.文件上传绕过"></a>6.文件上传绕过</h2><p>php替换为空，可以1.phphpp双写绕过得到1.php写入木马<br>00字符截断：123.php%00.jpg，后台以为是.jpg，文件上传的时候遇到%00就舍弃掉了后面的，以为是.php<br>iconv字符截断：utf-8字符集默认范围在0x00-0x7f，不在这个范围会报异常，后续字符不处理<br>123.php%df.jpg -&gt; 123.php<br>asp解析<br>基于nginx和php-fpm的错误配置：1.txt&#x2F;1.php如果1.php不存在会找前面的1.txt文件进行php解析（私教课43）<br>天呐我的脚本一直被删除（把系统的安全中心关了，安全软件全卸载了就行）<br>—-2023.7.21 21:44 l1nk</p><p>apache多后缀解析漏洞：123.txt.ctf ctf后缀不认识，往前找到txt作为后缀，处理为123.txt<br>伪协议绕过：auto_append_file&#x3D;php:&#x2F;&#x2F;input<br>日志文件绕过：auto_append_file&#x3D;&#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log<br>—-2023.7.22 22:51 l1nk</p><h2 id="7-sql注入"><a href="#7-sql注入" class="headerlink" title="7.sql注入"></a>7.sql注入</h2><p>sql注入，#和– （有个空格）为注释</p><p>—-2023.7.24 21:51 l1nk</p><p>盲注（工作量大）<br>报错注入，用updatexml；<br>见笔记（sql注入笔记day7）<br>—-2023.7.25 21:41 l1nk</p><p>&#x2F;&#x2F;filesystemiterator遍历文件类<br>&#x2F;&#x2F;directoryItrerator遍历目录类<br>—-2023.7.28 14:23 l1nk</p><p>is_file函数可以使用包装器伪协议来绕过，不影响file_get_contents highlight_file<br>is_file认为伪协议不是文件，highlight_file认为伪协议是文件<br>目录溢出会使is_file判断其不是文件，而highlight_file会正常识别<br>—-2023.7.31 22:00 l1nk</p><p>sql注入完了，开始php反序列化<br>—-2023.8.2  13:02 l1nk</p><h2 id="8-反序列化"><a href="#8-反序列化" class="headerlink" title="8.反序列化"></a>8.反序列化</h2><p>当用 &#x3D;&#x3D;&#x3D; 或 !&#x3D;&#x3D; 进行比较时则不进行类型转换，因为此时类型和数值都要比对。<br>$a &#x3D;&#x3D; $b 等于 TRUE，如果类型转换后 $a 等于 $b。<br>$a &#x3D;&#x3D;&#x3D; $b 全等 TRUE，如果 $a 等于 $b，并且它们的类型也相同。<br>$a !&#x3D; $b 不等 TRUE，如果类型转换后 $a 不等于 $b。 </p><p>_()是一个函数<br>_()&#x3D;&#x3D;gettext() 是gettext()的拓展函数，开启text扩展。需要php扩展目录下有php_gettext.dll<br>dnslog怎么又没用，无语了<br>—-2023.8.2  17:58 l1nk</p><p>反序列化，反不了一点<br>—-2023.8.9 20:41 l1nk</p><p>__wakeup() &#x2F;&#x2F;执行unserialize()时，先会调用这个函数<br>__sleep() &#x2F;&#x2F;执行serialize()时，先会调用这个函数<br>__destruct() &#x2F;&#x2F;对象被销毁时触发，当一个对象不再被引用时,PHP会自动销毁该对象,并在销毁之前调用__destruct方法。<br>__call() &#x2F;&#x2F;在对象上下文中调用不可访问的方法时触发<br>__callStatic() &#x2F;&#x2F;在静态上下文中调用不可访问的方法时触发<br>__get() &#x2F;&#x2F;用于从不可访问的属性读取数据或者不存在这个键都会调用此方法<br>__set() &#x2F;&#x2F;用于将数据写入不可访问的属性<br>__isset() &#x2F;&#x2F;在不可访问的属性上调用isset()或empty()触发<br>__unset() &#x2F;&#x2F;在不可访问的属性上使用unset()时触发<br>__toString() &#x2F;&#x2F;把类当作字符串使用时触发<br>__invoke() &#x2F;&#x2F;当尝试将对象调用为函数时触发</p><p>php版本：</p><p>​ PHP5 &lt; 5.6.25</p><p>​ PHP7 &lt; 7.0.10<br>序列化字符串中表示对象属性个数的值大于真实的属性个数时会跳过__wakeup的执行</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">test</span></span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$a</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-variable language_">$this</span>-&gt;a = <span class="hljs-string">&#x27;abc&#x27;</span>;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__wakeup</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-variable language_">$this</span>-&gt;a=<span class="hljs-string">&#x27;666&#x27;</span>;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span>  <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-variable language_">$this</span>-&gt;a;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure><p>如果执行unserialize(‘O:4:”test”:1:{s:1:”a”;s:3:”abc”;}’);输出结果为666</p><p>而把对象属性个数的值增大，1-&gt;2执行unserialize(‘O:4:”test”:2:{s:1:”a”;s:3:”abc”;}’);输出结果为abc</p><p>preg_match(‘&#x2F;^O:\d+&#x2F;‘)匹配序列化字符串是否是对象字符串开头<br>利用加号绕过（注意在url里传参时+要编码为%2B）</p><p>利用引用</p><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">test</span></span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$a</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$b</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-variable language_">$this</span>-&gt;a = <span class="hljs-string">&#x27;abc&#x27;</span>;<br>        <span class="hljs-variable language_">$this</span>-&gt;b= &amp;<span class="hljs-variable language_">$this</span>-&gt;a;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span>  <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-variable language_">$this</span>-&gt;a===<span class="hljs-variable language_">$this</span>-&gt;b)&#123;<br>            <span class="hljs-keyword">echo</span> <span class="hljs-number">666</span>;<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-variable">$a</span> = <span class="hljs-title function_ invoke__">serialize</span>(<span class="hljs-keyword">new</span> <span class="hljs-title function_ invoke__">test</span>());<br></code></pre></td></tr></table></figure><p>上面这个例子将$b设置为$a的引用，可以使$a永远与$b相等</p><p>16进制绕过字符的过滤<br>O:4:”test”:2:{s:4:”%00*%00a”;s:3:”abc”;s:7:”%00test%00b”;s:3:”def”;}<br>可以写成<br>O:4:”test”:2:{S:4:”\00*\00\61”;s:3:”abc”;s:7:”%00test%00b”;s:3:”def”;}<br>表示字符类型的s大写时，会被当成16进制解析。</p><p>反序列化的字符逃逸<br>过滤后字符变多：利用引号闭合和大括号闭合，舍弃掉原有的部分序列化后的结果<br>过滤后字符变少：前面少了一半，导致后面的字符被吃掉，从而执行了我们后面的代码<br>—-2023.8.11 20:19 l1nk</p><p>pop链没看懂，和之前的字符拼接之后一起学。<br>—-2023.8.17 13:59 l1nk</p>]]></content>
     
     
+    <categories>
+      
+      <category>竞赛</category>
+      
+    </categories>
+    
     
     <tags>
       
-      <tag>ctf</tag>
+      <tag>CTF</tag>
+      
+      <tag>WEB</tag>
+      
+      <tag>渗透</tag>
       
     </tags>
     
