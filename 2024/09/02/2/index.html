@@ -26,11 +26,13 @@
 <meta property="og:site_name" content="l1nk&#39;s blog">
 <meta property="og:description" content="MSF简介">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F2.1.png">
 <meta property="article:published_time" content="2024-09-02T14:34:03.663Z">
-<meta property="article:modified_time" content="2024-09-02T14:36:20.213Z">
+<meta property="article:modified_time" content="2024-09-02T14:53:05.247Z">
 <meta property="article:author" content="l1nk">
 <meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F2.1.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -225,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          277 字
+          1.1k 字
         
       </span>
     
@@ -236,7 +238,7 @@
         
         
         
-          3 分钟
+          10 分钟
         
       </span>
     
@@ -278,10 +280,23 @@
             
               <div class="markdown-body">
                 
-                <h3 id="MSF简介"><a href="#MSF简介" class="headerlink" title="MSF简介"></a>MSF简介</h3><p>目前最流行、最强大、最具扩展性的渗透测试平台软件基于Metasploit进行渗透测试和漏洞分析的。</p>
+                <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>首先了解MSF，刚入门实力达不到自己写exp、payload所以就先当脚本小子，后面慢慢去熟悉其中的原理和利用细节。</p>
+<h3 id="MSF简介"><a href="#MSF简介" class="headerlink" title="MSF简介"></a>MSF简介</h3><p>目前最流行、最强大、最具扩展性的渗透测试平台软件基于Metasploit进行渗透测试和漏洞分析的。</p>
 <p>框架集成了渗透测试标准 (PTES） 思想一定程度上统一了渗透测试和漏洞研究的工作环境新的攻击代码可以比较容易的加入框架开发活跃版本更新频繁（每周）早期版本基于社区力量维护，被 Rapid 7收购后打造出其商业版产品目前分化为四个版本，社区版本依然十分活跃。</p>
 <p>Metasploit Framework(MSF)是一款开源安全漏洞检测工具，附带数千个已知的软件漏洞，并保持持续更新。Metasploit可以用来信息收集、漏洞探测、漏洞利用等渗透测试的全流程，被安全社区冠以“可以黑掉整个宇宙”之名。刚开始的Metasploit是采用Perl语言编写的，但是再后来的新版中，改成了用Ruby语言编写的了。</p>
-<p>通俗理解就是MSF里面集成好了各种漏洞</p>
+<p>通俗理解就是MSF里面集成好了各种exp，可以当脚本小子直接用。</p>
+<h3 id="MSF分类"><a href="#MSF分类" class="headerlink" title="MSF分类"></a>MSF分类</h3><p><img src="/img/%E6%B8%97%E9%80%8F2.1.png" srcset="/img/loading.gif" lazyload alt="图片" title="MSF的不同版本"><br>有这几种不同的版本，在kali里面用终端的免费版就够了。</p>
+<h3 id="MSF模块"><a href="#MSF模块" class="headerlink" title="MSF模块"></a>MSF模块</h3><p>MSF所有的漏洞测试都是基于模块。</p>
+<h4 id="auxiliary"><a href="#auxiliary" class="headerlink" title="auxiliary"></a>auxiliary</h4><p>负责执行信息收集、扫描、嗅探、指纹识别、口令猜测和Dos攻击等功能的辅助模块。</p>
+<p>辅助模块能在渗透之前得到目标系统丰富的情报信息，从而发起更具目标性的精准攻击。包括针对各种网络服务的扫描与查点、构建虚假服务收集登录密码口令破解、敏感信息嗅探、fuzz、实施网络协议欺骗等模块。</p>
+<h4 id="exploits"><a href="#exploits" class="headerlink" title="exploits"></a>exploits</h4><p>利用系统漏洞进行攻击的动作，用于利用漏洞和传递有效负载的模块。有远程漏洞利用、本地漏洞利用、权限提升漏洞利用、客户端漏洞利用、Web 应用程序漏洞利用和许多其他漏洞。metasploit框架中渗透攻击模块可以按照所利用的安全漏洞所在的位置分为主动渗透攻击与被动渗透攻击两大类。</p>
+<h4 id="payloads"><a href="#payloads" class="headerlink" title="payloads"></a>payloads</h4><p>成功exploit之后，真正在目标系统执行的代码或指令。比如反弹shell的代码。分为3种类型的payload，分别是single、stages、和stagers。<br>single：一个完整的payload，不需要外部库，all-in-one<br>stager：目标计算机内存有限，先传输一个较小的payload用于建立连接<br>stages：利用stager建立的连接下载后续的payloadstager与stages有多种类型，适用于不同场景，shellcode是特殊的payload，其主要用于与目标主机建立shell。</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#Stager/Stage Payload的格式为：</span><br>&lt;target&gt;/ &lt;stage&gt; / &lt;stager&gt; 如：windows/meterpreter/reverse_tcp<br></code></pre></td></tr></table></figure>
+
+<h4 id="encoders"><a href="#encoders" class="headerlink" title="encoders"></a>encoders</h4><p>编码器模块主要包含各种编码工具，对payload进行编码加密，以便绕过入侵检测和过滤系统用于有效负载编码和加密的模块，例如 base64、XOR、shikata_ga_nai 等。这有助 于混淆以规避防病毒或NIDS（网络入侵检测系统）、EDR（端点检测和响应）等防御。</p>
+<h4 id="nops"><a href="#nops" class="headerlink" title="nops"></a>nops</h4><p>metasploit框架中的空指令模块，用来在攻击载荷中添加空指令区，以提高攻击可靠性的组件。在渗透攻击构造恶意数据缓冲区时，常常要在真正要执行的Shellcode之前添加一段空指令区， 这样当触发渗透攻击后跳转执行Shellcode时，有一个较大的安全着陆区，从而避免受到内存地址随机化、返回地址计算偏差等原因造成的Shellcode执行失败，提高渗透攻击的可靠性。</p>
+<h4 id="post"><a href="#post" class="headerlink" title="post"></a>post</h4><p>后期渗透模块。在取得目标系统远程控制权后，进行一系列的后渗透攻击动作，如获取敏感信息、跳板攻击，安装后门、记录键盘记录、屏幕捕获等操作。</p>
+<h4 id="evasion"><a href="#evasion" class="headerlink" title="evasion"></a>evasion</h4><p>躲避模块，用来生成免杀payload 用于规避防御的模块，例如防病毒规避、AppLocker 绕过、软件限制策略 (SRP) 绕过等。</p>
 
                 
               </div>
