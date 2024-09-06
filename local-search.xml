@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>渗透（5）</title>
+    <link href="/2024/09/06/5/"/>
+    <url>/2024/09/06/5/</url>
+    
+    <content type="html"><![CDATA[<p>为了防止频繁的sudo su，这里给root改密码，方便之后用root登录进行操作：<br><img src="/img/%E6%B8%97%E9%80%8F5.1.png" alt="图片" title="修改root密码方便之后操作"><br>永恒之蓝需要用的kali中msf模块里的ms17-010，这里的1号exp会比0号exp适用的版本更老：<br><img src="/img/%E6%B8%97%E9%80%8F5.3.png" alt="图片" title="利用search命令查看ms17-010"></p><p>首先利用auxiliary进行漏洞的检测判断是否存在这个漏洞,auxiliary模块在<a href="https://zxl.world/2024/09/02/2/">第二节</a>中提到了：<br><img src="/img/%E6%B8%97%E9%80%8F5.2.png" alt="图片" title="测试目标主机是否存在此漏洞，发现存在"></p><p>这里选用0号exp成功进行拿到shell：<br><img src="/img/%E6%B8%97%E9%80%8F5.4.png" alt="图片" title="设置好rhosts后run成功拿到shell"></p><p>由于永恒之蓝是系统内核级的缓冲区溢出漏洞，所以能直接拿到目标主机的最高权限，这里使用hashdump进行查看目标主机的用户的密码，可以在<a href="cmd5.com">cmd5网站</a>解密后查看原文：</p><p><img src="/img/%E6%B8%97%E9%80%8F5.5.png" alt="图片" title="查看加密后的密码"></p><p>拿到了最高权限之后这里就能进行之前<a href="https://zxl.world/2024/09/05/4/">第四节</a>提到的msf后渗透环节的一系列操作此处不一一赘述</p><p>此时可以直接输入shell进入到目标主机的shell，不过会出现乱码：<br><img src="/img/%E6%B8%97%E9%80%8F5.6.png" alt="图片" title="进入目标主机的shell"></p><p>解决办法：直接输入<code>chcp 65001</code>，可以发现乱码没了：<br><img src="/img/%E6%B8%97%E9%80%8F5.7.png" alt="图片" title="还有一点乱码..."></p><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs cmd">//创建新用户admin<br><span class="hljs-function">C:\<span class="hljs-title">Windows</span>\<span class="hljs-title">system32</span>&gt;<span class="hljs-title">net</span> <span class="hljs-title">user</span> <span class="hljs-title">admin</span> <span class="hljs-title">admin123</span> /<span class="hljs-title">add</span></span><br><span class="hljs-function"></span><br><span class="hljs-function"><span class="hljs-title">The</span> <span class="hljs-title">command</span> <span class="hljs-title">completed</span> <span class="hljs-title">successfully</span>.</span><br><span class="hljs-function"> </span><br><span class="hljs-function">//将其添加进管理员组中</span><br><span class="hljs-function"><span class="hljs-title">C</span>:\<span class="hljs-title">Windows</span>\<span class="hljs-title">system32</span>&gt;<span class="hljs-title">net</span> <span class="hljs-title">localgroup</span> <span class="hljs-title">administrators</span> <span class="hljs-title">admin</span> /<span class="hljs-title">add</span></span><br><span class="hljs-function"></span><br><span class="hljs-function"><span class="hljs-title">The</span> <span class="hljs-title">command</span> <span class="hljs-title">completed</span> <span class="hljs-title">successfully</span>.</span><br></code></pre></td></tr></table></figure><p>可以看到永恒之蓝漏洞可以拿到最高权限，而之前提到的文件上传漏洞拿到的只是普通用户权限，最直观的感受就是普通用户不能通过<code>hashdump</code>获取目标主机的密码，这里就涉及到了提权，假设目标主机不存在永恒之蓝漏洞仅可以通过文件上传漏洞进行攻击，想看如何提权，请前往下一节。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>渗透测试</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>渗透（6）</title>
+    <link href="/2024/09/06/6/"/>
+    <url>/2024/09/06/6/</url>
+    
+    <content type="html"><![CDATA[<p>通过上一节可以看到永恒之蓝漏洞可以拿到最高权限，而之前提到的文件上传漏洞拿到的只是普通用户权限，最直观的感受就是普通用户不能通过<code>hashdump</code>获取目标主机的密码，这里就涉及到了提权，假设目标主机不存在永恒之蓝漏洞仅可以通过文件上传漏洞进行攻击：</p><p>待更~</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>渗透测试</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>CTF</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>渗透（4）</title>
     <link href="/2024/09/05/4/"/>
     <url>/2024/09/05/4/</url>
