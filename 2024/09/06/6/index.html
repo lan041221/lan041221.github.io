@@ -26,11 +26,13 @@
 <meta property="og:site_name" content="l1nk&#39;s blog">
 <meta property="og:description" content="提权">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F6.1.png">
 <meta property="article:published_time" content="2024-09-06T12:38:35.000Z">
-<meta property="article:modified_time" content="2024-09-07T07:06:36.166Z">
+<meta property="article:modified_time" content="2024-09-07T08:02:07.742Z">
 <meta property="article:author" content="l1nk">
 <meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F6.1.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -225,7 +227,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          463 字
+          951 字
         
       </span>
     
@@ -236,7 +238,7 @@
         
         
         
-          4 分钟
+          8 分钟
         
       </span>
     
@@ -288,6 +290,11 @@
 <p>远程提权是指黑客或者攻击者通过漏洞利用程序，直接获取远程服务器的权限（在远程服务器上必须存在漏洞且未修补或者修补未成功）。</p>
 <h2 id="提权条件"><a href="#提权条件" class="headerlink" title="提权条件"></a>提权条件</h2><p>1 拥有Webshell&#x2F;Beacon&#x2F;Sessions<br>2 拥有普通用户权限<br>3 拥有某些软件的账号密码<br>4 本地或远程服务器上存在漏洞<br>5 拥有漏洞利用工具代码</p>
 <h2 id="Windows内核漏洞提权"><a href="#Windows内核漏洞提权" class="headerlink" title="Windows内核漏洞提权"></a>Windows内核漏洞提权</h2><p>1 <a target="_blank" rel="noopener" href="https://github.com/Ascotbe/Kernelhub">https://github.com/Ascotbe/Kernelhub</a> &#x2F;&#x2F;包含大量的Windows系统提权Exp<br>2 <a target="_blank" rel="noopener" href="https://github.com/SecWiki/windows%E2%80%90kernel%E2%80%90exploits">https://github.com/SecWiki/windows‐kernel‐exploits</a> &#x2F;&#x2F;另一个包含有大量Windows提权Exp的集合（更新到2018年）<br>3 <a target="_blank" rel="noopener" href="https://msrc.microsoft.com/update%E2%80%90guide/zh%E2%80%90cn">https://msrc.microsoft.com/update‐guide/zh‐cn</a> &#x2F;&#x2F;微软应急响应中心发布的漏洞信息集合<br>4 <a target="_blank" rel="noopener" href="https://github.com/chroblert/WindowsVulnScan/tree/master">https://github.com/chroblert/WindowsVulnScan/tree/master</a> &#x2F;&#x2F;依据当前主机的补丁信息来收集漏洞信息</p>
+<h2 id="Windows内核漏洞提权-1"><a href="#Windows内核漏洞提权-1" class="headerlink" title="Windows内核漏洞提权"></a>Windows内核漏洞提权</h2><h3 id="CVE-2020-0787"><a href="#CVE-2020-0787" class="headerlink" title="CVE-2020-0787"></a>CVE-2020-0787</h3><p>这应该是windows系统最方便的提权CVE，直接下载exe文件上传到目标主机后执行即可拿到system权限：地址：<a target="_blank" rel="noopener" href="https://github.com/cbwang505/CVE-2020-0787-EXP-ALL-WINDOWS-VERSION/releases">https://github.com/cbwang505/CVE-2020-0787-EXP-ALL-WINDOWS-VERSION/releases</a><br>直接在目标主机运行即可从普通用户提升到system权限，不过system的shell会在目标主机桌面上弹出不会在远程主机上，这里需要再用远程桌面进行操作：<br><img src="/img/%E6%B8%97%E9%80%8F6.1.png" srcset="/img/loading.gif" lazyload alt="图片" title="直接拿到了系统权限"></p>
+<h3 id="令牌提权"><a href="#令牌提权" class="headerlink" title="令牌提权"></a>令牌提权</h3><p>令牌窃取（Token Theft）是一种Windows上常用的提权攻击技术，攻击者可以通过获取系统中一个高权限进程的安全令牌，然后将其注入到一个低权限进程中，使得低权限进程可以获得高权限进程的访问权限。</p>
+<p>令牌分类：<br>1.访问令牌(Access Token)：表示访问控制操作主体的系统对象；<br>2.会话令牌(Session Token)：是交互会话中唯一的身份标识符；<br>3.密保令牌(Security Token)：又叫做认证令牌或硬件令牌，是一种计算机身份校验的物理设备，例如U盾等。</p>
+<p>访问令牌（access token）<br>令牌所包含的信息是与该user账户相关的进程或线程的身份和权限信息。当user登录时，系统通过将user输入的密码与储存在安全数据库中的密码进行对比。若密码正确，系统此时会为user生成一个访问令牌。之后，该user执行的每个进程都会拥有一个该访问令牌的拷贝。</p>
+<p>Windows的访问令牌（AccessToken）有两种类型：<br>1.Delegation token(授权令牌)：用于交互会话登录(例如本地用户直接登录、远程桌面登录)<br>2.Impersonation token(模拟令牌)：用于非交互登录(利用net use访问共享文件夹)<br>令牌窃取主要用模拟令牌，通过incognito.exe工具能够获取到已注销用户的token</p>
 
                 
               </div>
