@@ -28,7 +28,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F6.1.png">
 <meta property="article:published_time" content="2024-09-06T12:38:35.000Z">
-<meta property="article:modified_time" content="2024-09-07T08:02:07.742Z">
+<meta property="article:modified_time" content="2024-09-07T14:07:30.807Z">
 <meta property="article:author" content="l1nk">
 <meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary_large_image">
@@ -294,7 +294,8 @@
 <h3 id="令牌提权"><a href="#令牌提权" class="headerlink" title="令牌提权"></a>令牌提权</h3><p>令牌窃取（Token Theft）是一种Windows上常用的提权攻击技术，攻击者可以通过获取系统中一个高权限进程的安全令牌，然后将其注入到一个低权限进程中，使得低权限进程可以获得高权限进程的访问权限。</p>
 <p>令牌分类：<br>1.访问令牌(Access Token)：表示访问控制操作主体的系统对象；<br>2.会话令牌(Session Token)：是交互会话中唯一的身份标识符；<br>3.密保令牌(Security Token)：又叫做认证令牌或硬件令牌，是一种计算机身份校验的物理设备，例如U盾等。</p>
 <p>访问令牌（access token）<br>令牌所包含的信息是与该user账户相关的进程或线程的身份和权限信息。当user登录时，系统通过将user输入的密码与储存在安全数据库中的密码进行对比。若密码正确，系统此时会为user生成一个访问令牌。之后，该user执行的每个进程都会拥有一个该访问令牌的拷贝。</p>
-<p>Windows的访问令牌（AccessToken）有两种类型：<br>1.Delegation token(授权令牌)：用于交互会话登录(例如本地用户直接登录、远程桌面登录)<br>2.Impersonation token(模拟令牌)：用于非交互登录(利用net use访问共享文件夹)<br>令牌窃取主要用模拟令牌，通过incognito.exe工具能够获取到已注销用户的token</p>
+<p>Windows的访问令牌（AccessToken）有两种类型：<br>1.Delegation token(授权令牌)：用于交互会话登录(例如本地用户直接登录、远程桌面登录)<br>2.Impersonation token(模拟令牌)：用于非交互登录(利用net use访问共享文件夹)</p>
+<p>令牌窃取主要用模拟令牌，通过incognito.exe工具能够获取到已注销用户的token</p>
 
                 
               </div>
