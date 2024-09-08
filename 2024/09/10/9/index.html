@@ -19,20 +19,28 @@
   <meta name="author" content="l1nk">
   <meta name="keywords" content="">
   
-    <meta name="description" content="提权">
+    <meta name="description" content="CS架构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="渗透（9）">
 <meta property="og:url" content="https://lan041221.github.io/2024/09/10/9/index.html">
 <meta property="og:site_name" content="l1nk&#39;s blog">
-<meta property="og:description" content="提权">
+<meta property="og:description" content="CS架构">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F9.2.png">
 <meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F9.3.png">
 <meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F9.1.png">
 <meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F9.4.png">
 <meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F9.5.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F9.6.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F9.7.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F9.8.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F9.9.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F9.10.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F9.11.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F9.12.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F9.13.png">
 <meta property="article:published_time" content="2024-09-10T12:38:35.000Z">
-<meta property="article:modified_time" content="2024-09-08T05:37:46.384Z">
+<meta property="article:modified_time" content="2024-09-08T07:18:03.181Z">
 <meta property="article:author" content="l1nk">
 <meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary_large_image">
@@ -231,7 +239,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          643 字
+          966 字
         
       </span>
     
@@ -242,7 +250,7 @@
         
         
         
-          6 分钟
+          9 分钟
         
       </span>
     
@@ -303,6 +311,11 @@
 <p>为了减少本地测试时虚拟机的数量，这里假设kali既是服务端又是客户端</p>
 <p><img src="/img/%E6%B8%97%E9%80%8F9.4.png" srcset="/img/loading.gif" lazyload alt="图片" title="成功启用CS"></p>
 <p>这里我的密码不小心设置成了1231323<br><img src="/img/%E6%B8%97%E9%80%8F9.5.png" srcset="/img/loading.gif" lazyload alt="图片" title="进入CS客户端"></p>
+<p>生成木马</p>
+<p>CobaltStrike 的 Payloads 通常分为：<br>    Stage(Stageless) Payload（无阶段）<br>    Stager Payload（分阶段）</p>
+<p>它们二者的区别和关系是：<br>Stager Payload（分阶段）是一个小程序，通常是手工优化的汇编程序，它下载 Stage(Stageless) Payload（无阶段），将其注入内存，并将执行传递给它，此过程称为分阶段式。很多攻击中对于能加载进内存并在成功漏洞利用后执行的数据大小存在严格限制。这会极大地限制你的后渗透选择，除非你分阶段传送你的后渗透 payload。</p>
+<p>在cs中创建完监听器后，我们想生成windows exe后门程序。可以看到能生成两种windows可执行程序，其分别代表staging分阶段的paylod和unstage(stageless)不分阶段的payload。</p>
+<p><img src="/img/%E6%B8%97%E9%80%8F9.6.png" srcset="/img/loading.gif" lazyload alt="图片" title="产生后门文件，不带s的"><br>接下来让目标主机点击后门文件：<br><img src="/img/%E6%B8%97%E9%80%8F9.7.png" srcset="/img/loading.gif" lazyload alt="图片" title="成功上线后门主机"><br>查看拓扑图：<br><img src="/img/%E6%B8%97%E9%80%8F9.8.png" srcset="/img/loading.gif" lazyload alt="图片" title="查看CS架构渗透的拓扑图"><br>接下来可以利用CS自带的提权进行操作试试，可以看到一开始是不能hashdump的：<br><img src="/img/%E6%B8%97%E9%80%8F9.9.png" srcset="/img/loading.gif" lazyload alt="图片" title="进行提权操作"><br>成功拿到了Administrator的权限<br><img src="/img/%E6%B8%97%E9%80%8F9.10.png" srcset="/img/loading.gif" lazyload alt="图片" title="拿到了Administrator，接下来拿system"><br>一键提权成功拿到了system并hashdump查看密码成功：<br><img src="/img/%E6%B8%97%E9%80%8F9.11.png" srcset="/img/loading.gif" lazyload alt="图片" title="成功查看密码"><br>接下来就可以查看目标主机的各种东西咯，因为有了system权限：<br><img src="/img/%E6%B8%97%E9%80%8F9.12.png" srcset="/img/loading.gif" lazyload alt="图片" title="查看目标主机的文件列表"><br><img src="/img/%E6%B8%97%E9%80%8F9.13.png" srcset="/img/loading.gif" lazyload alt="图片" title="这就是两个攻击的进程"><br>还可以查看键盘映射、进行进程注入、与MSF进行联动等等~</p>
 
                 
               </div>
