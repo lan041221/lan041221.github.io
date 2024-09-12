@@ -26,11 +26,15 @@
 <meta property="og:site_name" content="l1nk&#39;s blog">
 <meta property="og:description" content="Linux提权">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F8.1.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F8.2.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F8.3.png">
 <meta property="article:published_time" content="2024-09-09T12:38:35.000Z">
-<meta property="article:modified_time" content="2024-09-08T05:36:11.115Z">
+<meta property="article:modified_time" content="2024-09-12T14:03:46.711Z">
 <meta property="article:author" content="l1nk">
 <meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F8.1.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -225,7 +229,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1 字
+          721 字
         
       </span>
     
@@ -236,7 +240,7 @@
         
         
         
-          1 分钟
+          7 分钟
         
       </span>
     
@@ -278,7 +282,27 @@
             
               <div class="markdown-body">
                 
-                <p>20240828_151002</p>
+                <h2 id="Linux提权合集"><a href="#Linux提权合集" class="headerlink" title="Linux提权合集"></a>Linux提权合集</h2><p><a target="_blank" rel="noopener" href="https://github.com/SecWiki/linux-kernel-exploits">https://github.com/SecWiki/linux-kernel-exploits</a><br>在kali的msf中可以用自带的模块进行提权</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs msf">search suggester#直接使用MSF自带的exp模块进行提权<br></code></pre></td></tr></table></figure>
+<h2 id="Linux-Suid提权"><a href="#Linux-Suid提权" class="headerlink" title="Linux Suid提权"></a>Linux Suid提权</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>suid：在Linux系统中，suid（set user ID upon execution）是一个特殊的权限位，它允许一个程序在执行时临时地以文件所有者的权限运行，而不是以执行该程序的用户权限运行。</p>
+<p><a target="_blank" rel="noopener" href="https://gtfobins.github.io/">https://gtfobins.github.io</a>   GTFOBins是 Unix 二进制文件的精选列表，可用于绕过配置错误的系统中的本地安全限制。</p>
+<p>注意：<br>1.只有可以执行的二进制程序文件设定SUID权限才可利用,非二进制文件设置SUI权限没任何意义<br>2.命令执行者要对该程序文件拥有执行(x)权限<br>3.SUID权限只在该程序执行过程中有效,也就是说身份改变只在程序执行过程中有效</p>
+<h3 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h3><p>如何设置Suid:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span> u+s filename <span class="hljs-comment">#设置suid</span><br><span class="hljs-built_in">chmod</span> u‐s filename <span class="hljs-comment">#取消suid</span><br></code></pre></td></tr></table></figure>
+
+<p>查找具有Suid权限的文件:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">find / ‐perm ‐u=s ‐<span class="hljs-built_in">type</span> f 2&gt;/dev/null<br><span class="hljs-comment">#‐perm ‐u=s：查找具有suid权限的文件。</span><br><span class="hljs-comment">#‐type f：限制查找的类型为文件（不包括目录）。</span><br>find / ‐user root ‐perm ‐4000 ‐<span class="hljs-built_in">print</span> 2&gt;/dev/null <span class="hljs-comment">#查找属于Root用户的具有Suid权限的文件</span><br><span class="hljs-comment">#‐user root：查找属于root用户的文件。</span><br><span class="hljs-comment">#‐perm ‐4000：查找具有suid、sgid或sticky位的文件。</span><br></code></pre></td></tr></table></figure>
+
+<p>Find命令实现Suid提权：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">find / ‐user root ‐perm ‐4000 ‐<span class="hljs-built_in">exec</span> <span class="hljs-built_in">ls</span> ‐ldb &#123;&#125; \; <span class="hljs-comment">#Find可以用来执行系统命令如果为find添加上suid特殊权限位，即可实现提权。</span><br><span class="hljs-built_in">chmod</span> u+s /usr/bin/find <span class="hljs-comment">#加上权限</span><br><span class="hljs-built_in">ls</span> ‐al /usr/bin/find <span class="hljs-comment">#查看find命令的权限</span><br></code></pre></td></tr></table></figure>
+<p><img src="/img/%E6%B8%97%E9%80%8F8.1.png" srcset="/img/loading.gif" lazyload alt="图片" title="查看find命令的权限，x变成s则可以实现提权"><br>接下来给find命令权限（此处需要root才能，所以意义不大还是要拿到root）：<br><img src="/img/%E6%B8%97%E9%80%8F8.2.png" srcset="/img/loading.gif" lazyload alt="图片" title="成功赋予find命令权限"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">find google ‐<span class="hljs-built_in">exec</span> <span class="hljs-built_in">mkdir</span> /opt/test \; <span class="hljs-comment">#google可以是任何存在的文件，成功创建目录</span><br></code></pre></td></tr></table></figure>
+<p><img src="/img/%E6%B8%97%E9%80%8F8.3.png" srcset="/img/loading.gif" lazyload alt="图片" title="查看当前目录"></p>
+<h2 id="Linux-Sudo提权"><a href="#Linux-Sudo提权" class="headerlink" title="Linux Sudo提权"></a>Linux Sudo提权</h2><p>由于root账户密码的敏感性和root账号的无限制权限,一般会通过useradd创建一些普通用户, 只让他们拥有不完全的权限; 如有必要，再来申请执行一些root权限的指令。</p>
+<p>sudo命令的执行流程是: 当前用户转换到root, 然后以root身份执行命令, 执行完成后, 直接退回到当前用户。</p>
+<p>注意: 执行sudo时输入的密码, 是当前用户的密码, 并非root密码。</p>
+<p>ubuntu桌面版默认禁止root账号，自然也不会开启root账号的远程登录(ssh登录)。</p>
+<p>如果需要切换到root账号, 可以使用命令sudo ‐i, 然后输入自己的用户密码来从而切换成root身份。但如果使用命令su ‐ root来切换root身份就行不通，因为你输入的密码压根就不是root的密码。当然，你可以通过<code>sudo passwd root</code>修改root用户的密码从而解锁root用户,但这种方式并不被推荐。</p>
 
                 
               </div>

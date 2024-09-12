@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F6.5.png">
 <meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F6.4.png">
 <meta property="article:published_time" content="2024-09-07T12:38:35.000Z">
-<meta property="article:modified_time" content="2024-09-08T05:32:45.579Z">
+<meta property="article:modified_time" content="2024-09-12T13:15:01.081Z">
 <meta property="article:author" content="l1nk">
 <meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary_large_image">
@@ -285,10 +285,24 @@
               <div class="markdown-body">
                 
                 <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>通过上一节可以看到永恒之蓝漏洞可以拿到最高权限，而之前提到的文件上传漏洞拿到的只是普通用户权限，最直观的感受就是普通用户不能通过<code>hashdump</code>获取目标主机的密码，这里就涉及到了提权。</p>
-<h2 id="权限概述"><a href="#权限概述" class="headerlink" title="权限概述"></a>权限概述</h2><p>Windows计算机中常见的权限：<br> 1 用户权限（Users）<br> 2 管理员权限（Administrators）<br> 3 系统权限 (SYSTEM)<br> 4 访客权限 (Guest)</p>
-<p>Windows提权路径:<br> 1 user ‐‐&gt; administrator<br> 2 administrator ‐‐&gt; system<br> 3 services ‐‐&gt; system</p>
-<p>Linux提权路径：<br> 1 user ‐‐‐&gt; root</p>
-<h2 id="提权分类"><a href="#提权分类" class="headerlink" title="提权分类"></a>提权分类</h2><h3 id="操作系统提权"><a href="#操作系统提权" class="headerlink" title="操作系统提权"></a>操作系统提权</h3><p>Windows：MS06-067、MS10-084、MS11-014、MS11-05、MS12-020、MS16<br>032 等<br>Linux：CVE-2017-7308、CVE-2017-6074、CVE-2017-5123、CVE-2016-9793、<br>CVE-2016-5195 等</p>
+<h2 id="权限概述"><a href="#权限概述" class="headerlink" title="权限概述"></a>权限概述</h2><p>Windows计算机中常见的权限：</p>
+<ul>
+<li>用户权限（Users）</li>
+<li>管理员权限（Administrators）</li>
+<li>系统权限 (SYSTEM)</li>
+<li>访客权限 (Guest)</li>
+</ul>
+<p>Windows提权路径:</p>
+<ul>
+<li>user ‐‐&gt; administrator</li>
+<li>administrator ‐‐&gt; system</li>
+<li>services ‐‐&gt; system</li>
+</ul>
+<p>Linux提权路径：</p>
+<ul>
+<li>user ‐‐‐&gt; root</li>
+</ul>
+<h2 id="提权分类"><a href="#提权分类" class="headerlink" title="提权分类"></a>提权分类</h2><h3 id="操作系统提权"><a href="#操作系统提权" class="headerlink" title="操作系统提权"></a>操作系统提权</h3><p>Windows：MS06-067、MS10-084、MS11-014、MS11-05、MS12-020、MS16032 等<br>Linux：CVE-2017-7308、CVE-2017-6074、CVE-2017-5123、CVE-2016-9793、CVE-2016-5195 等</p>
 <h3 id="应用程序提权"><a href="#应用程序提权" class="headerlink" title="应用程序提权"></a>应用程序提权</h3><p>SQL Server、MySQL、Oracle 等</p>
 <h2 id="提权方法"><a href="#提权方法" class="headerlink" title="提权方法"></a>提权方法</h2><p>本地提权漏洞是指一个本来权限非常低、操作受限制的用户，通过某种条件（例如，通过应用程序漏洞或者系统漏洞）直接提升到系统最高权限。</p>
 <p>远程提权是指黑客或者攻击者通过漏洞利用程序，直接获取远程服务器的权限（在远程服务器上必须存在漏洞且未修补或者修补未成功）。</p>
