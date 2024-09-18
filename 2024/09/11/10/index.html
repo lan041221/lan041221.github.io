@@ -26,13 +26,17 @@
 <meta property="og:site_name" content="l1nk&#39;s blog">
 <meta property="og:description" content="Windows PTH">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F10.1.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F10.2.png">
 <meta property="article:published_time" content="2024-09-11T12:38:35.000Z">
-<meta property="article:modified_time" content="2024-09-18T08:05:56.714Z">
+<meta property="article:modified_time" content="2024-09-18T08:19:29.644Z">
 <meta property="article:author" content="l1nk">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="Windows">
 <meta property="article:tag" content="PTH">
+<meta property="article:tag" content="hash">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F10.1.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -227,7 +231,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          123 字
+          1.5k 字
         
       </span>
     
@@ -238,7 +242,7 @@
         
         
         
-          2 分钟
+          13 分钟
         
       </span>
     
@@ -280,7 +284,47 @@
             
               <div class="markdown-body">
                 
-                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>内网渗透阶段，攻击者利用MSF获取meterpreter或者CS获取bacon之后，首先就是要获取凭证或NTLM hash值。然而获取到Hash值然后破解hash难度很高，难以利用，故诞生了PTH，即获取了目标机器用户的NTLM Hash的情况下，可无需破解哈希直接使用目标的NTLM Hash来完成身份验证。从红队的视角来看，PTH攻击（哈希传递攻击）只是windows横向渗透的开始。</p>
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>内网渗透阶段，攻击者利用MSF获取meterpreter或者CS获取bacon之后，首先就是要获取凭证或NTLM hash值。然而获取到hash值然后破解hash难度很高，难以利用，故诞生了PTH，即获取了目标机器用户的NTLM Hash的情况下，可无需破解哈希直接使用目标的NTLM hash来完成身份验证。从红队视角看，PTH攻击（哈希传递攻击）只是windows横向渗透的开始。</p>
+<h2 id="Windows密码凭证"><a href="#Windows密码凭证" class="headerlink" title="Windows密码凭证"></a>Windows密码凭证</h2><p>windows系统使用两种方法对用户输入的密码进行加密处理：LM Hash以及NTLM Hash。</p>
+<p>LM Hash是windows最早使用的加密算法，其本质是DES加密，LM Hash算法较为脆弱。微软后期引入NTLM Hash，其本质是MD4 加密。操作系统密码转换为十六进制，经过Unicode转换后，再调用MD4加密算法加密，这个加密结果的十六进制就是NTLM Hash。个人版在Vista之后，服务版在windows 2003 之后windows系统认证均采用NTLM Hash加密。</p>
+<p>windows系统中密码凭证通常由LM Hash以及NTLM Hash两部分组成，结构如下：</p>
+<ul>
+<li>用户名称:RID:LM‐HASH值:NT‐HASH值</li>
+</ul>
+<p>在域环境中，密码凭证存储在%SystemRoot%ntds\ntds.dilt路径下的ntds.dit二进制文件中。在工作组环境下，用户的密码凭证被存储在%SystemRoot%\system32\config\sam路径下的SAM文件中。在渗透测试中获取windows密码凭证可以利用mimikatz，Pwddump7，WCE,注册表以及MSF、CS框架模块等获取。</p>
+<h3 id="NTLM-HASH生成原理"><a href="#NTLM-HASH生成原理" class="headerlink" title="NTLM-HASH生成原理"></a>NTLM-HASH生成原理</h3><p>假设用户密码为： 123456</p>
+<ol>
+<li><p>首先将密码字符串转化为十进制ASCII字符串<br>字 符：1 2 3 4 5 6<br>ASCII：49 50 51 52 53 54</p>
+</li>
+<li><p>十进制ASCII字符串再转换为十六进制字符串<br>十 进 制：49 50 51 52 53 54<br>十六进制：31 32 33 34 35 36</p>
+</li>
+<li><p>十六进制字符串再转化为Unicode字符串<br>31 32 33 34 35 36 ‐&gt; 310032003300340035003600</p>
+</li>
+<li><p>使用MD4摘要算法对Unicode字符串进行Hash计算<br>310032003300340035003600 ‐&gt; 32ed87bdb5fdc5e9cba88547376818d4</p>
+</li>
+<li><p>产生一个16字节的值，即NTLM‐HASH<br>32ed87bdb5fdc5e9cba88547376818d4</p>
+</li>
+</ol>
+<h2 id="Windows认证与NTLM协议"><a href="#Windows认证与NTLM协议" class="headerlink" title="Windows认证与NTLM协议"></a>Windows认证与NTLM协议</h2><p>windows认证包括三种方式：</p>
+<p>1 本地认证：用户直接操作计算机登陆账户（本地直接登录）<br>2 网络认证：远程连接到工作组中的某个设备 （使用RDP远程登录某台服务器，或访问域环境中的共享资源）<br>3 域认证：登陆到域环境中的某个设备（Kerberos协议）</p>
+<h3 id="本地认证流程"><a href="#本地认证流程" class="headerlink" title="本地认证流程"></a>本地认证流程</h3><p>windows登录进程（winlogon.exe）接收用户输入的密码，接收用户的输入信息后，将密码交给lsass.exe进程，这个过程中会存一份明文密码，将明文密码加密成NTLM Hash，与SAM数据库中该用户的Hash值进行比对，匹配则登陆成功，不匹配则登陆失败</p>
+<h3 id="网络认证"><a href="#网络认证" class="headerlink" title="网络认证"></a>网络认证</h3><p>我们使用需要使用到NTLM协议。NTLM是一种网络认证协议，它是基于挑战（Challenge）&#x2F;响应（Response）认证机制的一种认证模式。这个协议只支持Windows。<br>NTLM在工作组环境的认证<br>在认证过程中会发送以下三种类型的消息：</p>
+<ul>
+<li>TYPE 1 协商：双方确定传输协议的版本、明文用户名。</li>
+<li>TYPE 2 质询：生成Challenge</li>
+<li>TYPE 3 身份验证：发送Response</li>
+</ul>
+<p>工作组中：<br><img src="/img/%E6%B8%97%E9%80%8F10.1.png" srcset="/img/loading.gif" lazyload alt="图片" title="工作组认证流程"><br>协商：当客户端要访问服务器上某个受保护的服务时，需要输入服务器的用户名和密码进行验证。此时客户端会在本地缓存一份服务器密码的NTLM hash，然后向服务器发送协商消息（主要用于确认双方协议版本，在NTLM 认证中， NTLM 响应分为NTLM v1 ， NTLMv2 ， NTLM session v2 三种协议，不同协议使用不同格式的Challenge 和加密算法）。</p>
+<p>质询：服务器收到客户端的协商信息后，生成并回复质询消息。该消息中包含了一个由服务端生成的16位随机值challenge，服务器也会在本地缓存该值。客户端收到质询消息后，会使用步骤1中缓存的服务器的NTLM hash对Challenge进行加密生成Response，接着将身份验证消息中发往服务器。</p>
+<p>验证：服务器在收到身份验证消息后，会使用该用户所对应的NTLM hash对Challenge进行加密生成Response2，并比较Response2与Response是否一致。如果一致，就证明客户端掌握了服务器的密码，认证成功，否则认证失败。</p>
+<h3 id="域环境下NTLM认证"><a href="#域环境下NTLM认证" class="headerlink" title="域环境下NTLM认证"></a>域环境下NTLM认证</h3><p><img src="/img/%E6%B8%97%E9%80%8F10.2.png" srcset="/img/loading.gif" lazyload alt="图片" title="域环境认证流程"><br>在域环境中，由于所有域用户的哈希值都 存储在域控制器的NTDS.dit中，服务器本身无法计算Response消息，因此需要与域控建立一个安全通道，并通过域控完成最后的认证流程。前三个步骤同工作组环境的认证</p>
+<p>4、服务器收到客户端发来的TYPE 3消息后，会将消息通过 Netlogon协议转发给域控制器。</p>
+<p>5、域控制器根据TYPE 3消息中的用户名获取该用户名的NTLM hash，用NTLM hash对原始的Challenge进行加密并生成Response，然后将其与TYPE 3消息中Response对比。如果一致，就证明客户端掌握了服务器密码，认证成功，否则认证失败。</p>
+<p>6、服务器根据域控返回的验证结果，对客户端进行相应的回复。</p>
+<h2 id="PTH原理及利用"><a href="#PTH原理及利用" class="headerlink" title="PTH原理及利用"></a>PTH原理及利用</h2><p>NTLM Hash登录时需要challenge，而在NTLM协议的质询流程中，服务器端会将challenge发送给客户端（用户），使得我们无需构造challenge，所以只需要获取用户名和NTLM Hash即可通过验证。</p>
+<p>PTH攻击可以分为两步：</p>
+<h3 id="NTLM-Hash获取"><a href="#NTLM-Hash获取" class="headerlink" title="NTLM-Hash获取"></a>NTLM-Hash获取</h3><p>成功入侵了一台机器后，可获取受害主机或与受害主机处于同一网络的机器Hash值，在渗透测试中获取windows密码凭证可以利用mimikatz，Pwddump7，WCE,导出注册表以及MSF、CS框架模块等获取，在此不作过多描述。</p>
+<h3 id="利用Hash完成攻击"><a href="#利用Hash完成攻击" class="headerlink" title="利用Hash完成攻击"></a>利用Hash完成攻击</h3><p>在认证的时候，我们直接提供hash值，不用提供明文密码，windows就会与保存的hash值对比，通过认证。PTH攻击常用于SMB，PsExec，WMI，RPC，RDP等各种协议登录绕过</p>
 
                 
               </div>
@@ -319,6 +363,8 @@
         <a href="/tags/Windows/" class="print-no-link">#Windows</a>
       
         <a href="/tags/PTH/" class="print-no-link">#PTH</a>
+      
+        <a href="/tags/hash/" class="print-no-link">#hash</a>
       
     </div>
   
