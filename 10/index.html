@@ -19,26 +19,28 @@
   <meta name="author" content="l1nk">
   <meta name="keywords" content="">
   
-    <meta name="description" content="Windows PTH">
+    <meta name="description" content="Windows PTH、域">
 <meta property="og:type" content="article">
 <meta property="og:title" content="渗透（10）">
 <meta property="og:url" content="https://lan041221.github.io/10/index.html">
 <meta property="og:site_name" content="l1nk&#39;s blog">
-<meta property="og:description" content="Windows PTH">
+<meta property="og:description" content="Windows PTH、域">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F10.1.png">
 <meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F10.2.png">
 <meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F10.3.png">
 <meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F10.4.png">
 <meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F10.5.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F11.1.png">
 <meta property="article:published_time" content="2024-09-11T12:38:35.000Z">
-<meta property="article:modified_time" content="2024-09-18T11:28:06.936Z">
+<meta property="article:modified_time" content="2024-09-18T11:55:39.103Z">
 <meta property="article:author" content="l1nk">
 <meta property="article:tag" content="CTF">
+<meta property="article:tag" content="msf">
 <meta property="article:tag" content="Windows">
 <meta property="article:tag" content="PTH">
 <meta property="article:tag" content="hash">
-<meta property="article:tag" content="msf">
+<meta property="article:tag" content="域渗透">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F10.1.png">
   
@@ -235,7 +237,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1.8k 字
+          3.6k 字
         
       </span>
     
@@ -246,7 +248,7 @@
         
         
         
-          15 分钟
+          31 分钟
         
       </span>
     
@@ -339,6 +341,25 @@
 <li><a target="_blank" rel="noopener" href="https://github.com/Seabreg/pwdump">https://github.com/Seabreg/pwdump</a></li>
 </ul>
 <p>pwdump7.exe 也可以直接拿到NTLM Hash值<br><img src="/img/%E6%B8%97%E9%80%8F10.5.png" srcset="/img/loading.gif" lazyload alt="图片" title="通过pwdump权限维持"></p>
+<p>本来还想写一下横向移动但是之前已经讲了很多提权的方法了，横向移动无非多一步扫描网段内的主机然后再进行操作，就不讲啦，之后是域渗透</p>
+<h2 id="域的概念"><a href="#域的概念" class="headerlink" title="域的概念"></a>域的概念</h2><p>域(Domain)是Windows网络中独立运行的单位，域之间相互访问则需要建立信任关系。信任关系是连接在域与域之间的桥梁。当一个域与其他域建立了信任关系后，2个域之间不但可以按需要相互进行管理，还可以跨网分配文件和打印机等设备资源，使不同的域之间实现网络资源的共享与管理，以及相互通信和数据传输。</p>
+<p>域既是 Windows 网络操作系统的逻辑组织单元，也是Internet的逻辑组织单元，在 Windows 网络操作系统中，域是安全边界。</p>
+<p>域管理员只能管理域的内部，除非其他的域显式地赋予他管理权限，他才能够访问或者管理其他的域，每个域都有自己的安全策略，以及它与其他域的安全信任关系。当企业网络中计算机和用户数量较多时，为了实现高效管理，就需要windows域。</p>
+<h2 id="域的原理"><a href="#域的原理" class="headerlink" title="域的原理"></a>域的原理</h2><p>在工作组上你一切的设置在本机上进行，包括各种策略，用户登录也是登录在本机的，放在本机的数据库来验证的。而如果你的计算机密码是加入域的话，各种策略是域控制器统一设定，用户名和密码也是放到域控制器去验证，也就是说使用你的账号密码可以在同一域的任何一台计算机登录。</p>
+<p>域控制器中包含了由这个域的账户、密码、属于这个域的计算机等信息构成的数据库。当电脑联入网络时，域控制器首先要鉴别这台电脑是否是属于这个域的，用户使用的登录账号是否存在、密码是否正确。如果以上信息有一样不正确，那么域控制器就会拒绝这个用户从这台电脑登录。不能登录，用户就不能访问服务器上有权限保护的资源，他只能以对等网用户的方式访问Windows共享出来的资源，这样就在一定程度上保护了网络上的资源。</p>
+<h2 id="域和组的区别"><a href="#域和组的区别" class="headerlink" title="域和组的区别"></a>域和组的区别</h2><p>工作组和域的区别为：创建方式不同、安全机制不同、登录方式不同。</p>
+<ul>
+<li>创建方式不同<br>1、工作组：工作组可以由任何一个计算机的主人来创建。<br>2、域：域只能由服务器来创建。</li>
+<li>安全机制不同<br>1、工作组：在”工作组”中不存在组帐号，只有本机上的帐号和密码。<br>2、域：在”域”中有可以登录该域的帐号，这些由域管理员来建立。</li>
+<li>登录方式不同<br>1、工作组：在工作组方式下，计算机启动后自动就在工作组中。<br>2、域：登录”域”是要提交”域用户名”和”密码”，一旦登录，便被赋予相应的权限。</li>
+</ul>
+<h2 id="相关名词解释"><a href="#相关名词解释" class="headerlink" title="相关名词解释"></a>相关名词解释</h2><h3 id="DC"><a href="#DC" class="headerlink" title="DC"></a>DC</h3><p>在“域”模式下，至少有一台服务器负责每一台联入网络的电脑和用户的验证工作，相当于一个单位的门卫一样，称为“域控制器（Domain Controller，简写为DC）”。 域控制器中包含了由这个域的账户、密码、属于这个域的计算机等信息构成的数据库。域控是活动目录的存储地方，也就是说活动目录存储在域控制器内。安装了活动目录的计算机就称为域控制器，其实在你第一次安装活动目录的时候，你安装活动目录的那台计算机就成为了域控制器。一个域可以有一台或多台域控制器。最经典的做法是做一个主辅域控。</p>
+<h3 id="AD"><a href="#AD" class="headerlink" title="AD"></a>AD</h3><p>活动目录是微软Windows Server中，负责架构中大型网路环境的集中式目录管理服务（DirectoryServices）。目录服务在微软平台上从Windows Server 2000开始引入，所以我们可以理解为活动目录是目录服务在微软平台的一种实现方式。当然目录服务在非微软平台上都有相应的实现。Windows Server 2008的域环境与工作组环境最大的不同是，域内所有的计算机共享一个集中式的目录数据库（又称为活动目录数据库），它包含着整个域内的对象（用户账户、计算机账户、打印机、共享文件等）和安全信息等等，而活动目录负责目录数据库的添加，修改，更新和删除。所以我们要在Windows Server 2008上实现域环境，其实就是要安装活动目录。活动目录为我们实现了目录服务，提供对企业网络环境的集中式管理。比如在域环境中，只需要在活动目录中创建一次Jerry账户，那么就可以在任意200台电脑中的一台上登录Jerry，如果要为Jerry账户更改密码，只需要在活动目录中更改一次就可以了，也就是说域用户信息保存在活动目录中。</p>
+<h3 id="组织单元"><a href="#组织单元" class="headerlink" title="组织单元"></a>组织单元</h3><p>组织单元（OU）是一种容器，它里面可以包含对象（用户账户，计算机账户等），也可以包含其他的组织单元（OU）。<br><img src="/img/%E6%B8%97%E9%80%8F11.1.png" srcset="/img/loading.gif" lazyload alt="图片" title="组织单元"></p>
+<h3 id="域"><a href="#域" class="headerlink" title="域"></a>域</h3><p>域是在Windows NT&#x2F;2000&#x2F;2003网络环境中组建客户机&#x2F;服务器网络的实现方式。所谓域,是由网络管理员定义的一组计算机集合,实际上就是一个网络。在这个网络中,至少有一台称为域控制器的计算机,充当服务器角色。在域控制器中保存着整个网络的用户账号及目录数据库,即活动目录。构建域后,管理员可以对整个网络实施集中控制和管理。</p>
+<h3 id="域树"><a href="#域树" class="headerlink" title="域树"></a>域树</h3><p>当需要配置一个包含多个域的网络时,应该将网络配置成域目录树结构。域目录树是一种树型结构。在整个域目录树中,所有域共享同一个活动目录,即整个域目录树中只有一个活动目录。在配置一个较大规模的企业网络时,可以配置为域目录树结构,比如将企业总部的网络配置为根域,各分支机构的网络配置为子域,整体上形成一个域目录树,以实现集中管理。</p>
+<h3 id="SPN"><a href="#SPN" class="headerlink" title="SPN"></a>SPN</h3><p>服务主体名称(SPN)是服务实例，可以理解为一个服务，比如mssql,http等等的唯一标识符。<br>如果在整个林或域中的计算机上安装多个服务实例，则每个实例都必须具有自己的 SPN，Kerberos 身份验证使用 SPN 将服务实例与服务登录帐户相关联。</p>
+<p>个人觉得现在基本也没有用Windows去搭服务器的牛人了，所以暂时就先不进行具体的实操记录，需要环境的可以私聊我~</p>
 
                 
               </div>
@@ -374,13 +395,15 @@
       
         <a href="/tags/CTF/" class="print-no-link">#CTF</a>
       
+        <a href="/tags/msf/" class="print-no-link">#msf</a>
+      
         <a href="/tags/Windows/" class="print-no-link">#Windows</a>
       
         <a href="/tags/PTH/" class="print-no-link">#PTH</a>
       
         <a href="/tags/hash/" class="print-no-link">#hash</a>
       
-        <a href="/tags/msf/" class="print-no-link">#msf</a>
+        <a href="/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/" class="print-no-link">#域渗透</a>
       
     </div>
   
@@ -436,12 +459,6 @@
                 <div class="post-prevnext my-3">
                   <article class="post-prev col-6">
                     
-                    
-                      <a href="/11/" title="渗透（11）">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">渗透（11）</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
                     
                   </article>
                   <article class="post-next col-6">
