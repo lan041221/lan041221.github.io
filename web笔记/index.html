@@ -1,0 +1,746 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="l1nk">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="记录一下之前在ctfshow平台学web方向时刷题的一些笔记">
+<meta property="og:type" content="article">
+<meta property="og:title" content="web笔记">
+<meta property="og:url" content="https://lan041221.github.io/web%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="l1nk&#39;s blog">
+<meta property="og:description" content="记录一下之前在ctfshow平台学web方向时刷题的一些笔记">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-08-17T10:07:26.000Z">
+<meta property="article:modified_time" content="2024-09-03T11:56:20.979Z">
+<meta property="article:author" content="l1nk">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="WEB">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>web笔记 - l1nk&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lan041221.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Home</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="web笔记"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-08-17 18:07" pubdate>
+          2023年8月17日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.3k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          20 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">web笔记</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>这是我在打ctf的时候在<a target="_blank" rel="noopener" href="https://ctf.show/challenges">ctfshow平台</a>学习web方向的记录，建议配合平台中的题目一起查看。<br>依据本人的学习经验web方向需要依靠大量的知识积累，类似于文科的背诵，再加上对新披露的漏洞的知晓，大部分比赛都是直接拿最新CVE来出题。</p>
+<h2 id="1-信息泄露"><a href="#1-信息泄露" class="headerlink" title="1.信息泄露"></a>1.信息泄露</h2><p>直接查看网页源码，flag可能再被注释掉的内容里面没有显示出来（强制查看：通过在url头部添加 view-source:）web1 web2<br>通过burpsuite抓包 flag在返回的响应数据包里面 web3<br>&#x2F;robots.txt web4<br>phps作为备份文件，泄露了源码（index.phps）web5<br>www源码泄露 web6<br>url&#x2F;.git web7<br>url&#x2F;.svn web8<br>vim缓存泄露，在使用vim进行编辑时，会产生缓存文件，如果意外退出，缓存文件保留下来，这时可以通过缓存文件来得到原文件，以index.php来说，第一次退出后，缓存文件名为 .index.php.swp，第二次退出后，缓存文件名为.index.php.swo，第三次退出后文件名为.index.php.swn web9<br>cookie中也会隐藏数据 web10<br> nslookup -qt&#x3D;txt flag.ctfshow.com 其中有： 非权威应答: flag.ctfshow.com text &#x3D;<br>    “flag{just_seesee}” web11<br>有时候网站上的公开信息，就是管理员常用密码 web12<br>找网站的document，操作指南 web13<br>&#x2F;editor，暴露作者页面直接在url后面添加&#x2F;editor 然后查看flag路径并且访问 web14<br>邮箱会泄露信息 web15<br>php探针url&#x2F;tz.php web16<br>备份的sql文件会泄露敏感信息url&#x2F;backup.sql web17</p>
+<p>—-2023.7.14.  22:25 l1nk</p>
+<h2 id="2-爆破"><a href="#2-爆破" class="headerlink" title="2.爆破"></a>2.爆破</h2><p>爆破的时候，信息可能藏在Authorization中 web21<br>子域名爆破 web22<br>MD5加密 substr()、intval() web23<br>伪随机数 mt_srand()、mt_rand() web24</p>
+<h2 id="3-命令执行"><a href="#3-命令执行" class="headerlink" title="3.命令执行"></a>3.命令执行</h2><p>嵌套eval逃逸函数绕过过滤<br>url + ?c&#x3D;eval($_GET[1]);&amp;1&#x3D;system(‘tac flag.php’);<br>php的filter伪协议，读取文件内容并输出<br>data伪协议，后面直接加执行的代码<br>套娃函数?c&#x3D;eval(array_pop(next(get_defined_vars())));</p>
+<p>—-2023.7.16  1:25 l1nk</p>
+<p>没有学习，打永劫去了</p>
+<p>—-2023.7.17  0:02 l1nk</p>
+<p>ls，cat是系统命令，需要包含在system（“”）中进行执行</p>
+<p>data伪协议<br>payload：<br>url+?c&#x3D;data:&#x2F;&#x2F;text&#x2F;plain,<?php system("cat fla*.php");?><br>可简写为：url+?c&#x3D;data:,<?php system("cat fla*.php");?></p>
+<p>filter伪协议</p>
+<p>system($c.” &gt;&#x2F;dev&#x2F;null 2&gt;&amp;1”);写入黑洞文件中，利用 命令一；ls来执行命令一<br>当$(())没有参数时。默认为0，0的取反为-1 web57</p>
+<p>—-2023.7.18  2:23 l1nk</p>
+<p>c&#x3D;$a&#x3D;opendir(“.&#x2F;“); while (($file &#x3D; readdir($a)) !&#x3D;&#x3D; false){echo $file . “”; };查看当前目录是否有东西<br>$s &#x3D; ob_get_contents();<br>这一句的作用是定义了一个s变量并把ob_get_contents()返回的输出缓冲区的内容赋值给了s<br>ob_end_clean();<br>这个函数的作用是以字符串格式返回当前输出缓冲区并关闭输出缓冲<br>echo preg_replace(“&#x2F;[0-9]|[a-z]&#x2F;i”,”?”,$s);<br>这一句话是把变量s，即缓冲区内容的所有的数字和字母替换成了为?<br>缓冲区的题目需要在正确命令后面执行exit（）；及时退出才能成功执行<br>PDO连数据库</p>
+<p>—-2023.7.18 16:34 l1nk</p>
+<p>字符拼接，学不了一点，先不学（web118-124）</p>
+<p>—-2023.7.19 17:34 l1nk</p>
+<h2 id="4-文件包含"><a href="#4-文件包含" class="headerlink" title="4.文件包含"></a>4.文件包含</h2><p>nginx原理和日志文件包含，在User-Agent里面写php代码，中间件php-fpm会解析，实现恶意代码。<br>默认路径url?file&#x3D;&#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log<br>过滤掉了.的话要用session执行（web82-86）</p>
+<h2 id="5-php"><a href="#5-php" class="headerlink" title="5.php"></a>5.php</h2><p>只检测数字的时候可以用数组绕过（web89）<br>m代表多行匹配（web91）<br>$num&#x3D;4476只匹配num是不是4476，可以用其他任何值绕过，包括4476的十六进制和八进制<br>intval（$num，0）&#x3D;4476表示匹配num的十进制值是否为4476</p>
+<p>干到web100了呜呜呜0.55了，做完几个条件竞争就去睡觉</p>
+<p>当开启session时，服务器会在临时目录下创建session文件来保存会话信息，文件名格式为sess_PHPSESSID。<br>一般开发的web服务会使用多线程接收用户的请求，而线程同步机制确保两个及以上的并发进程或线程不同时执行某些特定的程序段，依靠临界区，session的临界区就是临时目录。<br>如果没有应用好同步技术则会产生“竞争条件”问题。意外生成攻击者想要生成的文件，这样攻击者可以在该文件还未被删除的时间段内进行非法操作。<br>PHP_SESSION_UPLOAD_PROGRESS用于设置&#x2F;tmp目录下生成的sess_PHPSESSID文件的内容<br>使用python脚本进行多线程请求，生成sess_PHPSESSID文件，实现rce<br>脚本链接：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_46003360/article/details/119045296">https://blog.csdn.net/weixin_46003360/article/details/119045296</a>  （web82中）<br>—-2023.7.21 1:42 l1nk</p>
+<p>临时文件目录：&#x2F;tmp&#x2F;php??????</p>
+<h2 id="6-文件上传绕过"><a href="#6-文件上传绕过" class="headerlink" title="6.文件上传绕过"></a>6.文件上传绕过</h2><p>php替换为空，可以1.phphpp双写绕过得到1.php写入木马<br>00字符截断：123.php%00.jpg，后台以为是.jpg，文件上传的时候遇到%00就舍弃掉了后面的，以为是.php<br>iconv字符截断：utf-8字符集默认范围在0x00-0x7f，不在这个范围会报异常，后续字符不处理<br>123.php%df.jpg -&gt; 123.php<br>asp解析<br>基于nginx和php-fpm的错误配置：1.txt&#x2F;1.php如果1.php不存在会找前面的1.txt文件进行php解析（私教课43）<br>天呐我的脚本一直被删除（把系统的安全中心关了，安全软件全卸载了就行）<br>—-2023.7.21 21:44 l1nk</p>
+<p>apache多后缀解析漏洞：123.txt.ctf ctf后缀不认识，往前找到txt作为后缀，处理为123.txt<br>伪协议绕过：auto_append_file&#x3D;php:&#x2F;&#x2F;input<br>日志文件绕过：auto_append_file&#x3D;&#x2F;var&#x2F;log&#x2F;nginx&#x2F;access.log<br>—-2023.7.22 22:51 l1nk</p>
+<h2 id="7-sql注入"><a href="#7-sql注入" class="headerlink" title="7.sql注入"></a>7.sql注入</h2><p>sql注入，#和– （有个空格）为注释</p>
+<p>—-2023.7.24 21:51 l1nk</p>
+<p>盲注（工作量大）<br>报错注入，用updatexml；<br>见笔记（sql注入笔记day7）<br>—-2023.7.25 21:41 l1nk</p>
+<p>&#x2F;&#x2F;filesystemiterator遍历文件类<br>&#x2F;&#x2F;directoryItrerator遍历目录类<br>—-2023.7.28 14:23 l1nk</p>
+<p>is_file函数可以使用包装器伪协议来绕过，不影响file_get_contents highlight_file<br>is_file认为伪协议不是文件，highlight_file认为伪协议是文件<br>目录溢出会使is_file判断其不是文件，而highlight_file会正常识别<br>—-2023.7.31 22:00 l1nk</p>
+<p>sql注入完了，开始php反序列化<br>—-2023.8.2  13:02 l1nk</p>
+<h2 id="8-反序列化"><a href="#8-反序列化" class="headerlink" title="8.反序列化"></a>8.反序列化</h2><p>当用 &#x3D;&#x3D;&#x3D; 或 !&#x3D;&#x3D; 进行比较时则不进行类型转换，因为此时类型和数值都要比对。<br>$a &#x3D;&#x3D; $b 等于 TRUE，如果类型转换后 $a 等于 $b。<br>$a &#x3D;&#x3D;&#x3D; $b 全等 TRUE，如果 $a 等于 $b，并且它们的类型也相同。<br>$a !&#x3D; $b 不等 TRUE，如果类型转换后 $a 不等于 $b。 </p>
+<p>_()是一个函数<br>_()&#x3D;&#x3D;gettext() 是gettext()的拓展函数，开启text扩展。需要php扩展目录下有php_gettext.dll<br>dnslog怎么又没用，无语了<br>—-2023.8.2  17:58 l1nk</p>
+<p>反序列化，反不了一点<br>—-2023.8.9 20:41 l1nk</p>
+<p>__wakeup() &#x2F;&#x2F;执行unserialize()时，先会调用这个函数<br>__sleep() &#x2F;&#x2F;执行serialize()时，先会调用这个函数<br>__destruct() &#x2F;&#x2F;对象被销毁时触发，当一个对象不再被引用时,PHP会自动销毁该对象,并在销毁之前调用__destruct方法。<br>__call() &#x2F;&#x2F;在对象上下文中调用不可访问的方法时触发<br>__callStatic() &#x2F;&#x2F;在静态上下文中调用不可访问的方法时触发<br>__get() &#x2F;&#x2F;用于从不可访问的属性读取数据或者不存在这个键都会调用此方法<br>__set() &#x2F;&#x2F;用于将数据写入不可访问的属性<br>__isset() &#x2F;&#x2F;在不可访问的属性上调用isset()或empty()触发<br>__unset() &#x2F;&#x2F;在不可访问的属性上使用unset()时触发<br>__toString() &#x2F;&#x2F;把类当作字符串使用时触发<br>__invoke() &#x2F;&#x2F;当尝试将对象调用为函数时触发</p>
+<p>php版本：</p>
+<p>​ PHP5 &lt; 5.6.25</p>
+<p>​ PHP7 &lt; 7.0.10<br>序列化字符串中表示对象属性个数的值大于真实的属性个数时会跳过__wakeup的执行</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">test</span></span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$a</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-variable language_">$this</span>-&gt;a = <span class="hljs-string">&#x27;abc&#x27;</span>;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__wakeup</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-variable language_">$this</span>-&gt;a=<span class="hljs-string">&#x27;666&#x27;</span>;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span>  <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">echo</span> <span class="hljs-variable language_">$this</span>-&gt;a;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>如果执行unserialize(‘O:4:”test”:1:{s:1:”a”;s:3:”abc”;}’);输出结果为666</p>
+<p>而把对象属性个数的值增大，1-&gt;2执行unserialize(‘O:4:”test”:2:{s:1:”a”;s:3:”abc”;}’);输出结果为abc</p>
+<p>preg_match(‘&#x2F;^O:\d+&#x2F;‘)匹配序列化字符串是否是对象字符串开头<br>利用加号绕过（注意在url里传参时+要编码为%2B）</p>
+<p>利用引用</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs php"><span class="hljs-meta">&lt;?php</span><br><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">test</span></span>&#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$a</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-variable">$b</span>;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-variable language_">$this</span>-&gt;a = <span class="hljs-string">&#x27;abc&#x27;</span>;<br>        <span class="hljs-variable language_">$this</span>-&gt;b= &amp;<span class="hljs-variable language_">$this</span>-&gt;a;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span>  <span class="hljs-title">__destruct</span>(<span class="hljs-params"></span>)</span>&#123;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-variable language_">$this</span>-&gt;a===<span class="hljs-variable language_">$this</span>-&gt;b)&#123;<br>            <span class="hljs-keyword">echo</span> <span class="hljs-number">666</span>;<br>        &#125;<br>    &#125;<br>&#125;<br><span class="hljs-variable">$a</span> = <span class="hljs-title function_ invoke__">serialize</span>(<span class="hljs-keyword">new</span> <span class="hljs-title function_ invoke__">test</span>());<br></code></pre></td></tr></table></figure>
+<p>上面这个例子将$b设置为$a的引用，可以使$a永远与$b相等</p>
+<p>16进制绕过字符的过滤<br>O:4:”test”:2:{s:4:”%00*%00a”;s:3:”abc”;s:7:”%00test%00b”;s:3:”def”;}<br>可以写成<br>O:4:”test”:2:{S:4:”\00*\00\61”;s:3:”abc”;s:7:”%00test%00b”;s:3:”def”;}<br>表示字符类型的s大写时，会被当成16进制解析。</p>
+<p>反序列化的字符逃逸<br>过滤后字符变多：利用引号闭合和大括号闭合，舍弃掉原有的部分序列化后的结果<br>过滤后字符变少：前面少了一半，导致后面的字符被吃掉，从而执行了我们后面的代码<br>—-2023.8.11 20:19 l1nk</p>
+<p>pop链没看懂，和之前的字符拼接之后一起学。<br>—-2023.8.17 13:59 l1nk</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="category-chain-item">渗透测试</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/CTF/" class="print-no-link">#CTF</a>
+      
+        <a href="/tags/WEB/" class="print-no-link">#WEB</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>web笔记</div>
+      <div>https://lan041221.github.io/web笔记/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>l1nk</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年8月17日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/ISCC%E4%B8%80%E8%A1%80%E8%AE%B0%E5%BD%95/" title="ISCC一血记录">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">ISCC一血记录</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      赣ICP备2024040391号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=53011402000695"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>滇公网安备53011402000695号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>

@@ -1,0 +1,753 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/avatar.png">
+  <link rel="icon" href="/img/avatar.png">
+  
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="l1nk">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Linux提权">
+<meta property="og:type" content="article">
+<meta property="og:title" content="渗透（8）">
+<meta property="og:url" content="https://lan041221.github.io/8/index.html">
+<meta property="og:site_name" content="l1nk&#39;s blog">
+<meta property="og:description" content="Linux提权">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F8.1.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F8.2.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F8.3.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F8.5.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F8.6.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F8.7.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F8.8.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F8.9.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F8.10.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F8.11.png">
+<meta property="article:published_time" content="2024-09-09T12:38:35.000Z">
+<meta property="article:modified_time" content="2024-09-18T08:02:17.241Z">
+<meta property="article:author" content="l1nk">
+<meta property="article:tag" content="CTF">
+<meta property="article:tag" content="msf">
+<meta property="article:tag" content="Linux">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F8.1.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>渗透（8） - l1nk&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1749284_5i9bdhy70f8.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/c/font_1736178_k526ubmyhba.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"lan041221.github.io","root":"/","version":"1.9.8","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false},"umami":{"src":null,"website_id":null,"domains":null,"start_time":"2024-01-01T00:00:00.000Z","token":null,"api_server":null}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.3.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Home</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
+              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="渗透（8）"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-09-09 20:38" pubdate>
+          2024年9月9日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          1.2k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          10 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">渗透（8）</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="Linux提权合集"><a href="#Linux提权合集" class="headerlink" title="Linux提权合集"></a>Linux提权合集</h2><p><a target="_blank" rel="noopener" href="https://github.com/SecWiki/linux-kernel-exploits">https://github.com/SecWiki/linux-kernel-exploits</a><br>在kali的msf中可以用自带的模块进行提权</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs msf">search suggester#直接使用MSF自带的exp模块进行提权<br></code></pre></td></tr></table></figure>
+<h2 id="Linux-Suid提权"><a href="#Linux-Suid提权" class="headerlink" title="Linux Suid提权"></a>Linux Suid提权</h2><h3 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h3><p>suid：在Linux系统中，suid（set user ID upon execution）是一个特殊的权限位，它允许一个程序在执行时临时地以文件所有者的权限运行，而不是以执行该程序的用户权限运行。</p>
+<p><a target="_blank" rel="noopener" href="https://gtfobins.github.io/">https://gtfobins.github.io</a>   GTFOBins是 Unix 二进制文件的精选列表，可用于绕过配置错误的系统中的本地安全限制。</p>
+<p>注意：<br>1.只有可以执行的二进制程序文件设定SUID权限才可利用,非二进制文件设置SUI权限没任何意义<br>2.命令执行者要对该程序文件拥有执行(x)权限<br>3.SUID权限只在该程序执行过程中有效,也就是说身份改变只在程序执行过程中有效</p>
+<h3 id="具体操作"><a href="#具体操作" class="headerlink" title="具体操作"></a>具体操作</h3><p>如何设置Suid:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">chmod</span> u+s filename <span class="hljs-comment">#设置suid</span><br><span class="hljs-built_in">chmod</span> u‐s filename <span class="hljs-comment">#取消suid</span><br></code></pre></td></tr></table></figure>
+
+<p>查找具有Suid权限的文件:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">find / ‐perm ‐u=s ‐<span class="hljs-built_in">type</span> f 2&gt;/dev/null<br><span class="hljs-comment">#‐perm ‐u=s：查找具有suid权限的文件。</span><br><span class="hljs-comment">#‐type f：限制查找的类型为文件（不包括目录）。</span><br>find / ‐user root ‐perm ‐4000 ‐<span class="hljs-built_in">print</span> 2&gt;/dev/null <span class="hljs-comment">#查找属于Root用户的具有Suid权限的文件</span><br><span class="hljs-comment">#‐user root：查找属于root用户的文件。</span><br><span class="hljs-comment">#‐perm ‐4000：查找具有suid、sgid或sticky位的文件。</span><br></code></pre></td></tr></table></figure>
+
+<p>Find命令实现Suid提权：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs bash">find / ‐user root ‐perm ‐4000 ‐<span class="hljs-built_in">exec</span> <span class="hljs-built_in">ls</span> ‐ldb &#123;&#125; \; <span class="hljs-comment">#Find可以用来执行系统命令如果为find添加上suid特殊权限位，即可实现提权。</span><br><span class="hljs-built_in">chmod</span> u+s /usr/bin/find <span class="hljs-comment">#加上权限</span><br><span class="hljs-built_in">ls</span> ‐al /usr/bin/find <span class="hljs-comment">#查看find命令的权限</span><br></code></pre></td></tr></table></figure>
+<p><img src="/img/%E6%B8%97%E9%80%8F8.1.png" srcset="/img/loading.gif" lazyload alt="图片" title="查看find命令的权限，x变成s则可以实现提权"><br>接下来给find命令权限（此处需要root才能，所以意义不大还是要拿到root）：<br><img src="/img/%E6%B8%97%E9%80%8F8.2.png" srcset="/img/loading.gif" lazyload alt="图片" title="成功赋予find命令权限"></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">find google ‐<span class="hljs-built_in">exec</span> <span class="hljs-built_in">mkdir</span> /opt/test \; <span class="hljs-comment">#google可以是任何存在的文件，成功创建目录</span><br></code></pre></td></tr></table></figure>
+<p><img src="/img/%E6%B8%97%E9%80%8F8.3.png" srcset="/img/loading.gif" lazyload alt="图片" title="查看当前目录"></p>
+<h2 id="Linux-Sudo提权"><a href="#Linux-Sudo提权" class="headerlink" title="Linux Sudo提权"></a>Linux Sudo提权</h2><p>由于root账户密码的敏感性和root账号的无限制权限,一般会通过useradd创建一些普通用户, 只让他们拥有不完全的权限; 如有必要，再来申请执行一些root权限的指令。</p>
+<p>sudo命令的执行流程是: 当前用户转换到root, 然后以root身份执行命令, 执行完成后, 直接退回到当前用户。</p>
+<p>注意: 执行sudo时输入的密码, 是当前用户的密码, 并非root密码。</p>
+<p>ubuntu桌面版默认禁止root账号，自然也不会开启root账号的远程登录(ssh登录)。</p>
+<p>如果需要切换到root账号, 可以使用命令sudo ‐i, 然后输入自己的用户密码来从而切换成root身份。但如果使用命令su ‐ root来切换root身份就行不通，因为你输入的密码压根就不是root的密码。当然，你可以通过<code>sudo passwd root</code>修改root用户的密码从而解锁root用户,但这种方式并不被推荐。</p>
+<h2 id="Linux脏牛提权"><a href="#Linux脏牛提权" class="headerlink" title="Linux脏牛提权"></a>Linux脏牛提权</h2><p>脏牛漏洞(CVE‐2016–5195)，又叫Dirty COW，存在Linux内核中已经有长达9年<br>的时间，在2007年发布的Linux内核版本中就已经存在此漏洞，在2016年10月18后<br>才得以修复，因此影响范围很大。</p>
+<p>漏洞具体是由于get_user_page内核函数在处理Copy‐on‐Write的过程中，可能<br>产出竞态条件造成COW过程被破坏，导致出现写数据到进程地址空间内只读内存区<br>域的机会。</p>
+<p>修改su或者passwd程序就可以达到root的目的。</p>
+<h3 id="漏洞危害"><a href="#漏洞危害" class="headerlink" title="漏洞危害"></a>漏洞危害</h3><p>低权限用户利用脏牛漏洞可以在众多Linux系统上实现本地提权</p>
+<h3 id="影响范围"><a href="#影响范围" class="headerlink" title="影响范围"></a>影响范围</h3><p>内核版本低于以下版本也存在：<br>Centos7 &#x2F;RHEL7 3.10.0‐327.36.3.el7<br>Cetnos6&#x2F;RHEL6 2.6.32‐642.6.2.el6<br>Ubuntu 16.10 4.8.0‐26.28<br>Ubuntu 16.04 4.4.0‐45.66<br>Ubuntu 14.04 3.13.0‐100.147<br>Debian 8 3.16.36‐1+deb8u2<br>Debian 7 3.2.82‐1</p>
+<h3 id="漏洞实操"><a href="#漏洞实操" class="headerlink" title="漏洞实操"></a>漏洞实操</h3><p>首先需要一个低版本的Ubuntu：<br><img src="/img/%E6%B8%97%E9%80%8F8.5.png" srcset="/img/loading.gif" lazyload alt="图片" title="Ubuntu14.04"><br>首先在kali上面扫描网段里面存活的主机，这里发现192.168.56.137：<br><img src="/img/%E6%B8%97%E9%80%8F8.6.png" srcset="/img/loading.gif" lazyload alt="图片" title="网段中存活的主机"><br>接下来扫描主机开启的服务，发现了三个端口，逐一查看：<br><img src="/img/%E6%B8%97%E9%80%8F8.7.png" srcset="/img/loading.gif" lazyload alt="图片" title="注意设置端口的范围不然默认范围1-1000扫不到1898端口"><br>进入1898端口发现了可渗透界面：<br><img src="/img/%E6%B8%97%E9%80%8F8.8.png" srcset="/img/loading.gif" lazyload alt="图片" title="发现了lampiao网站发现是Drupal建站的"><br>可以看到msf中已经有了很多的drupal漏洞：<br><img src="/img/%E6%B8%97%E9%80%8F8.9.png" srcset="/img/loading.gif" lazyload alt="图片" title="msf搜索drupal"><br>利用msf进行攻击：<br><img src="/img/%E6%B8%97%E9%80%8F8.10.png" srcset="/img/loading.gif" lazyload alt="图片" title="msf成功攻击"><br>首先下载好脏牛漏洞的exp：<br>Exp项目地址：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/FireFart/dirtycow">https://github.com/FireFart/dirtycow</a> 需要gcc编译，会自动创建一个具备Root权限的新用户firefart</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/gbonacini/CVE%E2%80%902016%E2%80%905195">https://github.com/gbonacini/CVE‐2016‐5195</a> 需要make编译，会自动打开一个root shell</li>
+</ul>
+<p>这里利用upload上传exp到目标主机，然后利用python开启虚拟终端的环境：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs python">python -c <span class="hljs-string">&quot;import pty;pty.spawn(&#x27;/bin/bash&#x27;)&quot;</span> <span class="hljs-comment">#pty是伪终端工具</span><br></code></pre></td></tr></table></figure>
+
+<p>利用脏牛漏洞成功进入root：<br><img src="/img/%E6%B8%97%E9%80%8F8.11.png" srcset="/img/loading.gif" lazyload alt="图片" title="成功进入root，cat即可拿到flag"></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="category-chain-item">渗透测试</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/CTF/" class="print-no-link">#CTF</a>
+      
+        <a href="/tags/msf/" class="print-no-link">#msf</a>
+      
+        <a href="/tags/Linux/" class="print-no-link">#Linux</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>渗透（8）</div>
+      <div>https://lan041221.github.io/8/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>l1nk</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年9月9日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-cc-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/9/" title="渗透（9）">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">渗透（9）</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/7/" title="渗透（7）">
+                        <span class="hidden-mobile">渗透（7）</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+
+  
+
+</div>
+
+  
+  
+    <!-- 备案信息 ICP for China -->
+    <div class="beian">
+  <span>
+    <a href="http://beian.miit.gov.cn/" target="_blank" rel="nofollow noopener">
+      赣ICP备2024040391号
+    </a>
+  </span>
+  
+    
+      <span>
+        <a
+          href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=53011402000695"
+          rel="nofollow noopener"
+          class="beian-police"
+          target="_blank"
+        >
+          
+            <span style="visibility: hidden; width: 0">|</span>
+            <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          
+          <span>滇公网安备53011402000695号</span>
+        </a>
+      </span>
+    
+  
+</div>
+
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/5.0.0/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
