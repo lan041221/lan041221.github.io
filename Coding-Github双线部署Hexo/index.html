@@ -29,8 +29,13 @@
 <meta property="og:image" content="https://lan041221.github.io/img/coding1.png">
 <meta property="og:image" content="https://lan041221.github.io/img/coding2.png">
 <meta property="og:image" content="https://lan041221.github.io/img/coding3.png">
+<meta property="og:image" content="https://lan041221.github.io/img/Anaconda1.png">
+<meta property="og:image" content="https://lan041221.github.io/img/Anaconda2.png">
+<meta property="og:image" content="https://lan041221.github.io/img/Anaconda3.png">
+<meta property="og:image" content="https://lan041221.github.io/img/Anaconda4.png">
+<meta property="og:image" content="https://lan041221.github.io/img/Anaconda5.png">
 <meta property="article:published_time" content="2024-08-06T17:26:03.000Z">
-<meta property="article:modified_time" content="2024-09-01T03:07:34.740Z">
+<meta property="article:modified_time" content="2024-09-28T08:46:54.226Z">
 <meta property="article:author" content="l1nk">
 <meta property="article:tag" content="Coding">
 <meta property="article:tag" content="Github">
@@ -231,7 +236,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          432 字
+          744 字
         
       </span>
     
@@ -242,7 +247,7 @@
         
         
         
-          4 分钟
+          7 分钟
         
       </span>
     
@@ -288,6 +293,10 @@
 <h2 id="Coding部署博客"><a href="#Coding部署博客" class="headerlink" title="Coding部署博客"></a>Coding部署博客</h2><p>Coding作为腾讯出品的低配GitHub在我印象中也具有静态部署的功能，所以就打算双线部署加快一下在国内的访问速度。<br>在我配置的时候发现Coding在两年前关闭了免费的静态部署，需要在腾讯云中开启对象存储，查阅之前的官方文档看到可以静态部署博客：<br><img src="/img/coding1.png" srcset="/img/loading.gif" lazyload alt="图片" title="支持免费静态部署"><br>现在在coding上只有基于主机的持续部署<br><img src="/img/coding2.png" srcset="/img/loading.gif" lazyload alt="图片" title="主机部署"><br>后来发现官方已经关闭了这个业务，腾讯云不想我们白嫖<br><img src="/img/coding3.png" srcset="/img/loading.gif" lazyload alt="图片" title="关闭网站托管"><br>现在需要购买存储桶了，这样也会比服务器便宜很多：<br><a target="_blank" rel="noopener" href="https://coding.net/help/docs/ci/practice/cloud-storage.html">官方文档</a></p>
 <h2 id="全局config配置"><a href="#全局config配置" class="headerlink" title="全局config配置"></a>全局config配置</h2><p>在网络上查阅了各种资料发现都不能使用hexo d的时候同时成功更新两个仓库，所以就自己看官方文档尝试了一下这种写法，发现是正确的！<br>要注意的是分支，之前的Github部署博客网络上的教程和现版本不同，之前的默认分支名称是”master”,现在将其更改为”main”。</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs config">deploy:<br>- type: git<br>  repo:<br>    github: https://github.com/lan041221/lan041221.github.io.git,main<br>    coding: git@e.coding.net:g-knec4969/l1nk/l1nk.git,master<br></code></pre></td></tr></table></figure>
+
+<h1 id="结论"><a href="#结论" class="headerlink" title="结论"></a>结论</h1><p>一个做项目时的小tip，现在的Anaconda安装需要接受他发的垃圾邮件才能得到下载地址，直接点进结论中下载地址下载就可以跳过了，<a target="_blank" rel="noopener" href="https://www.anaconda.com/download/success">Anaconda下载地址</a> </p>
+<h1 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h1><p>近期需要参加CISCN的作品赛国赛，台式放宿舍了，笔记本上重新配了一遍环境，在我下载<a target="_blank" rel="noopener" href="https://www.anaconda.com/">Anaconda</a>的时候发现他已经偷偷更新了，不能直接地进行下载，需要点来点去的 。<br><img src="/img/Anaconda1.png" srcset="/img/loading.gif" lazyload alt="图片" title="点击Free Download"><br>在这里的话就需要填写个邮箱去获取Anaconda给你发的“相关资讯、产品、服务”，说白了就是官方需要你<strong>提供个邮箱接受垃圾邮件</strong>,非常恶心，只有点了下面的框中的同意才能给你下载地址。<br><img src="/img/Anaconda2.png" srcset="/img/loading.gif" lazyload alt="图片" title="填写邮箱获取下载链接"><br>输入完成了之后就会进入到上面提到的下载地址中。<br><img src="/img/Anaconda3.png" srcset="/img/loading.gif" lazyload alt="图片" title="毫无意义地跳转到下载"><br>下载之后在安装过程中需要特别注意勾选Install for <strong>Just Me</strong>,不能选ALL Users。选了ALL Users的话创建虚拟环境的时候不会在安装Anaconda的目录env文件下创建，而会在C盘中创建 <strong>.conda</strong>的文件然后在里面安装创建的虚拟环境。<br><img src="/img/Anaconda4.png" srcset="/img/loading.gif" lazyload alt="图片" title="全点Next即可"><br>创建好虚拟环境后，使用 <code>conda env list</code> 查看环境。<br><img src="/img/Anaconda5.png" srcset="/img/loading.gif" lazyload alt="图片" title="创建虚拟环境后正确的结果"></p>
+
                 
               </div>
             
