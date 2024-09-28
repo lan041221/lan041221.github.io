@@ -39,8 +39,14 @@
 <meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F9.11.png">
 <meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F9.12.png">
 <meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F9.13.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F10.1.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F10.2.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F10.3.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F10.4.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F10.5.png">
+<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F11.1.png">
 <meta property="article:published_time" content="2024-09-10T12:38:35.000Z">
-<meta property="article:modified_time" content="2024-09-18T11:58:45.263Z">
+<meta property="article:modified_time" content="2024-09-28T08:44:57.955Z">
 <meta property="article:author" content="l1nk">
 <meta property="article:tag" content="CTF">
 <meta property="article:tag" content="Cobalt Strike">
@@ -241,7 +247,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          966 字
+          4.6k 字
         
       </span>
     
@@ -252,7 +258,7 @@
         
         
         
-          9 分钟
+          39 分钟
         
       </span>
     
@@ -318,6 +324,76 @@
 <p>它们二者的区别和关系是：<br>Stager Payload（分阶段）是一个小程序，通常是手工优化的汇编程序，它下载 Stage(Stageless) Payload（无阶段），将其注入内存，并将执行传递给它，此过程称为分阶段式。很多攻击中对于能加载进内存并在成功漏洞利用后执行的数据大小存在严格限制。这会极大地限制你的后渗透选择，除非你分阶段传送你的后渗透 payload。</p>
 <p>在cs中创建完监听器后，我们想生成windows exe后门程序。可以看到能生成两种windows可执行程序，其分别代表staging分阶段的paylod和unstage(stageless)不分阶段的payload。</p>
 <p><img src="/img/%E6%B8%97%E9%80%8F9.6.png" srcset="/img/loading.gif" lazyload alt="图片" title="产生后门文件，不带s的"><br>接下来让目标主机点击后门文件：<br><img src="/img/%E6%B8%97%E9%80%8F9.7.png" srcset="/img/loading.gif" lazyload alt="图片" title="成功上线后门主机"><br>查看拓扑图：<br><img src="/img/%E6%B8%97%E9%80%8F9.8.png" srcset="/img/loading.gif" lazyload alt="图片" title="查看CS架构渗透的拓扑图"><br>接下来可以利用CS自带的提权进行操作试试，可以看到一开始是不能hashdump的：<br><img src="/img/%E6%B8%97%E9%80%8F9.9.png" srcset="/img/loading.gif" lazyload alt="图片" title="进行提权操作"><br>成功拿到了Administrator的权限<br><img src="/img/%E6%B8%97%E9%80%8F9.10.png" srcset="/img/loading.gif" lazyload alt="图片" title="拿到了Administrator，接下来拿system"><br>一键提权成功拿到了system并hashdump查看密码成功：<br><img src="/img/%E6%B8%97%E9%80%8F9.11.png" srcset="/img/loading.gif" lazyload alt="图片" title="成功查看密码"><br>接下来就可以查看目标主机的各种东西咯，因为有了system权限：<br><img src="/img/%E6%B8%97%E9%80%8F9.12.png" srcset="/img/loading.gif" lazyload alt="图片" title="查看目标主机的文件列表"><br><img src="/img/%E6%B8%97%E9%80%8F9.13.png" srcset="/img/loading.gif" lazyload alt="图片" title="这就是两个攻击的进程"><br>还可以查看键盘映射、进行进程注入、与MSF进行联动等等~</p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>内网渗透阶段，攻击者利用MSF获取meterpreter或者CS获取bacon之后，首先就是要获取凭证或NTLM hash值。然而获取到hash值然后破解hash难度很高，难以利用，故诞生了PTH，即获取了目标机器用户的NTLM Hash的情况下，可无需破解哈希直接使用目标的NTLM hash来完成身份验证。从红队视角看，PTH攻击（哈希传递攻击）只是windows横向渗透的开始。</p>
+<h2 id="Windows密码凭证"><a href="#Windows密码凭证" class="headerlink" title="Windows密码凭证"></a>Windows密码凭证</h2><p>windows系统使用两种方法对用户输入的密码进行加密处理：LM Hash以及NTLM Hash。</p>
+<p>LM Hash是windows最早使用的加密算法，其本质是DES加密，LM Hash算法较为脆弱。微软后期引入NTLM Hash，其本质是MD4 加密。操作系统密码转换为十六进制，经过Unicode转换后，再调用MD4加密算法加密，这个加密结果的十六进制就是NTLM Hash。个人版在Vista之后，服务版在windows 2003 之后windows系统认证均采用NTLM Hash加密。</p>
+<p>windows系统中密码凭证通常由LM Hash以及NTLM Hash两部分组成，结构如下：</p>
+<ul>
+<li>用户名称:RID:LM‐HASH值:NT‐HASH值</li>
+</ul>
+<p>在域环境中，密码凭证存储在%SystemRoot%ntds\ntds.dilt路径下的ntds.dit二进制文件中。在工作组环境下，用户的密码凭证被存储在%SystemRoot%\system32\config\sam路径下的SAM文件中。在渗透测试中获取windows密码凭证可以利用mimikatz，Pwddump7，WCE,注册表以及MSF、CS框架模块等获取。</p>
+<h3 id="NTLM-HASH生成原理"><a href="#NTLM-HASH生成原理" class="headerlink" title="NTLM-HASH生成原理"></a>NTLM-HASH生成原理</h3><p>假设用户密码为： 123456</p>
+<ol>
+<li><p>首先将密码字符串转化为十进制ASCII字符串<br>字 符：1 2 3 4 5 6<br>ASCII：49 50 51 52 53 54</p>
+</li>
+<li><p>十进制ASCII字符串再转换为十六进制字符串<br>十 进 制：49 50 51 52 53 54<br>十六进制：31 32 33 34 35 36</p>
+</li>
+<li><p>十六进制字符串再转化为Unicode字符串<br>31 32 33 34 35 36 ‐&gt; 310032003300340035003600</p>
+</li>
+<li><p>使用MD4摘要算法对Unicode字符串进行Hash计算<br>310032003300340035003600 ‐&gt; 32ed87bdb5fdc5e9cba88547376818d4</p>
+</li>
+<li><p>产生一个16字节的值，即NTLM‐HASH<br>32ed87bdb5fdc5e9cba88547376818d4</p>
+</li>
+</ol>
+<h2 id="Windows认证与NTLM协议"><a href="#Windows认证与NTLM协议" class="headerlink" title="Windows认证与NTLM协议"></a>Windows认证与NTLM协议</h2><p>windows认证包括三种方式：</p>
+<p>1 本地认证：用户直接操作计算机登陆账户（本地直接登录）<br>2 网络认证：远程连接到工作组中的某个设备 （使用RDP远程登录某台服务器，或访问域环境中的共享资源）<br>3 域认证：登陆到域环境中的某个设备（Kerberos协议）</p>
+<h3 id="本地认证流程"><a href="#本地认证流程" class="headerlink" title="本地认证流程"></a>本地认证流程</h3><p>windows登录进程（winlogon.exe）接收用户输入的密码，接收用户的输入信息后，将密码交给lsass.exe进程，这个过程中会存一份明文密码，将明文密码加密成NTLM Hash，与SAM数据库中该用户的Hash值进行比对，匹配则登陆成功，不匹配则登陆失败</p>
+<h3 id="网络认证"><a href="#网络认证" class="headerlink" title="网络认证"></a>网络认证</h3><p>我们使用需要使用到NTLM协议。NTLM是一种网络认证协议，它是基于挑战（Challenge）&#x2F;响应（Response）认证机制的一种认证模式。这个协议只支持Windows。<br>NTLM在工作组环境的认证<br>在认证过程中会发送以下三种类型的消息：</p>
+<ul>
+<li>TYPE 1 协商：双方确定传输协议的版本、明文用户名。</li>
+<li>TYPE 2 质询：生成Challenge</li>
+<li>TYPE 3 身份验证：发送Response</li>
+</ul>
+<p>工作组中：<br><img src="/img/%E6%B8%97%E9%80%8F10.1.png" srcset="/img/loading.gif" lazyload alt="图片" title="工作组认证流程"><br>协商：当客户端要访问服务器上某个受保护的服务时，需要输入服务器的用户名和密码进行验证。此时客户端会在本地缓存一份服务器密码的NTLM hash，然后向服务器发送协商消息（主要用于确认双方协议版本，在NTLM 认证中， NTLM 响应分为NTLM v1 ， NTLMv2 ， NTLM session v2 三种协议，不同协议使用不同格式的Challenge 和加密算法）。</p>
+<p>质询：服务器收到客户端的协商信息后，生成并回复质询消息。该消息中包含了一个由服务端生成的16位随机值challenge，服务器也会在本地缓存该值。客户端收到质询消息后，会使用步骤1中缓存的服务器的NTLM hash对Challenge进行加密生成Response，接着将身份验证消息中发往服务器。</p>
+<p>验证：服务器在收到身份验证消息后，会使用该用户所对应的NTLM hash对Challenge进行加密生成Response2，并比较Response2与Response是否一致。如果一致，就证明客户端掌握了服务器的密码，认证成功，否则认证失败。</p>
+<h3 id="域环境下NTLM认证"><a href="#域环境下NTLM认证" class="headerlink" title="域环境下NTLM认证"></a>域环境下NTLM认证</h3><p><img src="/img/%E6%B8%97%E9%80%8F10.2.png" srcset="/img/loading.gif" lazyload alt="图片" title="域环境认证流程"><br>在域环境中，由于所有域用户的哈希值都 存储在域控制器的NTDS.dit中，服务器本身无法计算Response消息，因此需要与域控建立一个安全通道，并通过域控完成最后的认证流程。前三个步骤同工作组环境的认证</p>
+<p>4、服务器收到客户端发来的TYPE 3消息后，会将消息通过 Netlogon协议转发给域控制器。</p>
+<p>5、域控制器根据TYPE 3消息中的用户名获取该用户名的NTLM hash，用NTLM hash对原始的Challenge进行加密并生成Response，然后将其与TYPE 3消息中Response对比。如果一致，就证明客户端掌握了服务器密码，认证成功，否则认证失败。</p>
+<p>6、服务器根据域控返回的验证结果，对客户端进行相应的回复。</p>
+<h2 id="PTH原理及利用"><a href="#PTH原理及利用" class="headerlink" title="PTH原理及利用"></a>PTH原理及利用</h2><p>NTLM Hash登录时需要challenge，而在NTLM协议的质询流程中，服务器端会将challenge发送给客户端（用户），使得我们无需构造challenge，所以只需要获取用户名和NTLM Hash即可通过验证。</p>
+<p>PTH攻击可以分为两步：</p>
+<h3 id="NTLM-Hash获取"><a href="#NTLM-Hash获取" class="headerlink" title="NTLM-Hash获取"></a>NTLM-Hash获取</h3><p>成功入侵了一台机器后，可获取受害主机或与受害主机处于同一网络的机器Hash值，在渗透测试中获取windows密码凭证可以利用mimikatz，Pwddump7，WCE,导出注册表以及MSF、CS框架模块等获取，在此不作过多描述。</p>
+<h3 id="利用Hash完成攻击"><a href="#利用Hash完成攻击" class="headerlink" title="利用Hash完成攻击"></a>利用Hash完成攻击</h3><p>在认证的时候，我们直接提供hash值，不用提供明文密码，windows就会与保存的hash值对比，通过认证。PTH攻击常用于SMB，PsExec，WMI，RPC，RDP等各种协议登录绕过</p>
+<p>这里使用psexec进行权限维持</p>
+<p>msf里面的这个psexec这个模块跟powershell原生模块的区别。我们知道powershell是在2008及以上的系统才有，在2008及以上的系统使用原生powershell免杀效果是要比msf里psexec生成的payload要好的。但是在2003及以下的版本是不自带powershell的，那么在这种情况下我们就只能使用msf的psexec生成的exe进行横向移动</p>
+<p><img src="/img/%E6%B8%97%E9%80%8F10.3.png" srcset="/img/loading.gif" lazyload alt="图片" title="通过hash和psexec进行权限维持"></p>
+<p>除此之外还可以通过mimikatz进行权限提升，也可以在线读取lsass进程,获取明文密码<br><img src="/img/%E6%B8%97%E9%80%8F10.4.png" srcset="/img/loading.gif" lazyload alt="图片" title="通过mimikatz权限维持"></p>
+<p>在Windows12R2之后，系统的lsass进程将不会在将明文保存在内存中，如此，使用mimikatz就无法直接从内存中读取密码了，先拿到目标系统的system权限，修改注册表然后重启再读取</p>
+<p>或者使用pwdump工具来获取密码Hash</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/Seabreg/pwdump">https://github.com/Seabreg/pwdump</a></li>
+</ul>
+<p>pwdump7.exe 也可以直接拿到NTLM Hash值<br><img src="/img/%E6%B8%97%E9%80%8F10.5.png" srcset="/img/loading.gif" lazyload alt="图片" title="通过pwdump权限维持"></p>
+<p>本来还想写一下横向移动但是之前已经讲了很多提权的方法了，横向移动无非多一步扫描网段内的主机然后再进行操作，就不讲啦，之后是域渗透</p>
+<h2 id="域的概念"><a href="#域的概念" class="headerlink" title="域的概念"></a>域的概念</h2><p>域(Domain)是Windows网络中独立运行的单位，域之间相互访问则需要建立信任关系。信任关系是连接在域与域之间的桥梁。当一个域与其他域建立了信任关系后，2个域之间不但可以按需要相互进行管理，还可以跨网分配文件和打印机等设备资源，使不同的域之间实现网络资源的共享与管理，以及相互通信和数据传输。</p>
+<p>域既是 Windows 网络操作系统的逻辑组织单元，也是Internet的逻辑组织单元，在 Windows 网络操作系统中，域是安全边界。</p>
+<p>域管理员只能管理域的内部，除非其他的域显式地赋予他管理权限，他才能够访问或者管理其他的域，每个域都有自己的安全策略，以及它与其他域的安全信任关系。当企业网络中计算机和用户数量较多时，为了实现高效管理，就需要windows域。</p>
+<h2 id="域的原理"><a href="#域的原理" class="headerlink" title="域的原理"></a>域的原理</h2><p>在工作组上你一切的设置在本机上进行，包括各种策略，用户登录也是登录在本机的，放在本机的数据库来验证的。而如果你的计算机密码是加入域的话，各种策略是域控制器统一设定，用户名和密码也是放到域控制器去验证，也就是说使用你的账号密码可以在同一域的任何一台计算机登录。</p>
+<p>域控制器中包含了由这个域的账户、密码、属于这个域的计算机等信息构成的数据库。当电脑联入网络时，域控制器首先要鉴别这台电脑是否是属于这个域的，用户使用的登录账号是否存在、密码是否正确。如果以上信息有一样不正确，那么域控制器就会拒绝这个用户从这台电脑登录。不能登录，用户就不能访问服务器上有权限保护的资源，他只能以对等网用户的方式访问Windows共享出来的资源，这样就在一定程度上保护了网络上的资源。</p>
+<h2 id="域和组的区别"><a href="#域和组的区别" class="headerlink" title="域和组的区别"></a>域和组的区别</h2><p>工作组和域的区别为：创建方式不同、安全机制不同、登录方式不同。</p>
+<ul>
+<li>创建方式不同<br>1、工作组：工作组可以由任何一个计算机的主人来创建。<br>2、域：域只能由服务器来创建。</li>
+<li>安全机制不同<br>1、工作组：在”工作组”中不存在组帐号，只有本机上的帐号和密码。<br>2、域：在”域”中有可以登录该域的帐号，这些由域管理员来建立。</li>
+<li>登录方式不同<br>1、工作组：在工作组方式下，计算机启动后自动就在工作组中。<br>2、域：登录”域”是要提交”域用户名”和”密码”，一旦登录，便被赋予相应的权限。</li>
+</ul>
+<h2 id="相关名词解释"><a href="#相关名词解释" class="headerlink" title="相关名词解释"></a>相关名词解释</h2><h3 id="DC"><a href="#DC" class="headerlink" title="DC"></a>DC</h3><p>在“域”模式下，至少有一台服务器负责每一台联入网络的电脑和用户的验证工作，相当于一个单位的门卫一样，称为“域控制器（Domain Controller，简写为DC）”。 域控制器中包含了由这个域的账户、密码、属于这个域的计算机等信息构成的数据库。域控是活动目录的存储地方，也就是说活动目录存储在域控制器内。安装了活动目录的计算机就称为域控制器，其实在你第一次安装活动目录的时候，你安装活动目录的那台计算机就成为了域控制器。一个域可以有一台或多台域控制器。最经典的做法是做一个主辅域控。</p>
+<h3 id="AD"><a href="#AD" class="headerlink" title="AD"></a>AD</h3><p>活动目录是微软Windows Server中，负责架构中大型网路环境的集中式目录管理服务（DirectoryServices）。目录服务在微软平台上从Windows Server 2000开始引入，所以我们可以理解为活动目录是目录服务在微软平台的一种实现方式。当然目录服务在非微软平台上都有相应的实现。Windows Server 2008的域环境与工作组环境最大的不同是，域内所有的计算机共享一个集中式的目录数据库（又称为活动目录数据库），它包含着整个域内的对象（用户账户、计算机账户、打印机、共享文件等）和安全信息等等，而活动目录负责目录数据库的添加，修改，更新和删除。所以我们要在Windows Server 2008上实现域环境，其实就是要安装活动目录。活动目录为我们实现了目录服务，提供对企业网络环境的集中式管理。比如在域环境中，只需要在活动目录中创建一次Jerry账户，那么就可以在任意200台电脑中的一台上登录Jerry，如果要为Jerry账户更改密码，只需要在活动目录中更改一次就可以了，也就是说域用户信息保存在活动目录中。</p>
+<h3 id="组织单元"><a href="#组织单元" class="headerlink" title="组织单元"></a>组织单元</h3><p>组织单元（OU）是一种容器，它里面可以包含对象（用户账户，计算机账户等），也可以包含其他的组织单元（OU）。<br><img src="/img/%E6%B8%97%E9%80%8F11.1.png" srcset="/img/loading.gif" lazyload alt="图片" title="组织单元"></p>
+<h3 id="域"><a href="#域" class="headerlink" title="域"></a>域</h3><p>域是在Windows NT&#x2F;2000&#x2F;2003网络环境中组建客户机&#x2F;服务器网络的实现方式。所谓域,是由网络管理员定义的一组计算机集合,实际上就是一个网络。在这个网络中,至少有一台称为域控制器的计算机,充当服务器角色。在域控制器中保存着整个网络的用户账号及目录数据库,即活动目录。构建域后,管理员可以对整个网络实施集中控制和管理。</p>
+<h3 id="域树"><a href="#域树" class="headerlink" title="域树"></a>域树</h3><p>当需要配置一个包含多个域的网络时,应该将网络配置成域目录树结构。域目录树是一种树型结构。在整个域目录树中,所有域共享同一个活动目录,即整个域目录树中只有一个活动目录。在配置一个较大规模的企业网络时,可以配置为域目录树结构,比如将企业总部的网络配置为根域,各分支机构的网络配置为子域,整体上形成一个域目录树,以实现集中管理。</p>
+<h3 id="SPN"><a href="#SPN" class="headerlink" title="SPN"></a>SPN</h3><p>服务主体名称(SPN)是服务实例，可以理解为一个服务，比如mssql,http等等的唯一标识符。<br>如果在整个林或域中的计算机上安装多个服务实例，则每个实例都必须具有自己的 SPN，Kerberos 身份验证使用 SPN 将服务实例与服务登录帐户相关联。</p>
+<p>个人觉得现在基本也没有用Windows去搭服务器的牛人了，所以暂时就先不进行具体的实操记录，需要环境的可以私聊我~</p>
 
                 
               </div>
