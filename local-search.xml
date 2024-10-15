@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>jsfuzz调研</title>
+    <link href="/jsfuzz%E8%B0%83%E7%A0%94/"/>
+    <url>/jsfuzz%E8%B0%83%E7%A0%94/</url>
+    
+    <content type="html"><![CDATA[<h2 id="Baseline"><a href="#Baseline" class="headerlink" title="Baseline"></a>Baseline</h2><p><strong>Montage</strong></p><p><a href="https://www.usenix.org/conference/usenixsecurity20/presentation/lee-suyoung">https://www.usenix.org/conference/usenixsecurity20/presentation/lee-suyoung</a></p><p>USENIX 2020</p><h3 id="所用技术"><a href="#所用技术" class="headerlink" title="所用技术"></a>所用技术</h3><p>首先是JS文件变成AST（抽象语法树）第二个阶段是将抽象语法树输入到LSTM模型进行训练，最后一个阶段就算生成JS测试样例<br><img src="/img/js%E8%B0%83%E7%A0%940.png" alt="图片" title="montage工作流程"></p><h3 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h3><p>第一个用于查找 JS 引擎漏洞的语言模型引导的模糊测试器。我们技术的关键方面是将 JS 抽象语法树 （AST） 转换为可以直接训练主流 NLML 的 AST 子树序列。实验证明了 Montage 能够生成有效的 JS 测试，并表明它在查找漏洞方面优于以前的研究，第一个用语言模型生成测试样例</p><h2 id="sota"><a href="#sota" class="headerlink" title="sota"></a>sota</h2><p><strong>CovRL-Fuzz</strong></p><p><a href="https://doi.org/10.1145/3650212.3680389">https://doi.org/10.1145/3650212.3680389</a></p><p>ISSTA 2024: Proceedings of the 33rd ACM SIGSOFT International Symposium on Software Testing and Analysis</p><p>语言模型的上下文突变模糊是有前途的，但缺乏必要的覆盖率指导，论文提出了一种称为CovRL（覆盖引导强化学习）的新技术，该技术将大语言模型（LLM）与覆盖反馈的强化学习（RL）相结合。通过利用术语频率-逆文档频率 （TF-IDF） 方法构建加权覆盖率图，将覆盖率反馈直接集成到 LLM 中。</p><h3 id="所用技术-1"><a href="#所用技术-1" class="headerlink" title="所用技术"></a>所用技术</h3><p>覆盖引导的模糊测试：覆盖引导是一种常见的策略，即基于程序覆盖率来指导测试用例的生成和选择，以确保更多的代码路径被测试到。 它提高了测试的有效性，帮助识别更多潜在的漏洞。</p><p>强化学习：该论文中使用强化学习算法来自动调整和优化模糊测试的策略。 强化学习是一种机器学习方法，代理通过与环境交互，不断学习最优策略，最大化某种奖励（在这个场景中，可能是探索新的代码路径或发现错误）。</p><p>基于LLM的变异技术：大型语言模型（LLM）在生成和理解语言方面表现出色。 在这篇论文中，LLM被用于生成和修改输入数据，使得模糊测试更有针对性，可以生成更复杂和有潜在漏洞的输入。<br><img src="/img/js%E8%B0%83%E7%A0%941.png" alt="图片" title="CovRLfuzz工作流程"></p><h3 id="核心-1"><a href="#核心-1" class="headerlink" title="核心"></a>核心</h3><p>将覆盖率引导的反馈直接集成到基于LLM的变异过程中</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>渗透（5）</title>
     <link href="/9/"/>
     <url>/9/</url>
@@ -82,9 +95,9 @@
       
       <tag>CTF</tag>
       
-      <tag>msf</tag>
-      
       <tag>ms17-010</tag>
+      
+      <tag>msf</tag>
       
       <tag>漏洞复现</tag>
       
