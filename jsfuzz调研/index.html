@@ -19,18 +19,18 @@
   <meta name="author" content="l1nk">
   <meta name="keywords" content="">
   
-    <meta name="description" content="论文仓库https:&#x2F;&#x2F;github.com&#x2F;wcventure&#x2F;FuzzingPaper 与AI结合Montagehttps:&#x2F;&#x2F;www.usenix.org&#x2F;conference&#x2F;usenixsecurity20&#x2F;presentation&#x2F;lee-suyoung USENIX 2020 所用技术首先是JS文件变成AST（抽象语法树）第二个阶段是将抽象语法树输入到LSTM模型进行训练，最后一个阶">
+    <meta name="description" content="js的简单调研">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jsfuzz调研">
 <meta property="og:url" content="https://lan041221.github.io/jsfuzz%E8%B0%83%E7%A0%94/index.html">
 <meta property="og:site_name" content="l1nk&#39;s blog">
-<meta property="og:description" content="论文仓库https:&#x2F;&#x2F;github.com&#x2F;wcventure&#x2F;FuzzingPaper 与AI结合Montagehttps:&#x2F;&#x2F;www.usenix.org&#x2F;conference&#x2F;usenixsecurity20&#x2F;presentation&#x2F;lee-suyoung USENIX 2020 所用技术首先是JS文件变成AST（抽象语法树）第二个阶段是将抽象语法树输入到LSTM模型进行训练，最后一个阶">
+<meta property="og:description" content="js的简单调研">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://lan041221.github.io/img/js%E8%B0%83%E7%A0%940.png">
 <meta property="og:image" content="https://lan041221.github.io/img/js%E8%B0%83%E7%A0%941.png">
 <meta property="og:image" content="https://lan041221.github.io/img/js%E8%B0%83%E7%A0%942.png">
 <meta property="article:published_time" content="2024-10-15T11:42:58.420Z">
-<meta property="article:modified_time" content="2024-10-15T13:55:53.114Z">
+<meta property="article:modified_time" content="2024-10-18T11:18:25.057Z">
 <meta property="article:author" content="l1nk">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://lan041221.github.io/img/js%E8%B0%83%E7%A0%940.png">
@@ -228,7 +228,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          911 字
+          1.6k 字
         
       </span>
     
@@ -239,7 +239,7 @@
         
         
         
-          8 分钟
+          14 分钟
         
       </span>
     
@@ -306,6 +306,36 @@
 <p>探索优化路径覆盖</p>
 <p>利用一个优化主干路径度量近似的优化路径覆盖，并使用它作为一个反馈，以指导种子保存和种子调度的模糊过程。</p>
 <p><img src="/img/js%E8%B0%83%E7%A0%942.png" srcset="/img/loading.gif" lazyload alt="图片" title="JIT编译器工作流程"></p>
+<h1 id="idea"><a href="#idea" class="headerlink" title="idea"></a>idea</h1><p><strong>利用RAG辅助大模型生成fuzzing测试样例从而对引擎进行漏洞的挖掘</strong></p>
+<p>RAG——Retrieval Augmented Generation，检索增强生成。核心思想是，生成模型不依赖于仅存储在内部参数中的信息，而是通过检索外部知识库或数据库来增强生成过程，从而提供更准确和信息丰富的答案。</p>
+<p>所以依据RAG能提高生成的测试样例的质量，从而提升覆盖率等等指标，效果会更好。</p>
+<p>RAG目前的应用：<br><a target="_blank" rel="noopener" href="https://github.com/PKU-DAIR/RAG-Survey">https://github.com/PKU-DAIR/RAG-Survey</a></p>
+<p>java fuzzing相关数据集：</p>
+<p>具有 PoC 的 JavaScript 引擎 CVE 的数据集：<a target="_blank" rel="noopener" href="https://github.com/tunz/js-vuln-db">https://github.com/tunz/js-vuln-db</a><br>官方 ECMAScript 一致性测试套件：<a target="_blank" rel="noopener" href="https://github.com/tc39/test262">https://github.com/tc39/test262</a><br>来自 ChakraCore、SpiderMonkey、V8、JavaScriptCore 和 Test262 存储库的 JS 测试套件集合：<a target="_blank" rel="noopener" href="https://github.com/WSP-LAB/js-test-suite?tab=readme-ov-file">https://github.com/WSP-LAB/js-test-suite?tab=readme-ov-file</a></p>
+<p>具体实现：</p>
+<ol>
+<li>构建知识库（Corpus）</li>
+</ol>
+<p>首先，构建一个与待测程序相关的知识库或数据集。这些数据可以包括：</p>
+<pre><code class="hljs">现有的测试样例（覆盖的路径、触发的漏洞等）。
+程序的源代码或汇编代码片段，尤其是带有注释的部分，帮助语言模型理解代码逻辑。
+代码的控制流图、数据流图，帮助模型推理哪些路径未被充分测试。
+历史测试过程中生成的代码覆盖率报告，用于分析哪些部分尚未覆盖或覆盖率较低。
+</code></pre>
+<ol start="2">
+<li>构建检索模型</li>
+</ol>
+<p>构建一个基于向量检索的系统，用于从知识库中检索与目标程序相关的测试信息和代码部分。这一步的关键是选择合适的检索模型来帮助生成过程：</p>
+<pre><code class="hljs">使用双编码器（Dual Encoder）：如 BERT、DPR（Dense Passage Retrieval），将程序代码和相关数据向量化，基于输入查询找
+到最相关的测试片段或代码。
+检索与输入相关的未覆盖代码路径：基于代码的特征、函数调用栈或控制流图，从知识库中检索出尚未充分测试的路径信息，帮助生
+成新的输入样例。
+</code></pre>
+<ol start="3">
+<li>生成高覆盖率的Fuzzing测试样例<br>使用语言模型生成Fuzzing测试样例，这一步中，可以结合检索到的未覆盖路径或特定的代码片段进行指导生成。（基于覆盖率的反馈循环）</li>
+</ol>
+<h1 id="存在的问题："><a href="#存在的问题：" class="headerlink" title="存在的问题："></a>存在的问题：</h1><h2 id="如何实现RAG"><a href="#如何实现RAG" class="headerlink" title="如何实现RAG"></a>如何实现RAG</h2><p>利用langchain：<a target="_blank" rel="noopener" href="https://github.com/blackinkkkxi/RAG_langchain">https://github.com/blackinkkkxi/RAG_langchain</a><br>官方文档：<a target="_blank" rel="noopener" href="https://langchain-fanyi.readthedocs.io/en/latest/modules/indexes/document_loaders.html">https://langchain-fanyi.readthedocs.io/en/latest/modules/indexes/document_loaders.html</a></p>
+<h2 id="大模型如何学习js程序"><a href="#大模型如何学习js程序" class="headerlink" title="大模型如何学习js程序"></a>大模型如何学习js程序</h2><p>转化为json格式，Montage论文中的预处理：<a target="_blank" rel="noopener" href="https://github.com/WSP-LAB/Montage/tree/master/src/preprocess">https://github.com/WSP-LAB/Montage/tree/master/src/preprocess</a></p>
 
                 
               </div>
