@@ -4,19 +4,6 @@
   
   
   <entry>
-    <title>jsfuzz调研</title>
-    <link href="/jsfuzz%E8%B0%83%E7%A0%94/"/>
-    <url>/jsfuzz%E8%B0%83%E7%A0%94/</url>
-    
-    <content type="html"><![CDATA[<h1 id="论文仓库"><a href="#论文仓库" class="headerlink" title="论文仓库"></a>论文仓库</h1><p><a href="https://github.com/wcventure/FuzzingPaper">https://github.com/wcventure/FuzzingPaper</a></p><h1 id="与AI结合"><a href="#与AI结合" class="headerlink" title="与AI结合"></a>与AI结合</h1><h2 id="Montage"><a href="#Montage" class="headerlink" title="Montage"></a>Montage</h2><p><a href="https://www.usenix.org/conference/usenixsecurity20/presentation/lee-suyoung">https://www.usenix.org/conference/usenixsecurity20/presentation/lee-suyoung</a></p><p>USENIX 2020</p><h3 id="所用技术"><a href="#所用技术" class="headerlink" title="所用技术"></a>所用技术</h3><p>首先是JS文件变成AST（抽象语法树）第二个阶段是将抽象语法树输入到LSTM模型进行训练，最后一个阶段就算生成JS测试样例<br><img src="/img/js%E8%B0%83%E7%A0%940.png" alt="图片" title="montage工作流程"></p><h3 id="核心"><a href="#核心" class="headerlink" title="核心"></a>核心</h3><p>第一个用于查找 JS 引擎漏洞的语言模型引导的模糊测试器。我们技术的关键方面是将 JS 抽象语法树 （AST） 转换为可以直接训练主流 NLML 的 AST 子树序列。实验证明了 Montage 能够生成有效的 JS 测试，并表明它在查找漏洞方面优于以前的研究，第一个用语言模型生成测试样例</p><h2 id="CovRL-Fuzz"><a href="#CovRL-Fuzz" class="headerlink" title="CovRL-Fuzz"></a>CovRL-Fuzz</h2><p><a href="https://doi.org/10.1145/3650212.3680389">https://doi.org/10.1145/3650212.3680389</a></p><p>ISSTA 2024: Proceedings of the 33rd ACM SIGSOFT International Symposium on Software Testing and Analysis</p><p>语言模型的上下文突变模糊是有前途的，但缺乏必要的覆盖率指导，论文提出了一种称为CovRL（覆盖引导强化学习）的新技术，该技术将大语言模型（LLM）与覆盖反馈的强化学习（RL）相结合。通过利用术语频率-逆文档频率 （TF-IDF） 方法构建加权覆盖率图，将覆盖率反馈直接集成到 LLM 中。</p><h3 id="所用技术-1"><a href="#所用技术-1" class="headerlink" title="所用技术"></a>所用技术</h3><p>覆盖引导的模糊测试：覆盖引导是一种常见的策略，即基于程序覆盖率来指导测试用例的生成和选择，以确保更多的代码路径被测试到。 它提高了测试的有效性，帮助识别更多潜在的漏洞。</p><p>强化学习：该论文中使用强化学习算法来自动调整和优化模糊测试的策略。 强化学习是一种机器学习方法，代理通过与环境交互，不断学习最优策略，最大化某种奖励（在这个场景中，可能是探索新的代码路径或发现错误）。</p><p>基于LLM的变异技术：大型语言模型（LLM）在生成和理解语言方面表现出色。 在这篇论文中，LLM被用于生成和修改输入数据，使得模糊测试更有针对性，可以生成更复杂和有潜在漏洞的输入。</p><p>突变：插入、覆盖、拼接<br><img src="/img/js%E8%B0%83%E7%A0%941.png" alt="图片" title="CovRLfuzz工作流程"></p><h3 id="核心-1"><a href="#核心-1" class="headerlink" title="核心"></a>核心</h3><p>将覆盖率引导的反馈直接集成到基于LLM的变异过程中</p><h1 id="不和AI结合（与JIT结合偏多）"><a href="#不和AI结合（与JIT结合偏多）" class="headerlink" title="不和AI结合（与JIT结合偏多）"></a>不和AI结合（与JIT结合偏多）</h1><h2 id="AFL"><a href="#AFL" class="headerlink" title="AFL"></a>AFL</h2><p>覆盖引导的模糊测试：AFL根据每个输入触发的代码路径来优化后续输入，提升测试效率。它通过位翻转、随机数据插入等方式生成新的输入，尽量覆盖更多的代码。并且进行崩溃检测AFL能够检测到崩溃、内存访问违规等异常行为。</p><h2 id="fuzzilli"><a href="#fuzzilli" class="headerlink" title="fuzzilli"></a>fuzzilli</h2><p>NDSS 2023</p><p><a href="https://www.ndss-symposium.org/wp-content/uploads/2023/02/ndss2023_f290_paper.pdf">https://www.ndss-symposium.org/wp-content/uploads/2023/02/ndss2023_f290_paper.pdf</a></p><p>提出了一个中间表示（IR）的设计和实现用于发现JIT编译器的漏洞</p><h2 id="juzzjit"><a href="#juzzjit" class="headerlink" title="juzzjit"></a>juzzjit</h2><p>usenix 2023</p><p><a href="https://www.usenix.org/system/files/sec23summer_118-wang_junjie-prepub.pdf">https://www.usenix.org/system/files/sec23summer_118-wang_junjie-prepub.pdf</a></p><p>可以为每个测试用例激活JIT编译器，并敏锐地捕捉由JIT编译器引起的任何执行差异。关键是设计一个输入包装模板，它主动激活JIT编译器，使生成的样本本身具有Oracle感知性，并在执行过程中自发地测试Oracle。我们还设计了一套变异策略，强调程序元素有希望揭示JIT编译器的错误。</p><h2 id="OptFuzz"><a href="#OptFuzz" class="headerlink" title="OptFuzz"></a>OptFuzz</h2><p>usenix 2024</p><p><a href="https://www.usenix.org/conference/usenixsecurity24/presentation/wang-jiming">https://www.usenix.org/conference/usenixsecurity24/presentation/wang-jiming</a></p><p>探索优化路径覆盖</p><p>利用一个优化主干路径度量近似的优化路径覆盖，并使用它作为一个反馈，以指导种子保存和种子调度的模糊过程。</p><p><img src="/img/js%E8%B0%83%E7%A0%942.png" alt="图片" title="JIT编译器工作流程"></p><h1 id="idea"><a href="#idea" class="headerlink" title="idea"></a>idea</h1><p><strong>利用RAG辅助大模型生成fuzzing测试样例从而对引擎进行漏洞的挖掘</strong></p><p>RAG——Retrieval Augmented Generation，检索增强生成。核心思想是，生成模型不依赖于仅存储在内部参数中的信息，而是通过检索外部知识库或数据库来增强生成过程，从而提供更准确和信息丰富的答案。</p><p>所以依据RAG能提高生成的测试样例的质量，从而提升覆盖率等等指标，效果会更好。</p><p>RAG目前的应用：<br><a href="https://github.com/PKU-DAIR/RAG-Survey">https://github.com/PKU-DAIR/RAG-Survey</a></p><p>java fuzzing相关数据集：</p><p>具有 PoC 的 JavaScript 引擎 CVE 的数据集：<a href="https://github.com/tunz/js-vuln-db">https://github.com/tunz/js-vuln-db</a><br>官方 ECMAScript 一致性测试套件：<a href="https://github.com/tc39/test262">https://github.com/tc39/test262</a><br>来自 ChakraCore、SpiderMonkey、V8、JavaScriptCore 和 Test262 存储库的 JS 测试套件集合：<a href="https://github.com/WSP-LAB/js-test-suite?tab=readme-ov-file">https://github.com/WSP-LAB/js-test-suite?tab=readme-ov-file</a></p><p>具体实现：</p><ol><li>构建知识库（Corpus）</li></ol><p>首先，构建一个与待测程序相关的知识库或数据集。这些数据可以包括：</p><pre><code class="hljs">现有的测试样例（覆盖的路径、触发的漏洞等）。程序的源代码或汇编代码片段，尤其是带有注释的部分，帮助语言模型理解代码逻辑。代码的控制流图、数据流图，帮助模型推理哪些路径未被充分测试。历史测试过程中生成的代码覆盖率报告，用于分析哪些部分尚未覆盖或覆盖率较低。</code></pre><ol start="2"><li>构建检索模型</li></ol><p>构建一个基于向量检索的系统，用于从知识库中检索与目标程序相关的测试信息和代码部分。这一步的关键是选择合适的检索模型来帮助生成过程：</p><pre><code class="hljs">使用双编码器（Dual Encoder）：如 BERT、DPR（Dense Passage Retrieval），将程序代码和相关数据向量化，基于输入查询找到最相关的测试片段或代码。检索与输入相关的未覆盖代码路径：基于代码的特征、函数调用栈或控制流图，从知识库中检索出尚未充分测试的路径信息，帮助生成新的输入样例。</code></pre><ol start="3"><li>生成高覆盖率的Fuzzing测试样例<br>使用语言模型生成Fuzzing测试样例，这一步中，可以结合检索到的未覆盖路径或特定的代码片段进行指导生成。（基于覆盖率的反馈循环）</li></ol><h1 id="存在的问题："><a href="#存在的问题：" class="headerlink" title="存在的问题："></a>存在的问题：</h1><h2 id="如何实现RAG"><a href="#如何实现RAG" class="headerlink" title="如何实现RAG"></a>如何实现RAG</h2><p>利用langchain：<a href="https://github.com/blackinkkkxi/RAG_langchain">https://github.com/blackinkkkxi/RAG_langchain</a><br>官方文档：<a href="https://langchain-fanyi.readthedocs.io/en/latest/modules/indexes/document_loaders.html">https://langchain-fanyi.readthedocs.io/en/latest/modules/indexes/document_loaders.html</a></p><h2 id="大模型如何学习js程序"><a href="#大模型如何学习js程序" class="headerlink" title="大模型如何学习js程序"></a>大模型如何学习js程序</h2><p>转化为json格式，Montage论文中的预处理：<a href="https://github.com/WSP-LAB/Montage/tree/master/src/preprocess">https://github.com/WSP-LAB/Montage/tree/master/src/preprocess</a></p>]]></content>
-    
-    
-    
-  </entry>
-  
-  
-  
-  <entry>
     <title>渗透（5）</title>
     <link href="/9/"/>
     <url>/9/</url>
@@ -95,9 +82,9 @@
       
       <tag>CTF</tag>
       
-      <tag>msf</tag>
-      
       <tag>ms17-010</tag>
+      
+      <tag>msf</tag>
       
       <tag>漏洞复现</tag>
       
