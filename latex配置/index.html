@@ -19,28 +19,33 @@
   <meta name="author" content="l1nk">
   <meta name="keywords" content="">
   
-    <meta name="description" content="渗透测试的常识、MSF简介">
+    <meta name="description" content="简单介绍一下latex配置">
 <meta property="og:type" content="article">
-<meta property="og:title" content="渗透（1）">
-<meta property="og:url" content="https://lan041221.github.io/1/index.html">
+<meta property="og:title" content="latex配置">
+<meta property="og:url" content="https://lan041221.github.io/latex%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="l1nk&#39;s blog">
-<meta property="og:description" content="渗透测试的常识、MSF简介">
+<meta property="og:description" content="简单介绍一下latex配置">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F1.1.png">
-<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F2.1.png">
-<meta property="og:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F2.2.png">
-<meta property="article:published_time" content="2024-10-31T06:26:34.905Z">
-<meta property="article:modified_time" content="2024-09-28T08:49:33.598Z">
+<meta property="og:image" content="https://lan041221.github.io/img/latex1.png">
+<meta property="og:image" content="https://lan041221.github.io/img/latex2.png">
+<meta property="og:image" content="https://lan041221.github.io/img/latex3.png">
+<meta property="og:image" content="https://lan041221.github.io/img/latex4.png">
+<meta property="og:image" content="https://lan041221.github.io/img/latex5.png">
+<meta property="og:image" content="https://lan041221.github.io/img/latex6.png">
+<meta property="og:image" content="https://lan041221.github.io/img/latex7.png">
+<meta property="og:image" content="https://lan041221.github.io/img/latex9.png">
+<meta property="og:image" content="https://lan041221.github.io/img/latex8.png">
+<meta property="article:published_time" content="2024-10-31T06:26:34.916Z">
+<meta property="article:modified_time" content="2024-10-19T13:09:05.845Z">
 <meta property="article:author" content="l1nk">
-<meta property="article:tag" content="CTF">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://lan041221.github.io/img/%E6%B8%97%E9%80%8F1.1.png">
+<meta name="twitter:image" content="https://lan041221.github.io/img/latex1.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>渗透（1） - l1nk&#39;s blog</title>
+  <title>latex配置 - l1nk&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -206,7 +211,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="渗透（1）"></span>
+            <span id="subtitle" data-typed-text="latex配置"></span>
           
         </div>
 
@@ -229,7 +234,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.3k 字
+          606 字
         
       </span>
     
@@ -240,7 +245,7 @@
         
         
         
-          20 分钟
+          6 分钟
         
       </span>
     
@@ -277,44 +282,14 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">渗透（1）</h1>
+            <h1 id="seo-header">latex配置</h1>
             
             
               <div class="markdown-body">
                 
-                <h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>保完研把之前学的东西总结一遍，正好最近在上工程实训的课，借着复习一遍了，仅作为我的学习记录，没有高超的技术分享。</p>
-<p>此系列主要是利用已有工具（脚本小子）进行攻击。</p>
-<h3 id="简单介绍"><a href="#简单介绍" class="headerlink" title="简单介绍"></a>简单介绍</h3><p>渗透测试就是利用学习掌握的技能通过一种模拟攻击的技术与方法，挫败目标系统的安全控制策略并获得控制访问权的安全测试方法，对网站进行渗透，发现其中的漏洞风险，并撰写报告告知客户，客户依据我们攥写的报告对漏洞和风险进行修补，防止攻击。</p>
-<p>渗透测试的主要依据是CVE（Common Vulnerabilities and Exposures通用漏洞披露，会为漏洞命个名称，帮助用户共享数据）已经发现的安全漏洞，进行<strong>模拟黑客或入侵者的攻击</strong>，对网站应用、服务器系统和其他网络设备进行非破坏性质的攻击性测试</p>
-<h3 id="常见端口及漏洞"><a href="#常见端口及漏洞" class="headerlink" title="常见端口及漏洞"></a>常见端口及漏洞</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs 常利用的端口">21 —— FTP，查看是否存在匿名访问；<br>22 —— SSH，查看是否存在弱口令；<br>80 —— HTTP，常见web漏洞；<br>443 —— openssl，心脏出血；<br>445 —— smb、ms08‐067、ms17‐010；<br>1433 —— mssql，弱口令；<br>1521 —— oracle，弱口令；<br>3389 —— win远程桌面，弱口令；<br>6379 —— redis未授权访问，弱口令；<br>8080 —— tomcat漏洞<br></code></pre></td></tr></table></figure>
-<h3 id="基本流程"><a href="#基本流程" class="headerlink" title="基本流程"></a>基本流程</h3><p><img src="/img/%E6%B8%97%E9%80%8F1.1.png" srcset="/img/loading.gif" lazyload alt="图片" title="渗透测试的基本流程"></p>
-<h3 id="专业术语"><a href="#专业术语" class="headerlink" title="专业术语"></a>专业术语</h3><p>漏洞：硬件、软件、协议等等的可利用<strong>安全缺陷</strong>，可能被攻击者利用，对数据进行篡改，控制等</p>
-<p>CVE： CVE 的英⽂全称是“Common Vulnerabilities &amp; Exposures”<strong>公共漏洞披露</strong>。CVE为⼴泛认同的信息安全漏洞或者已经暴露出来的弱点给出㇐个统一的漏洞编号标准</p>
-<p>PoC：全称“Proof of Concept”，中文“观点证明”，用于证明某种技术、漏洞或安全问题的存在。常指一段<strong>漏洞证明的代码</strong>，使得读者能够确认这个漏洞是真实存在的。<br>假设某个网站存在一个SQL注入漏洞，允许攻击者通过恶意输入执行数据库查询。一个POC可能是一段代码，可以在该网站的搜索框中注入恶意SQL语句，并获取敏感数据。这个POC可以证明该漏洞的存在，并帮助网站的管理员意识到需要修复这个问题。</p>
-<p>Exp：全称“Exploit”，中文“漏洞利用”，指<strong>利用系统漏洞进行攻击的活动</strong>。EXP通常是用于利用已知漏洞的程序或脚本，以获取对目标系统的未授权访问、控制或执行特定操作的能力。PoC 是用来证明漏洞存在的，Exp 是用来利用漏洞的，两者通常不是一类，或者说，PoC 通常是无害的，Exp 通常是有害的，有了 PoC，才有 Exp。</p>
-<p>Payload：中文“有效载荷”，指成功 exploit 之后，真正在目标系统执行的代码或指令。Payload 有很多种，它可以是 Shellcode，也可以直接是一段系统命令。同一个 Payload 可以用于多个漏洞，但每个漏洞都有其自己的 Exp，也就是说不存在通用的 Exp。</p>
-<p>小例子：<br>假如你是一名侦探，此时你正在监视某人，有一天你发现他家的窗户没关好，这可能是一个漏洞，你去推了推，发现推开了，那这就是一个Poc，你验证了这个漏洞的存在。第二天你你推窗进去了，查看了机密文件，并安装了窃听器，那这一套动作做的就是一个Exp，在他家所做的事情就是不同的Payload，窃听器就是一个Payload。</p>
-<p>总结：<br>“Poc”相当于侦探发现并验证了窗户未关好的漏洞。<br>“Exp”相当于侦探利用这个漏洞进入房间，并且查看了文件，安装了窃听器。<br>“Payload”可以指侦探在房间里进行的各种行动，比如查看文件或安装窃听器。</p>
-<p>还有其他一些通俗易懂的名词，比如shell、提权、后门、木马等等不过多赘述。</p>
-<h3 id="价值作用"><a href="#价值作用" class="headerlink" title="价值作用"></a>价值作用</h3><p>渗透测试是我接触网安以来感觉最像黑客的事情，能获得系统的权限，更改系统的内容，进行信息的获取和修改，狠狠满足了黑客梦，对于就业来说也有相关的岗位，不过安全没有小厂，全都是大厂，这也就意味着门槛高薪资高。</p>
-<p>学得好可以去hvv做红方，23年我朋友去的时候<strong>一天1500</strong>，自从<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Mu411E7AW/?spm_id_from=333.337.search-card.all.click&vd_source=9292f2260ddccfeb23b7d147e383d780">苕皮哥事件</a>后，今年我问了问只有几百了，大不如前但相比别的事情还是很多。</p>
-<p><strong>有时候别太大胆了什么都测一下，不要被警察叔叔约谈了</strong></p>
-<h3 id="前言-1"><a href="#前言-1" class="headerlink" title="前言"></a>前言</h3><p>首先了解MSF，刚入门实力达不到自己写exp、payload所以就先当脚本小子，后面慢慢去熟悉其中的原理和利用细节。</p>
-<h3 id="MSF简介"><a href="#MSF简介" class="headerlink" title="MSF简介"></a>MSF简介</h3><p>目前最流行、最强大、最具扩展性的渗透测试平台软件基于Metasploit进行渗透测试和漏洞分析的。</p>
-<p>框架集成了渗透测试标准 (PTES） 思想一定程度上统一了渗透测试和漏洞研究的工作环境新的攻击代码可以比较容易的加入框架开发活跃版本更新频繁（每周）早期版本基于社区力量维护，被 Rapid 7收购后打造出其商业版产品目前分化为四个版本，社区版本依然十分活跃。</p>
-<p>Metasploit Framework(MSF)是一款开源安全漏洞检测工具，附带数千个已知的软件漏洞，并保持持续更新。Metasploit可以用来信息收集、漏洞探测、漏洞利用等渗透测试的全流程，被安全社区冠以“可以黑掉整个宇宙”之名。刚开始的Metasploit是采用Perl语言编写的，但是再后来的新版中，改成了用Ruby语言编写的了。</p>
-<p>通俗理解就是MSF里面集成好了各种exp，可以当脚本小子直接用。</p>
-<h3 id="MSF分类"><a href="#MSF分类" class="headerlink" title="MSF分类"></a>MSF分类</h3><p><img src="/img/%E6%B8%97%E9%80%8F2.1.png" srcset="/img/loading.gif" lazyload alt="图片" title="MSF的不同版本"><br>有这几种不同的版本，在kali里面用终端的免费版就够了。</p>
-<h3 id="MSF模块"><a href="#MSF模块" class="headerlink" title="MSF模块"></a>MSF模块</h3><p>MSF所有的漏洞测试都是基于模块。</p>
-<h4 id="auxiliary"><a href="#auxiliary" class="headerlink" title="auxiliary"></a>auxiliary</h4><p>负责执行信息收集、扫描、嗅探、指纹识别、口令猜测和Dos攻击等功能的辅助模块。</p>
-<p>辅助模块能在渗透之前得到目标系统丰富的情报信息，从而发起更具目标性的精准攻击。包括针对各种网络服务的扫描与查点、构建虚假服务收集登录密码口令破解、敏感信息嗅探、fuzz、实施网络协议欺骗等模块。</p>
-<h4 id="exploits"><a href="#exploits" class="headerlink" title="exploits"></a>exploits</h4><p>利用系统漏洞进行攻击的动作，用于利用漏洞和传递有效负载的模块。有远程漏洞利用、本地漏洞利用、权限提升漏洞利用、客户端漏洞利用、Web 应用程序漏洞利用和许多其他漏洞。metasploit框架中渗透攻击模块可以按照所利用的安全漏洞所在的位置分为主动渗透攻击与被动渗透攻击两大类。</p>
-<h4 id="payloads"><a href="#payloads" class="headerlink" title="payloads"></a>payloads</h4><p>成功exploit之后，真正在目标系统执行的代码或指令。比如反弹shell的代码。分为3种类型的payload，分别是single、stages、和stagers。<br>single：一个完整的payload，不需要外部库，all-in-one<br>stager：目标计算机内存有限，先传输一个较小的payload用于建立连接<br>stages：利用stager建立的连接下载后续的payloadstager与stages有多种类型，适用于不同场景，shellcode是特殊的payload，其主要用于与目标主机建立shell。<br><img src="/img/%E6%B8%97%E9%80%8F2.2.png" srcset="/img/loading.gif" lazyload alt="图片" title="payload"><br> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment">#Stager/Stage Payload的格式为：</span><br>&lt;target&gt;/ &lt;stage&gt; / &lt;stager&gt; 如：windows/meterpreter/reverse_tcp<br></code></pre></td></tr></table></figure></p>
-<h4 id="encoders"><a href="#encoders" class="headerlink" title="encoders"></a>encoders</h4><p>编码器模块主要包含各种编码工具，对payload进行编码加密，以便绕过入侵检测和过滤系统用于有效负载编码和加密的模块，例如 base64、XOR、shikata_ga_nai 等。这有助于混淆以规避防病毒或NIDS（网络入侵检测系统）、EDR（端点检测和响应）等防御。</p>
-<p>各大厂商已经针对msf做了防御，免杀需要额外进行编码加壳。</p>
-<h4 id="nops"><a href="#nops" class="headerlink" title="nops"></a>nops</h4><p>metasploit框架中的空指令模块，用来在攻击载荷中添加空指令区，以提高攻击可靠性的组件。在渗透攻击构造恶意数据缓冲区时，常常要在真正要执行的Shellcode之前添加一段空指令区， 这样当触发渗透攻击后跳转执行Shellcode时，有一个较大的安全着陆区，从而避免受到内存地址随机化、返回地址计算偏差等原因造成的Shellcode执行失败，提高渗透攻击的可靠性。</p>
-<h4 id="post"><a href="#post" class="headerlink" title="post"></a>post</h4><p>后期渗透模块。在取得目标系统远程控制权后，进行一系列的后渗透攻击动作，如获取敏感信息、跳板攻击，安装后门、记录键盘记录、屏幕捕获等操作。</p>
-<h4 id="evasion"><a href="#evasion" class="headerlink" title="evasion"></a>evasion</h4><p>躲避模块，用来生成免杀payload 用于规避防御的模块，例如防病毒规避、AppLocker 绕过、软件限制策略 (SRP) 绕过等。</p>
+                <h1 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h1><p>首先去清华源里面下载latex的镜像：<a target="_blank" rel="noopener" href="https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/">https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/</a><br>选择<strong>textlive2024.iso</strong><br><img src="/img/latex1.png" srcset="/img/loading.gif" lazyload alt="图片" title="下载这个"><br>速度非常的快，因为用的是清华源，不用梯子<br><img src="/img/latex2.png" srcset="/img/loading.gif" lazyload alt="图片" title="15分钟左右会下好，我的校园网比较差"><br>下载好后双击镜像，进入后点击这个批处理脚本：<br><img src="/img/latex3.png" srcset="/img/loading.gif" lazyload alt="图片" title="双击，然后点击确认"><br>然后修改安装的位置：<br><img src="/img/latex4.png" srcset="/img/loading.gif" lazyload alt="图片" title="不要安装在C盘"><br>等待ing：<br><img src="/img/latex5.png" srcset="/img/loading.gif" lazyload alt="图片" title="安装需要二十分钟左右"><br>安装成功：<br><img src="/img/latex6.png" srcset="/img/loading.gif" lazyload alt="图片" title="这个界面就是安装完成了"><br>在cmd里面验证一下：<br><img src="/img/latex7.png" srcset="/img/loading.gif" lazyload alt="图片" title="latex-v查看"><br>在vscode里面下载latex插件，在配置文件的花括号里面配置以下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><code class="hljs setting.json">&quot;latex-workshop.latex.tools&quot;: [	<br>    &#123;<br>        &quot;name&quot;: &quot;pdflatex&quot;,<br>        &quot;command&quot;: &quot;pdflatex&quot;,<br>        &quot;args&quot;: [<br>            &quot;-synctex=1&quot;,<br>            &quot;-interaction=nonstopmode&quot;,<br>            &quot;-file-line-error&quot;,<br>            &quot;%DOCFILE%&quot;<br>        ]<br>    &#125;,<br>    &#123;<br>        &quot;name&quot;: &quot;xelatex&quot;,<br>        &quot;command&quot;: &quot;xelatex&quot;,<br>        &quot;args&quot;: [<br>            &quot;-synctex=1&quot;,<br>            &quot;-interaction=nonstopmode&quot;,<br>            &quot;-file-line-error&quot;,<br>            &quot;%DOCFILE%&quot;<br>        ]<br>    &#125;,<br>    &#123;<br>        &quot;name&quot;: &quot;bibtex&quot;,<br>        &quot;command&quot;: &quot;bibtex&quot;,<br>        &quot;args&quot;: [<br>            &quot;%DOCFILE%&quot;<br>        ]<br>    &#125;<br>],<br>&quot;latex-workshop.latex.recipes&quot;: [<br>    &#123;<br>        &quot;name&quot;: &quot;xelatex&quot;,<br>        &quot;tools&quot;: [<br>            &quot;xelatex&quot;<br>        ],<br>    &#125;,<br>    &#123;<br>        &quot;name&quot;: &quot;pdflatex&quot;,<br>        &quot;tools&quot;: [<br>            &quot;pdflatex&quot;<br>        ]<br>    &#125;,<br>    &#123;<br>        &quot;name&quot;: &quot;xe-&gt;bib-&gt;xe-&gt;xe&quot;,<br>        &quot;tools&quot;: [<br>            &quot;xelatex&quot;,<br>            &quot;bibtex&quot;,<br>            &quot;xelatex&quot;,<br>            &quot;xelatex&quot;<br>        ]<br>    &#125;,<br>    &#123;<br>        &quot;name&quot;: &quot;pdf-&gt;bib-&gt;pdf-&gt;pdf&quot;,<br>        &quot;tools&quot;: [<br>            &quot;pdflatex&quot;,<br>            &quot;bibtex&quot;,<br>            &quot;pdflatex&quot;,<br>            &quot;pdflatex&quot;<br>        ]<br>    &#125;<br>],<br>&quot;latex-workshop.latex.clean.fileTypes&quot;: [<br>    &quot;*.aux&quot;,<br>    &quot;*.bbl&quot;,<br>    &quot;*.blg&quot;,<br>    &quot;*.idx&quot;,<br>    &quot;*.ind&quot;,<br>    &quot;*.lof&quot;,<br>    &quot;*.lot&quot;,<br>    &quot;*.out&quot;,<br>    &quot;*.toc&quot;,<br>    &quot;*.acn&quot;,<br>    &quot;*.acr&quot;,<br>    &quot;*.alg&quot;,<br>    &quot;*.glg&quot;,<br>    &quot;*.glo&quot;,<br>    &quot;*.gls&quot;,<br>    &quot;*.ist&quot;,<br>    &quot;*.fls&quot;,<br>    &quot;*.log&quot;,<br>    &quot;*.fdb_latexmk&quot;<br>],<br>//tex文件浏览器，可选项为&quot;none&quot; &quot;browser&quot; &quot;tab&quot; &quot;external&quot;<br>&quot;latex-workshop.view.pdf.viewer&quot;: &quot;tab&quot;,<br>//自动编译tex文件<br>&quot;latex-workshop.latex.autoBuild.run&quot;: &quot;onFileChange&quot;,<br>//显示内容菜单：（1）编译文件；（2）定位游标<br>&quot;latex-workshop.showContextMenu&quot;: true,<br>//显示错误<br>&quot;latex-workshop.message.error.show&quot;: false,<br>//显示警告<br>&quot;latex-workshop.message.warning.show&quot;: false,<br>//从使用的包中自动补全命令和环境<br>&quot;latex-workshop.intellisense.package.enabled&quot;: true,<br>//设置为never，为不清除辅助文件<br>&quot;latex-workshop.latex.autoClean.run&quot;: &quot;never&quot;,<br>//设置vscode编译tex文档时的默认编译链<br>&quot;latex-workshop.latex.recipe.default&quot;: &quot;lastUsed&quot;,<br>// 用于反向同步的内部查看器的键绑定。ctrl/cmd +点击(默认)或双击<br>&quot;latex-workshop.view.pdf.internal.synctex.keybinding&quot;: &quot;double-click&quot;,<br></code></pre></td></tr></table></figure>
+<p>下载一个IEEE的模板<a target="_blank" rel="noopener" href="https://template-selector.ieee.org/secure/templateSelector/downloadTemplate?publicationTypeId=1&titleId=4&articleId=1&fileId=4">https://template-selector.ieee.org/secure/templateSelector/downloadTemplate?publicationTypeId=1&amp;titleId=4&amp;articleId=1&amp;fileId=4</a><br>拖入vscode里面然后成功进行编译：<br><img src="/img/latex9.png" srcset="/img/loading.gif" lazyload alt="图片" title="编译文章"><br><img src="/img/latex8.png" srcset="/img/loading.gif" lazyload alt="图片" title="查看文章"></p>
 
                 
               </div>
@@ -323,34 +298,6 @@
             <div>
               <div class="post-metas my-3">
   
-    <div class="post-meta mr-3 d-flex align-items-center">
-      <i class="iconfont icon-category"></i>
-      
-
-<span class="category-chains">
-  
-  
-    
-      <span class="category-chain">
-        
-  <a href="/categories/%E6%B8%97%E9%80%8F%E6%B5%8B%E8%AF%95/" class="category-chain-item">渗透测试</a>
-  
-  
-
-      </span>
-    
-  
-</span>
-
-    </div>
-  
-  
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/CTF/" class="print-no-link">#CTF</a>
-      
-    </div>
   
 </div>
 
@@ -360,8 +307,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>渗透（1）</div>
-      <div>https://lan041221.github.io/1/</div>
+      <div>latex配置</div>
+      <div>https://lan041221.github.io/latex配置/</div>
     </div>
     <div class="license-meta">
       
@@ -405,9 +352,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/3/" title="渗透（2）">
+                      <a href="/%E6%97%A5%E6%9C%ACtrip/" title="日本旅游">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">渗透（2）</span>
+                        <span class="hidden-mobile">日本旅游</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -415,8 +362,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/9/" title="渗透（5）">
-                        <span class="hidden-mobile">渗透（5）</span>
+                      <a href="/jsfuzz%E8%B0%83%E7%A0%94/" title="jsfuzz">
+                        <span class="hidden-mobile">jsfuzz</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
